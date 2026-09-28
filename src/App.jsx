@@ -1,6 +1,7 @@
 // src/App.jsx
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { LanguageProvider } from './context/LanguageContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 
@@ -35,41 +36,42 @@ function Layout({ children }) {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Layout>
-        <Routes>
-          {/* Home */}
-          <Route path="/" element={<Home />} />
+    <LanguageProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Layout>
+          <Routes>
+            {/* Home */}
+            <Route path="/" element={<Home />} />
 
-          {/* About */}
-          <Route path="/about/profile" element={<CompanyProfile />} />
-          <Route path="/about/history" element={<CompanyHistory />} />
-          <Route path="/about/commissioners" element={<BoardCommissioners />} />
-          <Route path="/about/directors" element={<BoardDirectors />} />
-          {/* Redirect /about to /about/profile */}
-          <Route path="/about" element={<Navigate to="/about/profile" replace />} />
+            {/* About */}
+            <Route path="/about/profile" element={<CompanyProfile />} />
+            <Route path="/about/history" element={<CompanyHistory />} />
+            <Route path="/about/commissioners" element={<BoardCommissioners />} />
+            <Route path="/about/directors" element={<BoardDirectors />} />
+            <Route path="/about" element={<Navigate to="/about/profile" replace />} />
 
-          {/* Fleet */}
-          <Route path="/fleet/:category" element={<FleetPage />} />
-          <Route path="/fleet" element={<Navigate to="/fleet/aht" replace />} />
+            {/* Fleet */}
+            <Route path="/fleet/:category" element={<FleetPage />} />
+            <Route path="/fleet" element={<Navigate to="/fleet/aht" replace />} />
 
-          {/* Media Center */}
-          <Route path="/media" element={<MediaCenter />} />
+            {/* Media Center */}
+            <Route path="/media" element={<MediaCenter />} />
 
-          {/* Investors */}
-          <Route path="/investors/financials" element={<FinancialStatements />} />
-          <Route path="/investors" element={<Navigate to="/investors/financials" replace />} />
+            {/* Investors */}
+            <Route path="/investors/financials" element={<FinancialStatements />} />
+            <Route path="/investors" element={<Navigate to="/investors/financials" replace />} />
 
-          {/* Contact */}
-          <Route path="/contact/info" element={<ContactInfo />} />
-          <Route path="/contact/inquiry" element={<ContactInquiry />} />
-          <Route path="/contact" element={<Navigate to="/contact/info" replace />} />
+            {/* Contact */}
+            <Route path="/contact/info" element={<ContactInfo />} />
+            <Route path="/contact/inquiry" element={<ContactInquiry />} />
+            <Route path="/contact" element={<Navigate to="/contact/info" replace />} />
 
-          {/* 404 catch-all */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </Layout>
-    </BrowserRouter>
+            {/* 404 catch-all */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }

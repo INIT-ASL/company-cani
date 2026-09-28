@@ -1,24 +1,57 @@
 // src/components/home/ClientsSection.jsx
 import { motion } from 'framer-motion';
 import SectionTitle from '../ui/SectionTitle';
-
-const clients = [
-  { name: 'PT Pertamina', abbr: 'PRT', color: '#C0392B', sub: 'Energi Nasional' },
-  { name: 'PT Adaro Energy', abbr: 'ADR', color: '#1E2A3A', sub: 'Pertambangan' },
-  { name: 'Chevron Pacific Indonesia', abbr: 'CVX', color: '#2980B9', sub: 'Oil & Gas' },
-  { name: 'PT Kideco Jaya Agung', abbr: 'KJA', color: '#16A085', sub: 'Pertambangan' },
-  { name: 'PT PLN (Persero)', abbr: 'PLN', color: '#F39C12', sub: 'Energi Listrik' },
-  { name: 'Total E&P Indonesie', abbr: 'TOT', color: '#8E44AD', sub: 'Oil & Gas' },
-];
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function ClientsSection() {
+  const { language, t } = useLanguage();
+
+  const clients = [
+    {
+      name: 'PT Pertamina',
+      abbr: 'PRT',
+      color: '#C0392B',
+      sub: { en: 'National Energy', id: 'Energi Nasional' },
+    },
+    {
+      name: 'PT Adaro Energy',
+      abbr: 'ADR',
+      color: '#1E2A3A',
+      sub: { en: 'Mining & Power', id: 'Pertambangan' },
+    },
+    {
+      name: 'Chevron Pacific Indonesia',
+      abbr: 'CVX',
+      color: '#2980B9',
+      sub: { en: 'Oil & Gas Exploration', id: 'Oil & Gas' },
+    },
+    {
+      name: 'PT Kideco Jaya Agung',
+      abbr: 'KJA',
+      color: '#16A085',
+      sub: { en: 'Mineral Mining', id: 'Pertambangan' },
+    },
+    {
+      name: 'PT PLN (Persero)',
+      abbr: 'PLN',
+      color: '#F39C12',
+      sub: { en: 'State Electricity', id: 'Energi Listrik' },
+    },
+    {
+      name: 'Total E&P Indonesie',
+      abbr: 'TOT',
+      color: '#8E44AD',
+      sub: { en: 'Offshore Energy', id: 'Oil & Gas' },
+    },
+  ];
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
-          subtitle="Klien Kami"
-          title="Dipercaya oleh Perusahaan Terkemuka"
-          description="CNI telah menjalin kemitraan jangka panjang dengan perusahaan-perusahaan energi dan pertambangan terbesar di Indonesia."
+          subtitle={t('clientsSection.subtitle')}
+          title={t('clientsSection.title')}
+          description={t('clientsSection.description')}
         />
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -46,7 +79,9 @@ export default function ClientsSection() {
               <span className="text-xs font-semibold text-[#1E2A3A] text-center leading-tight">
                 {client.name}
               </span>
-              <span className="text-xs text-slate-400 mt-0.5">{client.sub}</span>
+              <span className="text-xs text-slate-400 mt-0.5">
+                {typeof client.sub === 'object' ? client.sub[language] : client.sub}
+              </span>
             </motion.div>
           ))}
         </div>

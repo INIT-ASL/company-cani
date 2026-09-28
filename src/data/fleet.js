@@ -1,17 +1,80 @@
 // src/data/fleet.js
 export const fleetCategories = [
-  { id: 'aht', label: 'AHT', fullLabel: 'Anchor Handling Tug' },
-  { id: 'tug', label: 'Tug Boat', fullLabel: 'Tug Boat' },
-  { id: 'crane', label: 'Floating Crane', fullLabel: 'Floating Crane' },
-  { id: 'barge', label: 'Barge', fullLabel: 'Barge' },
-  { id: 'heavy', label: 'Heavy Equipment', fullLabel: 'Heavy Equipment' },
+  {
+    id: 'aht',
+    label: 'AHT',
+    fullLabel: {
+      en: 'Anchor Handling Tug (AHT)',
+      id: 'Anchor Handling Tug (AHT)',
+    },
+  },
+  {
+    id: 'tug',
+    label: 'Tug Boat',
+    fullLabel: {
+      en: 'Tug Boat',
+      id: 'Tug Boat',
+    },
+  },
+  {
+    id: 'crane',
+    label: 'Floating Crane',
+    fullLabel: {
+      en: 'Floating Crane',
+      id: 'Floating Crane',
+    },
+  },
+  {
+    id: 'barge',
+    label: 'Barge',
+    fullLabel: {
+      en: 'Barge & Oil Barge',
+      id: 'Tongkang / Barge',
+    },
+  },
+  {
+    id: 'heavy',
+    label: 'Heavy Equipment',
+    fullLabel: {
+      en: 'Heavy Equipment',
+      id: 'Alat Berat',
+    },
+  },
 ];
 
 export const charterTypes = [
-  { code: 'TC', label: 'Time Charter', desc: 'Sewa kapal beserta awak untuk periode tertentu' },
-  { code: 'FC', label: 'Freight Charter', desc: 'Sewa berdasarkan muatan yang diangkut' },
-  { code: 'VC', label: 'Voyage Charter', desc: 'Sewa untuk satu perjalanan tertentu' },
-  { code: 'BC', label: 'Bareboat Charter', desc: 'Sewa kapal tanpa awak dan perlengkapan' },
+  {
+    code: 'TC',
+    label: 'Time Charter',
+    desc: {
+      en: 'Vessel lease including crew and maintenance for a specified duration',
+      id: 'Sewa kapal beserta awak dan perawatan untuk periode tertentu',
+    },
+  },
+  {
+    code: 'FC',
+    label: 'Freight Charter',
+    desc: {
+      en: 'Charter rate calculated per volume or tonnage of cargo transported',
+      id: 'Sewa berdasarkan kuantitas muatan yang diangkut',
+    },
+  },
+  {
+    code: 'VC',
+    label: 'Voyage Charter',
+    desc: {
+      en: 'Charter for a single designated voyage from port of loading to discharge',
+      id: 'Sewa untuk satu rute perjalanan tertentu dari pelabuhan muat ke bongkar',
+    },
+  },
+  {
+    code: 'BC',
+    label: 'Bareboat Charter',
+    desc: {
+      en: 'Vessel lease without crew or operational provisions',
+      id: 'Sewa kapal fisik tanpa awak dan perbekalan operasional',
+    },
+  },
 ];
 
 export const fleetData = {
@@ -43,9 +106,37 @@ export const fleetData = {
     { name: 'CNI OIL BARGE 1', dwt: '2,500 DWT', loa: '75 m', year: 2007, flag: 'Indonesia', charter: ['TC', 'FC'] },
   ],
   heavy: [
-    { name: 'CNI EXCAVATOR 01', type: 'Excavator Amphibi', capacity: '1.2 m³', year: 2011, flag: 'Indonesia', charter: ['TC'] },
-    { name: 'CNI EXCAVATOR 02', type: 'Excavator Amphibi', capacity: '1.2 m³', year: 2011, flag: 'Indonesia', charter: ['TC'] },
-    { name: 'CNI BULLDOZER 01', type: 'Bulldozer D8R', capacity: '385 HP', year: 2009, flag: 'Indonesia', charter: ['TC'] },
-    { name: 'CNI CRANE DARAT 01', type: 'Crawler Crane', capacity: '200 Ton', year: 2012, flag: 'Indonesia', charter: ['TC', 'BC'] },
+    {
+      name: 'CNI EXCAVATOR 01',
+      type: { en: 'Amphibious Excavator', id: 'Excavator Amphibi' },
+      capacity: '1.2 m³',
+      year: 2011,
+      flag: 'Indonesia',
+      charter: ['TC'],
+    },
+    {
+      name: 'CNI EXCAVATOR 02',
+      type: { en: 'Amphibious Excavator', id: 'Excavator Amphibi' },
+      capacity: '1.2 m³',
+      year: 2011,
+      flag: 'Indonesia',
+      charter: ['TC'],
+    },
+    {
+      name: 'CNI BULLDOZER 01',
+      type: { en: 'Bulldozer D8R', id: 'Bulldozer D8R' },
+      capacity: '385 HP',
+      year: 2009,
+      flag: 'Indonesia',
+      charter: ['TC'],
+    },
+    {
+      name: 'CNI CRANE DARAT 01',
+      type: { en: 'Crawler Crane', id: 'Crawler Crane' },
+      capacity: '200 Ton',
+      year: 2012,
+      flag: 'Indonesia',
+      charter: ['TC', 'BC'],
+    },
   ],
 };

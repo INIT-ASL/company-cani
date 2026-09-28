@@ -2,14 +2,17 @@
 import { motion } from 'framer-motion';
 import PageHeader from '../../components/ui/PageHeader';
 import { historyData } from '../../data/history';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function CompanyHistory() {
+  const { language, t } = useLanguage();
+
   return (
     <>
       <PageHeader
-        breadcrumb="About Us"
-        title="Company History"
-        description="Perjalanan CNI dari sebuah perusahaan rintisan hingga menjadi perusahaan publik terkemuka di industri pelayaran Indonesia."
+        breadcrumb={t('about.history.breadcrumb')}
+        title={t('about.history.headerTitle')}
+        description={t('about.history.headerDesc')}
       />
 
       <section className="py-20 bg-white">
@@ -17,8 +20,7 @@ export default function CompanyHistory() {
           {/* Intro */}
           <div className="text-center mb-16">
             <p className="text-slate-500 text-base leading-relaxed max-w-2xl mx-auto">
-              Selama lebih dari dua dekade, CNI telah melewati berbagai fase pertumbuhan — 
-              dari masa pendirian, ekspansi armada, hingga penawaran saham perdana (IPO) di Bursa Efek Indonesia.
+              {t('about.history.intro')}
             </p>
           </div>
 
@@ -30,6 +32,9 @@ export default function CompanyHistory() {
             <div className="space-y-10">
               {historyData.map((item, index) => {
                 const isLeft = index % 2 === 0;
+                const titleText = typeof item.title === 'object' ? item.title[language] : item.title;
+                const descText = typeof item.description === 'object' ? item.description[language] : item.description;
+
                 return (
                   <motion.div
                     key={item.year}
@@ -49,8 +54,8 @@ export default function CompanyHistory() {
                             {item.year}
                           </span>
                         </div>
-                        <h3 className="font-bold text-[#1E2A3A] text-base mb-2">{item.title}</h3>
-                        <p className="text-slate-500 text-sm leading-relaxed">{item.description}</p>
+                        <h3 className="font-bold text-[#1E2A3A] text-base mb-2">{titleText}</h3>
+                        <p className="text-slate-500 text-sm leading-relaxed">{descText}</p>
                       </div>
                     </div>
 

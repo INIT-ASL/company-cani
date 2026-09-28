@@ -1,38 +1,40 @@
 // src/components/layout/Footer.jsx
 import { Link } from 'react-router-dom';
 import { Anchor, MapPin, Phone, Mail, MessageCircle, Share2, Camera, AtSign } from 'lucide-react';
-
-const footerLinks = [
-  {
-    title: 'Perusahaan',
-    links: [
-      { label: 'Company Profile', to: '/about/profile' },
-      { label: 'Company History', to: '/about/history' },
-      { label: 'Board of Directors', to: '/about/directors' },
-    ],
-  },
-  {
-    title: 'Layanan',
-    links: [
-      { label: 'Anchor Handling Tug', to: '/fleet/aht' },
-      { label: 'Tug Boat', to: '/fleet/tug' },
-      { label: 'Floating Crane', to: '/fleet/crane' },
-      { label: 'Barge', to: '/fleet/barge' },
-    ],
-  },
-  {
-    title: 'Investor & Media',
-    links: [
-      { label: 'Laporan Keuangan', to: '/investors/financials' },
-      { label: 'Berita & Pengumuman', to: '/media' },
-      { label: 'Hubungi Kami', to: '/contact/info' },
-      { label: 'Inquiry', to: '/contact/inquiry' },
-    ],
-  },
-];
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
   const year = new Date().getFullYear();
+
+  const footerLinks = [
+    {
+      title: t('footer.col1Title'),
+      links: [
+        { label: t('nav.companyProfile'), to: '/about/profile' },
+        { label: t('nav.companyHistory'), to: '/about/history' },
+        { label: t('nav.boardOfDirectors'), to: '/about/directors' },
+      ],
+    },
+    {
+      title: t('footer.col2Title'),
+      links: [
+        { label: t('nav.aht'), to: '/fleet/aht' },
+        { label: t('nav.tugBoat'), to: '/fleet/tug' },
+        { label: t('nav.floatingCrane'), to: '/fleet/crane' },
+        { label: t('nav.barge'), to: '/fleet/barge' },
+      ],
+    },
+    {
+      title: t('footer.col3Title'),
+      links: [
+        { label: t('nav.financialStatements'), to: '/investors/financials' },
+        { label: t('nav.newsAnnouncements'), to: '/media' },
+        { label: t('nav.contactInfo'), to: '/contact/info' },
+        { label: t('nav.contactInquiry'), to: '/contact/inquiry' },
+      ],
+    },
+  ];
 
   return (
     <footer className="bg-[#1E2A3A] text-white">
@@ -41,24 +43,23 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 bg-[#C0392B] rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-[#C0392B] rounded-lg flex items-center justify-center shrink-0">
                 <Anchor className="w-5 h-5 text-white" />
               </div>
               <div>
-                <div className="font-bold text-sm leading-tight">PT Capitol Nusantara</div>
-                <div className="text-xs text-white/50">Indonesia Tbk — CANI</div>
+                <div className="font-bold text-sm leading-tight">{t('common.companyName')}</div>
+                <div className="text-xs text-white/50">{t('common.companySuffix')} — CANI</div>
               </div>
             </Link>
             <p className="text-white/60 text-sm leading-relaxed mb-6">
-              Perusahaan pelayaran dan jasa pendukung minyak & gas terkemuka di Indonesia. 
-              Berdiri sejak 2004, terdaftar di Bursa Efek Indonesia sejak 2013.
+              {t('footer.description')}
             </p>
 
             {/* Contact Quick Info */}
             <div className="space-y-3 text-sm text-white/60">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#C0392B] mt-0.5 shrink-0" />
-                <span>Jl. Jend. Sudirman No. 123, Jakarta Pusat 10220</span>
+                <span>Jl. Jend. Sudirman No. 123, Jakarta Pusat 10220, Indonesia</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#C0392B] shrink-0" />
@@ -131,10 +132,10 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-white/40 text-xs">
-            &copy; {year} PT Capitol Nusantara Indonesia Tbk. Hak Cipta Dilindungi.
+            &copy; {year} {t('footer.copyright')}
           </p>
           <div className="flex items-center gap-4 text-xs text-white/30">
-            <span>Kode Emiten: CANI</span>
+            <span>{t('footer.stockTicker')}</span>
             <span>•</span>
             <a
               href="https://www.idx.co.id"
@@ -142,7 +143,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="hover:text-white/60 transition-colors"
             >
-              Bursa Efek Indonesia
+              {t('footer.idxLink')}
             </a>
           </div>
         </div>

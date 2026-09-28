@@ -1,6 +1,6 @@
 # PT Capitol Nusantara Indonesia Tbk — Company Profile Website
 
-Website company profile modern untuk PT Capitol Nusantara Indonesia Tbk, dibangun dengan **Vite + React + React Router + Tailwind CSS + Framer Motion**.
+Website company profile modern untuk PT Capitol Nusantara Indonesia Tbk, dibangun dengan **Vite + React + React Router + Tailwind CSS + Framer Motion**, dengan dukungan **Multi-Bahasa (English & Bahasa Indonesia)** di mana bahasa default adalah **English (EN)**.
 
 ## 🛠️ Tech Stack
 
@@ -8,10 +8,23 @@ Website company profile modern untuk PT Capitol Nusantara Indonesia Tbk, dibangu
 |---|---|---|
 | Vite | 6.x | Build tool & dev server |
 | React | 18.x | UI framework |
-| React Router v6 | 7.x | Client-side routing multi-page |
-| Tailwind CSS v4 | 4.x | Utility-first styling |
-| Framer Motion | 11.x | Animasi scroll & transisi |
+| React Router | 7.x | Client-side routing multi-page |
+| Tailwind CSS v4 | 4.x | Utility-first styling modern |
+| Framer Motion | 11.x | Animasi scroll & transisi smooth |
 | Lucide React | Latest | Icon library |
+| LanguageContext | Custom | Sistem multi-bahasa (EN default & ID) |
+
+---
+
+## 🌐 Sistem Multi-Bahasa (English & Bahasa Indonesia)
+
+- **Default Bahasa**: English (`en`).
+- **Pilihan Bahasa**: English (`EN`) & Bahasa Indonesia (`ID`).
+- **Penyimpanan**: Preferensi bahasa pengguna tersimpan di `localStorage` (`cani_language`).
+- **Language Switcher**: Terdapat di pojok kanan atas Navbar (tersedia baik di desktop maupun mobile view) dengan visual toggle `[ EN | ID ]`.
+- **Dukungan Penuh**: Seluruh teks antarmuka, navigasi, footer, form inquiry, tabel armada, riwayat sejarah, dewan direksi, dan berita telah di-lokalisasi secara dwibahasa.
+
+---
 
 ## 🚀 Cara Menjalankan
 
@@ -47,10 +60,14 @@ npm run preview  # Preview hasil build
 
 ```
 src/
+├── context/
+│   └── LanguageContext.jsx     ← Provider state multi-bahasa & helper t()
+├── translations/
+│   └── translations.js         ← Kamus terjemahan lengkap (EN & ID)
 ├── components/
 │   ├── layout/
-│   │   ├── Navbar.jsx          ← Navbar sticky + dropdown + mobile menu
-│   │   └── Footer.jsx          ← Footer global
+│   │   ├── Navbar.jsx          ← Navbar sticky + dropdown + language switch
+│   │   └── Footer.jsx          ← Footer global dwibahasa
 │   ├── ui/
 │   │   ├── SectionTitle.jsx
 │   │   ├── Button.jsx
@@ -78,11 +95,11 @@ src/
 │       └── ContactInquiry.jsx
 │
 ├── data/
-│   ├── fleet.js        ← Data armada
-│   ├── history.js      ← Timeline sejarah
-│   ├── board.js        ← Komisaris & Direksi
-│   ├── news.js         ← Berita & pengumuman
-│   └── financials.js   ← Laporan keuangan
+│   ├── fleet.js        ← Data armada (dwibahasa)
+│   ├── history.js      ← Timeline sejarah (dwibahasa)
+│   ├── board.js        ← Komisaris & Direksi (dwibahasa)
+│   ├── news.js         ← Berita & pengumuman (dwibahasa)
+│   └── financials.js   ← Laporan keuangan (dwibahasa)
 │
 ├── App.jsx
 ├── main.jsx
@@ -93,13 +110,13 @@ src/
 
 ## 🎨 Design System
 
-| Token | Nilai |
-|---|---|
-| Aksen / Brand | `#C0392B` (merah tua) |
-| Navy (teks) | `#1E2A3A` |
-| Section Alt | `#F4F6F8` |
-| Base | `#FFFFFF` |
-| Font | Inter (Google Fonts) |
+| Token | Nilai | Keterangan |
+|---|---|---|
+| Aksen / Brand | `#C0392B` | Merah tua/oranye gelap maritim |
+| Navy Utama | `#1E2A3A` | Warna teks utama & banner gelap |
+| Section Alt | `#F4F6F8` | Alternating section background |
+| Base | `#FFFFFF` | Background utama |
+| Font | Inter | Clean modern sans-serif via Google Fonts |
 
 ---
 
@@ -114,22 +131,17 @@ src/
 | `/about/directors` | Board of Directors |
 | `/fleet/:category` | Fleet (aht, tug, crane, barge, heavy) |
 | `/media` | Media Center |
-| `/investors/financials` | Laporan Keuangan |
-| `/contact/info` | Informasi Kontak |
-| `/contact/inquiry` | Form Inquiry |
+| `/investors/financials` | Financial Statements |
+| `/contact/info` | Contact Information |
+| `/contact/inquiry` | Business Inquiry |
 
 ---
 
-## ✏️ Kustomisasi Data
+## ✏️ Kustomisasi Data & Bahasa
 
-Edit file di `src/data/` untuk mengupdate konten tanpa menyentuh komponen:
-
-- `fleet.js` → Tambah/hapus unit kapal
-- `history.js` → Edit timeline sejarah
-- `board.js` → Update direksi & komisaris
-- `news.js` → Tambah berita baru
-- `financials.js` → Tambah laporan keuangan
-
----
-
-*Internal use — PT Capitol Nusantara Indonesia Tbk*
+- Edit kosakata UI: [`src/translations/translations.js`](file:///d:/project/compro%20cani/src/translations/translations.js)
+- Edit unit kapal: [`src/data/fleet.js`](file:///d:/project/compro%20cani/src/data/fleet.js)
+- Edit sejarah timeline: [`src/data/history.js`](file:///d:/project/compro%20cani/src/data/history.js)
+- Edit dewan direksi/komisaris: [`src/data/board.js`](file:///d:/project/compro%20cani/src/data/board.js)
+- Edit berita: [`src/data/news.js`](file:///d:/project/compro%20cani/src/data/news.js)
+- Edit laporan keuangan: [`src/data/financials.js`](file:///d:/project/compro%20cani/src/data/financials.js)

@@ -2,49 +2,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Anchor } from 'lucide-react';
-
-const navLinks = [
-  { label: 'Home', to: '/' },
-  {
-    label: 'About Us',
-    children: [
-      { label: 'Company Profile', to: '/about/profile' },
-      { label: 'Company History', to: '/about/history' },
-      { label: 'Board of Commissioners', to: '/about/commissioners' },
-      { label: 'Board of Directors', to: '/about/directors' },
-    ],
-  },
-  {
-    label: 'Fleet',
-    children: [
-      { label: 'Anchor Handling Tug (AHT)', to: '/fleet/aht' },
-      { label: 'Tug Boat', to: '/fleet/tug' },
-      { label: 'Floating Crane', to: '/fleet/crane' },
-      { label: 'Barge', to: '/fleet/barge' },
-      { label: 'Heavy Equipment', to: '/fleet/heavy' },
-    ],
-  },
-  {
-    label: 'Media Center',
-    children: [
-      { label: 'Berita & Pengumuman', to: '/media' },
-    ],
-  },
-  {
-    label: 'Investors',
-    children: [
-      { label: 'Laporan Keuangan', to: '/investors/financials' },
-    ],
-  },
-  {
-    label: 'Contact',
-    children: [
-      { label: 'Informasi Kontak', to: '/contact/info' },
-      { label: 'Inquiry / Pertanyaan', to: '/contact/inquiry' },
-    ],
-  },
-];
+import { Menu, X, ChevronDown, Anchor, Globe } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 function DropdownMenu({ items, isOpen }) {
   return (
@@ -55,7 +14,7 @@ function DropdownMenu({ items, isOpen }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 8 }}
           transition={{ duration: 0.18 }}
-          className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden z-50"
+          className="absolute top-full left-0 mt-2 w-60 bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden z-50"
         >
           {items.map((item) => (
             <Link
@@ -73,12 +32,55 @@ function DropdownMenu({ items, isOpen }) {
 }
 
 export default function Navbar() {
+  const { language, setLanguage, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [mobileExpanded, setMobileExpanded] = useState(null);
   const location = useLocation();
   const navRef = useRef(null);
+
+  const navLinks = [
+    { label: t('nav.home'), to: '/' },
+    {
+      label: t('nav.aboutUs'),
+      children: [
+        { label: t('nav.companyProfile'), to: '/about/profile' },
+        { label: t('nav.companyHistory'), to: '/about/history' },
+        { label: t('nav.boardOfCommissioners'), to: '/about/commissioners' },
+        { label: t('nav.boardOfDirectors'), to: '/about/directors' },
+      ],
+    },
+    {
+      label: t('nav.fleet'),
+      children: [
+        { label: t('nav.aht'), to: '/fleet/aht' },
+        { label: t('nav.tugBoat'), to: '/fleet/tug' },
+        { label: t('nav.floatingCrane'), to: '/fleet/crane' },
+        { label: t('nav.barge'), to: '/fleet/barge' },
+        { label: t('nav.heavyEquipment'), to: '/fleet/heavy' },
+      ],
+    },
+    {
+      label: t('nav.mediaCenter'),
+      children: [
+        { label: t('nav.newsAnnouncements'), to: '/media' },
+      ],
+    },
+    {
+      label: t('nav.investors'),
+      children: [
+        { label: t('nav.financialStatements'), to: '/investors/financials' },
+      ],
+    },
+    {
+      label: t('nav.contact'),
+      children: [
+        { label: t('nav.contactInfo'), to: '/contact/info' },
+        { label: t('nav.contactInquiry'), to: '/contact/inquiry' },
+      ],
+    },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -108,24 +110,30 @@ export default function Navbar() {
     <header
       ref={navRef}
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        transparent
-          ? 'bg-transparent'
-          : 'bg-white shadow-md'
+        transparent ? 'bg-transparent' : 'bg-white shadow-md'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 py-3">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-[#C0392B] rounded-lg flex items-center justify-center shadow-sm group-hover:bg-[#922B21] transition-colors">
+            <div className="w-10 h-10 bg-[#C0392B] rounded-lg flex items-center justify-center shadow-sm group-hover:bg-[#922B21] transition-colors shrink-0">
               <Anchor className="w-5 h-5 text-white" />
             </div>
             <div>
-              <div className={`font-bold text-sm leading-tight transition-colors ${transparent ? 'text-white' : 'text-[#1E2A3A]'}`}>
-                PT Capitol Nusantara
+              <div
+                className={`font-bold text-sm leading-tight transition-colors ${
+                  transparent ? 'text-white' : 'text-[#1E2A3A]'
+                }`}
+              >
+                {t('common.companyName')}
               </div>
-              <div className={`text-xs transition-colors ${transparent ? 'text-white/70' : 'text-slate-400'}`}>
-                Indonesia Tbk
+              <div
+                className={`text-xs transition-colors ${
+                  transparent ? 'text-white/70' : 'text-slate-400'
+                }`}
+              >
+                {t('common.companySuffix')}
               </div>
             </div>
           </Link>
@@ -149,7 +157,9 @@ export default function Navbar() {
                   >
                     {link.label}
                     <ChevronDown
-                      className={`w-3.5 h-3.5 transition-transform ${openDropdown === link.label ? 'rotate-180' : ''}`}
+                      className={`w-3.5 h-3.5 transition-transform ${
+                        openDropdown === link.label ? 'rotate-180' : ''
+                      }`}
                     />
                   </button>
                   <DropdownMenu items={link.children} isOpen={openDropdown === link.label} />
@@ -162,23 +172,89 @@ export default function Navbar() {
                     transparent
                       ? 'text-white/90 hover:text-white hover:bg-white/10'
                       : 'text-[#1E2A3A] hover:text-[#C0392B] hover:bg-red-50'
-                  } ${location.pathname === link.to ? (transparent ? 'text-white' : 'text-[#C0392B]') : ''}`}
+                  } ${
+                    location.pathname === link.to
+                      ? transparent
+                        ? 'text-white font-bold'
+                        : 'text-[#C0392B] font-bold'
+                      : ''
+                  }`}
                 >
                   {link.label}
                 </Link>
               )
             )}
+
+            {/* Language Switcher Desktop */}
+            <div className="ml-4 pl-4 border-l border-slate-200/40 flex items-center">
+              <div
+                className={`inline-flex items-center p-0.5 rounded-full border text-xs font-semibold ${
+                  transparent
+                    ? 'border-white/30 bg-black/20 text-white'
+                    : 'border-slate-200 bg-slate-100 text-[#1E2A3A]'
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => setLanguage('en')}
+                  className={`px-2.5 py-1 rounded-full transition-all ${
+                    language === 'en'
+                      ? 'bg-[#C0392B] text-white shadow-xs'
+                      : 'opacity-70 hover:opacity-100'
+                  }`}
+                  aria-label="Switch to English"
+                >
+                  EN
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLanguage('id')}
+                  className={`px-2.5 py-1 rounded-full transition-all ${
+                    language === 'id'
+                      ? 'bg-[#C0392B] text-white shadow-xs'
+                      : 'opacity-70 hover:opacity-100'
+                  }`}
+                  aria-label="Switch to Indonesian"
+                >
+                  ID
+                </button>
+              </div>
+            </div>
           </nav>
 
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${
-              transparent ? 'text-white hover:bg-white/10' : 'text-[#1E2A3A] hover:bg-slate-100'
-            }`}
-          >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          {/* Right Mobile: Language Switcher + Hamburger */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <div className="inline-flex items-center p-0.5 rounded-full border text-xs font-semibold border-slate-200 bg-slate-100">
+              <button
+                type="button"
+                onClick={() => setLanguage('en')}
+                className={`px-2 py-0.5 rounded-full transition-all ${
+                  language === 'en' ? 'bg-[#C0392B] text-white shadow-xs' : 'text-slate-600'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage('id')}
+                className={`px-2 py-0.5 rounded-full transition-all ${
+                  language === 'id' ? 'bg-[#C0392B] text-white shadow-xs' : 'text-slate-600'
+                }`}
+              >
+                ID
+              </button>
+            </div>
+
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className={`p-2 rounded-lg transition-colors ${
+                transparent ? 'text-white hover:bg-white/10' : 'text-[#1E2A3A] hover:bg-slate-100'
+              }`}
+              aria-label="Toggle navigation menu"
+            >
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </div>
 

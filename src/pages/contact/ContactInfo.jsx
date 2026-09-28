@@ -2,46 +2,61 @@
 import { motion } from 'framer-motion';
 import PageHeader from '../../components/ui/PageHeader';
 import { MapPin, Phone, Printer, Mail, MessageCircle } from 'lucide-react';
-
-const offices = [
-  {
-    label: 'Kantor Pusat',
-    city: 'Samarinda, Kalimantan Timur',
-    type: 'Head Office',
-    address: 'Jl. Pangeran Diponegoro No. 45, Samarinda Ulu, Samarinda 75122, Kalimantan Timur, Indonesia',
-    phone: '+62 541 741 234',
-    fax: '+62 541 741 235',
-    email: 'samarinda@cani.co.id',
-    mapSrc:
-      'https://maps.google.com/maps?q=Samarinda,+Kalimantan+Timur&output=embed',
-    color: '#C0392B',
-  },
-  {
-    label: 'Kantor Perwakilan',
-    city: 'Jakarta Pusat',
-    type: 'Representative Office',
-    address: 'Gedung Wisma Sudirman Lantai 12, Jl. Jend. Sudirman No. 123, Jakarta Pusat 10220, DKI Jakarta, Indonesia',
-    phone: '+62 21 5790 1234',
-    fax: '+62 21 5790 1235',
-    email: 'jakarta@cani.co.id',
-    mapSrc:
-      'https://maps.google.com/maps?q=Jl+Jend+Sudirman,+Jakarta+Pusat&output=embed',
-    color: '#1E2A3A',
-  },
-];
-
-const whatsappContacts = [
-  { dept: 'Chartering', number: '+62 812 0001 2345', desc: 'Pertanyaan charter kapal & armada' },
-  { dept: 'General Enquiry', number: '+62 812 0001 2346', desc: 'Pertanyaan umum perusahaan' },
-];
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function ContactInfo() {
+  const { language, t } = useLanguage();
+
+  const offices = [
+    {
+      label: t('contact.info.headOffice'),
+      city: 'Samarinda, East Kalimantan',
+      type: 'Head Office',
+      address: 'Jl. Pangeran Diponegoro No. 45, Samarinda Ulu, Samarinda 75122, Kalimantan Timur, Indonesia',
+      phone: '+62 541 741 234',
+      fax: '+62 541 741 235',
+      email: 'samarinda@cani.co.id',
+      mapSrc: 'https://maps.google.com/maps?q=Samarinda,+Kalimantan+Timur&output=embed',
+      color: '#C0392B',
+    },
+    {
+      label: t('contact.info.representativeOffice'),
+      city: 'Jakarta Pusat',
+      type: 'Representative Office',
+      address: 'Wisma Sudirman Building 12th Floor, Jl. Jend. Sudirman No. 123, Jakarta Pusat 10220, Indonesia',
+      phone: '+62 21 5790 1234',
+      fax: '+62 21 5790 1235',
+      email: 'jakarta@cani.co.id',
+      mapSrc: 'https://maps.google.com/maps?q=Jl+Jend+Sudirman,+Jakarta+Pusat&output=embed',
+      color: '#1E2A3A',
+    },
+  ];
+
+  const whatsappContacts = [
+    {
+      dept: 'Chartering',
+      number: '+62 812 0001 2345',
+      desc: {
+        en: 'Vessel chartering & technical specifications',
+        id: 'Pertanyaan sewa kapal & spesifikasi teknis armada',
+      },
+    },
+    {
+      dept: 'General Enquiry',
+      number: '+62 812 0001 2346',
+      desc: {
+        en: 'Corporate, media & general partnerships',
+        id: 'Pertanyaan umum korporat & kemitraan',
+      },
+    },
+  ];
+
   return (
     <>
       <PageHeader
-        breadcrumb="Contact"
-        title="Informasi Kontak"
-        description="Kami siap melayani Anda. Temukan informasi kantor kami di Samarinda dan Jakarta."
+        breadcrumb={t('contact.info.breadcrumb')}
+        title={t('contact.info.headerTitle')}
+        description={t('contact.info.headerDesc')}
       />
 
       <section className="py-12 bg-[#F4F6F8]">
@@ -114,7 +129,7 @@ export default function ContactInfo() {
           <div>
             <h2 className="text-xl font-bold text-[#1E2A3A] mb-5 flex items-center gap-2">
               <MessageCircle className="w-5 h-5 text-[#C0392B]" />
-              WhatsApp Kontak Langsung
+              {t('contact.info.waTitle')}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
               {whatsappContacts.map((wa, i) => (
@@ -135,7 +150,9 @@ export default function ContactInfo() {
                   <div>
                     <div className="font-bold text-[#1E2A3A] text-sm">{wa.dept}</div>
                     <div className="text-green-600 font-semibold text-xs">{wa.number}</div>
-                    <div className="text-slate-400 text-xs mt-0.5">{wa.desc}</div>
+                    <div className="text-slate-400 text-xs mt-0.5">
+                      {typeof wa.desc === 'object' ? wa.desc[language] : wa.desc}
+                    </div>
                   </div>
                 </motion.a>
               ))}
