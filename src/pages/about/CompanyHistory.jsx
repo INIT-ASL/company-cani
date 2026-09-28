@@ -1,77 +1,103 @@
 // src/pages/about/CompanyHistory.jsx
-import { motion } from 'framer-motion';
 import PageHeader from '../../components/ui/PageHeader';
+import SEO from '../../components/common/SEO';
 import { historyData } from '../../data/history';
 import { useLanguage } from '../../context/LanguageContext';
+import { Anchor, Award } from 'lucide-react';
 
 export default function CompanyHistory() {
   const { language, t } = useLanguage();
 
   return (
     <>
+      <SEO
+        title={t('about.history.headerTitle')}
+        description={t('about.history.headerDesc')}
+      />
       <PageHeader
-        breadcrumb={t('about.history.breadcrumb')}
+        breadcrumbs={[
+          { label: t('nav.aboutUs'), to: '/about/profile' },
+          { label: t('about.history.headerTitle') },
+        ]}
+        kicker={language === 'en' ? 'MILESTONES & HERITAGE' : 'SEJARAH & TONGGAK PERJALANAN'}
         title={t('about.history.headerTitle')}
         description={t('about.history.headerDesc')}
       />
 
       <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Intro */}
-          <div className="text-center mb-16">
-            <p className="text-slate-500 text-base leading-relaxed max-w-2xl mx-auto">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Executive Summary */}
+          <div className="max-w-3xl mb-16 border-b border-slate-200 pb-10">
+            <h2 className="text-xl sm:text-2xl font-bold font-display text-[#1E2A3A] mb-3">
+              {language === 'en'
+                ? 'Two Decades of Dedicated Offshore Support & Marine Logistics'
+                : 'Dua Dekade Dedikasi di Sektor Pelayaran dan Penunjang Migas Lepas Pantai'}
+            </h2>
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
               {t('about.history.intro')}
             </p>
           </div>
 
-          {/* Timeline */}
-          <div className="relative">
-            {/* Center line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#C0392B] to-[#1E2A3A]/20 -translate-x-1/2 hidden md:block" />
+          {/* Chronological Timeline with Large Typography */}
+          <div className="relative border-l-2 border-slate-200 ml-3 sm:ml-6 pl-6 sm:pl-10 space-y-12">
+            {historyData.map((item) => {
+              const periodText =
+                typeof item.period === 'object' && item.period !== null
+                  ? item.period[language] || item.period.en
+                  : item.period || item.year;
 
-            <div className="space-y-10">
-              {historyData.map((item, index) => {
-                const isLeft = index % 2 === 0;
-                const titleText = typeof item.title === 'object' ? item.title[language] : item.title;
-                const descText = typeof item.description === 'object' ? item.description[language] : item.description;
+              const titleText =
+                typeof item.title === 'object' && item.title !== null
+                  ? item.title[language] || item.title.en
+                  : item.title;
 
-                return (
-                  <motion.div
-                    key={item.year}
-                    initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: '-60px' }}
-                    transition={{ duration: 0.55, delay: 0.05 }}
-                    className={`relative flex items-start gap-6 md:gap-0 ${
-                      isLeft ? 'md:flex-row' : 'md:flex-row-reverse'
+              const descText =
+                typeof item.description === 'object' && item.description !== null
+                  ? item.description[language] || item.description.en
+                  : item.description;
+
+              const isIpo = item.year === '2013';
+
+              return (
+                <div key={item.period?.en || item.year} className="relative group">
+                  {/* Pin Dot on timeline */}
+                  <div
+                    className={`absolute -left-[31px] sm:-left-[47px] top-1.5 w-4 h-4 rounded-full border-2 bg-white transition-colors ${
+                      isIpo
+                        ? 'border-[#C0392B] bg-[#C0392B]'
+                        : 'border-slate-400 group-hover:border-[#C0392B]'
                     }`}
-                  >
-                    {/* Card */}
-                    <div className={`w-full md:w-[calc(50%-28px)] ${isLeft ? 'md:pr-8' : 'md:pl-8'}`}>
-                      <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                        <div className="flex items-center gap-3 mb-3">
-                          <span className="bg-[#C0392B] text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider">
-                            {item.year}
-                          </span>
-                        </div>
-                        <h3 className="font-bold text-[#1E2A3A] text-base mb-2">{titleText}</h3>
-                        <p className="text-slate-500 text-sm leading-relaxed">{descText}</p>
-                      </div>
-                    </div>
+                  />
 
-                    {/* Center dot (desktop) */}
-                    <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 bg-white border-4 border-[#C0392B] rounded-full items-center justify-center shadow-md z-10">
-                      <span className="text-[#C0392B] font-bold text-xs leading-none text-center">
-                        {item.year.slice(2)}
+                  {/* Year / Period Heading */}
+                  <div className="flex flex-wrap items-baseline gap-3 mb-2">
+                    <span className="font-display font-extrabold text-2xl sm:text-3xl text-[#1E2A3A] tracking-tight">
+                      {periodText}
+                    </span>
+                    {isIpo && (
+                      <span className="font-mono text-[10px] font-bold uppercase tracking-wider bg-[#C0392B] text-white px-2 py-0.5 rounded-[2px]">
+                        {language === 'en' ? 'IPO MILESTONE' : 'KEPUTUSAN IPO'}
                       </span>
-                    </div>
+                    )}
+                  </div>
 
-                    {/* Empty spacer for opposite side */}
-                    <div className="hidden md:block w-[calc(50%-28px)]" />
-                  </motion.div>
-                );
-              })}
-            </div>
+                  {/* Content Box */}
+                  <div className="bg-[#F4F6F8] border border-slate-200 rounded-[3px] p-5 sm:p-6 max-w-3xl hover:border-slate-300 transition-colors shadow-xs">
+                    <h3 className="font-display font-bold text-base text-[#1E2A3A] mb-2 flex items-center gap-2">
+                      {isIpo ? (
+                        <Award className="w-4 h-4 text-[#C0392B] shrink-0" />
+                      ) : (
+                        <Anchor className="w-4 h-4 text-slate-500 shrink-0" />
+                      )}
+                      <span>{titleText}</span>
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
+                      {descText}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

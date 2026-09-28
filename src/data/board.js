@@ -1,48 +1,42 @@
 // src/data/board.js
+import imgRichieLimson from '../assets/images/RICHIE-LIMSON.jpg';
+import imgHeryantoCokro from '../assets/images/HERYANTO-COKRO.png';
+import imgAngAhNui from '../assets/images/ANG-AH-NUI.png';
+import imgYanuarWijaya from '../assets/images/H.-YANUAR-C.-WIJAYA.jpg';
+import imgAngKokTian from '../assets/images/ANG-KOK-TIAN.png';
+import imgRiduanKosasih from '../assets/images/RIDUAN-KOSASIH.jpeg';
+
 export const commissioners = [
   {
     id: 1,
-    name: 'H. Anwar Sudirman, S.H.',
+    name: 'RICHIE LIMSON',
     title: {
       en: 'President Commissioner',
       id: 'Presiden Komisaris',
     },
+    photo: imgRichieLimson,
     color: '#1E2A3A',
-    initial: 'AS',
-    since: '2013',
+    initial: 'RL',
+    since: '2023',
     bio: {
-      en: 'Brings over 30 years of extensive expertise in commercial law, corporate governance, and regulatory compliance. Actively serves in leadership roles across Indonesian maritime trade organizations.',
-      id: 'Memiliki pengalaman lebih dari 30 tahun di bidang hukum bisnis dan tata kelola perusahaan. Aktif sebagai pengurus di berbagai asosiasi industri maritim Indonesia.',
+      en: 'Serves as President Commissioner of PT Capitol Nusantara Indonesia Tbk. Provides comprehensive supervisory leadership, strategic corporate oversight, and ensures adherence to Good Corporate Governance (GCG) principles across all company operations.',
+      id: 'Menjabat sebagai Presiden Komisaris PT Capitol Nusantara Indonesia Tbk. Bertanggung jawab atas pengawasan strategis perseroan, tata kelola perusahaan yang baik (GCG), serta memberikan arahan kebijakan umum kepada Direksi.',
     },
   },
   {
     id: 2,
-    name: 'Dr. Bambang Widodo, M.M.',
+    name: 'HERYANTO COKRO',
     title: {
       en: 'Independent Commissioner',
       id: 'Komisaris Independen',
     },
+    photo: imgHeryantoCokro,
     color: '#2C3E50',
-    initial: 'BW',
-    since: '2013',
+    initial: 'HC',
+    since: '2023',
     bio: {
-      en: 'Distinguished academician and corporate management strategist specializing in energy and natural resources. Previously held executive leadership positions in state-owned energy enterprises.',
-      id: 'Akademisi dan praktisi manajemen dengan spesialisasi di sektor energi dan sumber daya alam. Pernah menjabat sebagai Direktur di perusahaan BUMN energi.',
-    },
-  },
-  {
-    id: 3,
-    name: 'Teo Cheng Kwee',
-    title: {
-      en: 'Commissioner',
-      id: 'Komisaris',
-    },
-    color: '#C0392B',
-    initial: 'TK',
-    since: '2004',
-    bio: {
-      en: 'Represents the shareholder interests of ASL Marine Holdings Ltd. Boasts more than 25 years of international shipping, shipbuilding, and marine engineering leadership in Singapore and across Asia.',
-      id: 'Mewakili kepentingan pemegang saham ASL Marine Holdings Ltd. Berpengalaman lebih dari 25 tahun dalam industri pelayaran internasional berbasis di Singapura.',
+      en: 'Serves as Independent Commissioner, exercising independent oversight over corporate compliance, internal audit controls, risk management systems, and public market regulatory disclosures adhering to OJK and IDX standards.',
+      id: 'Menjabat sebagai Komisaris Independen dengan fokus pada pengawasan independen, kepatuhan pasar modal (OJK & BEI), manajemen risiko, efektivitas komite audit, dan transparansi pelaporan publik.',
     },
   },
 ];
@@ -50,62 +44,66 @@ export const commissioners = [
 export const directors = [
   {
     id: 1,
-    name: 'Ir. Darmawan Kusuma, M.T.',
+    name: 'ANG AH NUI',
     title: {
       en: 'President Director',
-      id: 'Presiden Direktur',
+      id: 'Direktur Utama',
     },
+    photo: imgAngAhNui,
     color: '#C0392B',
-    initial: 'DK',
+    initial: 'AN',
     since: '2004',
     bio: {
-      en: 'Founder and President Director of CNI. Marine engineer with over 20 years at the forefront of the maritime and oil & gas logistics sectors. Pioneer of the Indonesian-flagged AHT fleet modernizations.',
-      id: 'Pendiri dan Presiden Direktur CNI. Insinyur kelautan dengan pengalaman lebih dari 20 tahun di industri maritim dan migas. Pelopor pengembangan armada AHT Indonesia.',
+      en: 'President Director and co-founder of PT Capitol Nusantara Indonesia Tbk. Brings decades of international leadership experience across maritime logistics, shipbuilding, and offshore chartering, directing the corporate strategy and fleet growth across Indonesia.',
+      id: 'Direktur Utama dan pendiri PT Capitol Nusantara Indonesia Tbk. Memiliki pengalaman kepemimpinan puluhan tahun di industri maritim internasional, galangan kapal, dan logistik perkapalan lepas pantai, memimpin strategi pertumbuhan armada dan ekspansi bisnis perseroan.',
     },
   },
   {
     id: 2,
-    name: 'Sari Indah Permata, S.E., M.B.A.',
+    name: 'H. YANUAR C. WIJAYA',
     title: {
-      en: 'Finance Director',
-      id: 'Direktur Keuangan',
+      en: 'Director',
+      id: 'Direktur',
     },
+    photo: imgYanuarWijaya,
     color: '#1E2A3A',
-    initial: 'SI',
-    since: '2008',
+    initial: 'YW',
+    since: '2004',
     bio: {
-      en: 'Directs corporate capital structuring, financial reporting, and investor relations. Formerly served as Chief Financial Officer at prominent regional transportation and logistics corporations.',
-      id: 'Bertanggung jawab atas manajemen keuangan, perencanaan strategis, dan hubungan investor. Sebelumnya menjabat sebagai CFO di perusahaan logistik terkemuka.',
+      en: 'Director of the company with extensive executive experience in maritime operations, fleet administration, statutory certifications, and regulatory institutional relations throughout the Indonesian archipelago.',
+      id: 'Direktur perseroan dengan pengalaman eksekutif mendalam di bidang manajemen operasional perkapalan, perizinan dan statutori maritim, serta koordinasi kelembagaan di seluruh perairan kepulauan Indonesia.',
     },
   },
   {
     id: 3,
-    name: 'Capt. Rizky Pratama, M.Mar.',
+    name: 'ANG KOK TIAN',
     title: {
-      en: 'Operations Director',
-      id: 'Direktur Operasional',
+      en: 'Director',
+      id: 'Direktur',
     },
+    photo: imgAngKokTian,
     color: '#2C3E50',
-    initial: 'RP',
-    since: '2010',
+    initial: 'AT',
+    since: '2004',
     bio: {
-      en: 'Master Mariner who sailed on oceangoing commercial vessels worldwide. Oversees comprehensive fleet technical management, offshore crew operations, and strict ISM/HSE adherence.',
-      id: 'Mantan Nakhoda kapal berbendera internasional. Memimpin seluruh operasional armada, keselamatan, dan kepatuhan terhadap regulasi maritim internasional.',
+      en: 'Director with distinguished marine engineering and commercial shipbuilding background. Oversees technical vessel capabilities, capital equipment modernization, and regional maritime alliances.',
+      id: 'Direktur dengan latar belakang teknik perkapalan dan konstruksi kapal internasional. Mengawasi keandalan teknis armada kapal, modernisasi alat berat maritim, serta kemitraan bisnis regional.',
     },
   },
   {
     id: 4,
-    name: 'Andi Firmansyah, S.H.',
+    name: 'RIDUAN KOSASIH',
     title: {
-      en: 'Corporate Secretary',
+      en: 'Company Secretary',
       id: 'Sekretaris Perusahaan',
     },
-    color: '#2C3E50',
-    initial: 'AF',
+    photo: imgRiduanKosasih,
+    color: '#1E2A3A',
+    initial: 'RK',
     since: '2013',
     bio: {
-      en: 'Oversees statutory compliance, capital market disclosures, and stakeholder communications with the Financial Services Authority (OJK), IDX, and public shareholders.',
-      id: 'Bertanggung jawab atas tata kelola perusahaan, kepatuhan regulasi pasar modal, dan komunikasi dengan regulator serta pemegang saham publik.',
+      en: 'Serves as Corporate Secretary, responsible for statutory compliance, capital market information disclosures to the Financial Services Authority (OJK) and Indonesia Stock Exchange (IDX), and institutional investor relations.',
+      id: 'Menjabat sebagai Sekretaris Perusahaan (Corporate Secretary), memimpin keterbukaan informasi pasar modal, kepatuhan regulasi OJK & BEI, serta koordinasi hubungan kelembagaan dan pemegang saham publik.',
     },
   },
 ];

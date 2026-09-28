@@ -1,126 +1,153 @@
 // src/components/home/HeroSection.jsx
 import { motion } from 'framer-motion';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, FileText, Anchor } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
+import heroImage from '../../assets/images/hero.jpg';
 
 export default function HeroSection() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+
+  const stats = [
+    {
+      value: '35+',
+      label: language === 'en' ? 'Fleet Vessels' : 'Unit Armada Kapal',
+      sub: language === 'en' ? 'AHT, Tugs, Barges & Cranes' : 'AHT, Tug, Tongkang & Crane',
+    },
+    {
+      value: '2004',
+      label: language === 'en' ? 'Established' : 'Tahun Berdiri',
+      sub: language === 'en' ? 'Joint Venture Pedigree' : 'Kemitraan Strategis',
+    },
+    {
+      value: '2013',
+      label: language === 'en' ? 'Public Listed' : 'Emiten Terbuka',
+      sub: language === 'en' ? 'Ticker: CANI (IDX)' : 'Kode Saham: CANI (BEI)',
+    },
+    {
+      value: '100%',
+      label: language === 'en' ? 'Cabotage Compliant' : 'Kepatuhan Asas Kabotase',
+      sub: language === 'en' ? 'Indonesian Flagged' : 'Armada Bendera Indonesia',
+    },
+  ];
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80')",
-        }}
-      />
-      {/* Overlay Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1E2A3A]/90 via-[#1E2A3A]/70 to-[#1E2A3A]/30" />
+    <section className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-between bg-[#121A24] overflow-hidden pt-28 lg:pt-32">
+      {/* Background Image Container with Fixed Aspect / Position */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <img
+          src={heroImage}
+          alt="Armada Kapal Operasi PT Capitol Nusantara Indonesia Tbk"
+          className="w-full h-full object-cover object-center scale-100"
+          loading="eager"
+          fetchPriority="high"
+        />
+        {/* Navy Gradient Overlay for High Contrast Legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#121A24]/95 via-[#121A24]/85 to-[#121A24]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#121A24] via-transparent to-[#121A24]/40" />
+      </div>
 
-      {/* Subtle pattern overlay */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage:
-            'repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)',
-          backgroundSize: '20px 20px',
-        }}
-      />
-
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
+      {/* Hero Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-12 md:py-16">
         <div className="max-w-3xl">
-          {/* Badge */}
+          {/* Regulatory Kicker Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 bg-[#C0392B]/20 border border-[#C0392B]/40 rounded-full px-4 py-1.5 mb-6"
+            transition={{ duration: 0.35 }}
+            className="inline-flex items-center gap-2 px-3 py-1 bg-black/40 border border-white/20 rounded-[2px] mb-6 backdrop-blur-xs"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#C0392B] animate-pulse" />
-            <span className="text-xs font-semibold text-[#E74C3C] tracking-wider uppercase">
-              {t('hero.badge')}
+            <span className="w-2 h-2 rounded-[1px] bg-[#C0392B]" />
+            <span className="text-[11px] font-mono font-bold tracking-widest uppercase text-white/90">
+              {language === 'en'
+                ? 'INDONESIA STOCK EXCHANGE: CANI • EST. 2004'
+                : 'BURSA EFEK INDONESIA: CANI • DIDIRIKAN 2004'}
             </span>
           </motion.div>
 
-          {/* Heading */}
+          {/* Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
+            transition={{ duration: 0.4, delay: 0.08 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] mb-6 font-display"
           >
-            {t('hero.titleLine1')}
-            <span className="block text-[#E74C3C] mt-1">{t('hero.titleLine2')}</span>
+            {language === 'en' ? (
+              <>
+                Offshore Marine Logistics & <span className="text-[#E74C3C]">Vessel Fleet</span> Operator
+              </>
+            ) : (
+              <>
+                Penyedia Armada & <span className="text-[#E74C3C]">Logistik Maritim</span> Lepas Pantai
+              </>
+            )}
           </motion.h1>
 
-          {/* Subtext */}
+          {/* Lead Paragraph */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-base md:text-lg text-white/75 leading-relaxed mb-8 max-w-2xl"
+            transition={{ duration: 0.4, delay: 0.16 }}
+            className="text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl mb-8 font-normal"
           >
             {t('hero.description')}
           </motion.p>
 
-          {/* Stats Row */}
+          {/* Action CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-wrap gap-6 mb-10"
-          >
-            {[
-              { value: t('hero.stats.stat1Value'), label: t('hero.stats.stat1Label') },
-              { value: t('hero.stats.stat2Value'), label: t('hero.stats.stat2Label') },
-              { value: t('hero.stats.stat3Value'), label: t('hero.stats.stat3Label') },
-              { value: t('hero.stats.stat4Value'), label: t('hero.stats.stat4Label') },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-[#E74C3C]">{stat.value}</div>
-                <div className="text-xs text-white/55 mt-0.5 tracking-wide">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="flex flex-wrap gap-4"
+            transition={{ duration: 0.4, delay: 0.24 }}
+            className="flex flex-wrap items-center gap-3 sm:gap-4"
           >
             <Link
-              to="/about/profile"
-              className="inline-flex items-center gap-2 bg-[#C0392B] text-white px-7 py-3.5 rounded-lg font-semibold hover:bg-[#922B21] transition-colors text-sm"
+              to="/fleet/aht"
+              className="inline-flex items-center gap-2 bg-[#C0392B] hover:bg-[#96281B] text-white px-6 py-3.5 rounded-[3px] font-semibold text-xs sm:text-sm tracking-wide uppercase transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
-              {t('hero.btnAbout')}
+              <Anchor className="w-4 h-4" />
+              <span>{language === 'en' ? 'Inspect Fleet' : 'Lihat Spesifikasi Armada'}</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
+
             <Link
-              to="/contact/inquiry"
-              className="inline-flex items-center gap-2 border-2 border-white text-white px-7 py-3.5 rounded-lg font-semibold hover:bg-white hover:text-[#C0392B] transition-colors text-sm"
+              to="/investors/financials"
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white hover:text-[#121A24] text-white border border-white/30 px-6 py-3.5 rounded-[3px] font-semibold text-xs sm:text-sm tracking-wide uppercase transition-all backdrop-blur-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
-              {t('hero.btnContact')}
+              <FileText className="w-4 h-4" />
+              <span>{language === 'en' ? 'Investor Relations' : 'Keterbukaan Informasi'}</span>
             </Link>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/40"
-      >
-        <span className="text-xs tracking-widest uppercase">{t('hero.scroll')}</span>
-        <ChevronDown className="w-4 h-4 animate-bounce" />
-      </motion.div>
+      {/* Integrated Technical Stat Band */}
+      <div className="relative z-10 border-t border-white/15 bg-[#0D141D]/90 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            {stats.map((stat, i) => (
+              <div
+                key={stat.label}
+                className={`flex flex-col ${
+                  i !== 0 ? 'lg:border-l lg:border-white/10 lg:pl-8' : ''
+                }`}
+              >
+                <div className="flex items-baseline gap-1.5">
+                  <span className="font-display font-extrabold text-2xl sm:text-3xl text-white tracking-tight">
+                    {stat.value}
+                  </span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C0392B]" />
+                </div>
+                <div className="text-xs font-semibold text-white/90 mt-0.5 tracking-wide uppercase font-mono">
+                  {stat.label}
+                </div>
+                <div className="text-[11px] text-slate-400 mt-0.5 truncate">
+                  {stat.sub}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

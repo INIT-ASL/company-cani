@@ -1,36 +1,62 @@
 // src/App.jsx
+import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 
-import Home from './pages/Home';
-import CompanyProfile from './pages/about/CompanyProfile';
-import CompanyHistory from './pages/about/CompanyHistory';
-import { BoardCommissioners, BoardDirectors } from './pages/about/BoardPage';
-import FleetPage from './pages/fleet/FleetPage';
-import MediaCenter from './pages/MediaCenter';
-import FinancialStatements from './pages/investors/FinancialStatements';
-import ContactInfo from './pages/contact/ContactInfo';
-import ContactInquiry from './pages/contact/ContactInquiry';
+// Route-level code splitting
+const Home = lazy(() => import('./pages/Home'));
+const CompanyProfile = lazy(() => import('./pages/about/CompanyProfile'));
+const CompanyHistory = lazy(() => import('./pages/about/CompanyHistory'));
+const BoardCommissioners = lazy(() =>
+  import('./pages/about/BoardPage').then((module) => ({ default: module.BoardCommissioners }))
+);
+const BoardDirectors = lazy(() =>
+  import('./pages/about/BoardPage').then((module) => ({ default: module.BoardDirectors }))
+);
+const FleetPage = lazy(() => import('./pages/fleet/FleetPage'));
+const MediaCenter = lazy(() => import('./pages/MediaCenter'));
+const FinancialStatements = lazy(() => import('./pages/investors/FinancialStatements'));
+const StockInformation = lazy(() => import('./pages/investors/StockInformation'));
+const ContactInfo = lazy(() => import('./pages/contact/ContactInfo'));
+const ContactInquiry = lazy(() => import('./pages/contact/ContactInquiry'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Scroll to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? 'instant' : 'smooth',
+    });
   }, [pathname]);
   return null;
 }
 
+// Minimalist corporate route loader
+function PageLoader() {
+  return (
+    <div className="min-h-[50vh] flex items-center justify-center bg-white" aria-busy="true">
+      <div className="flex flex-col items-center gap-3">
+        <div className="w-6 h-6 border-2 border-[#C0392B] border-t-transparent rounded-full animate-spin" />
+        <span className="text-[11px] font-mono tracking-widest text-slate-400 uppercase">
+          Loading Page...
+        </span>
+      </div>
+    </div>
+  );
+}
+
 function Layout({ children }) {
   return (
-    <>
+    <div className="min-h-screen flex flex-col justify-between bg-white text-[#1E2A3A]">
       <Navbar />
-      <div className="min-h-screen">{children}</div>
+      <div className="flex-1">{children}</div>
       <Footer />
-    </>
+    </div>
   );
 }
 
@@ -40,36 +66,39 @@ export default function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Layout>
-          <Routes>
-            {/* Home */}
-            <Route path="/" element={<Home />} />
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              {/* Home */}
+              <Route path="/" element={<Home />} />
 
-            {/* About */}
-            <Route path="/about/profile" element={<CompanyProfile />} />
-            <Route path="/about/history" element={<CompanyHistory />} />
-            <Route path="/about/commissioners" element={<BoardCommissioners />} />
-            <Route path="/about/directors" element={<BoardDirectors />} />
-            <Route path="/about" element={<Navigate to="/about/profile" replace />} />
+              {/* About */}
+              <Route path="/about/profile" element={<CompanyProfile />} />
+              <Route path="/about/history" element={<CompanyHistory />} />
+              <Route path="/about/commissioners" element={<BoardCommissioners />} />
+              <Route path="/about/directors" element={<BoardDirectors />} />
+              <Route path="/about" element={<Navigate to="/about/profile" replace />} />
 
-            {/* Fleet */}
-            <Route path="/fleet/:category" element={<FleetPage />} />
-            <Route path="/fleet" element={<Navigate to="/fleet/aht" replace />} />
+              {/* Fleet */}
+              <Route path="/fleet/:category" element={<FleetPage />} />
+              <Route path="/fleet" element={<Navigate to="/fleet/aht" replace />} />
 
-            {/* Media Center */}
-            <Route path="/media" element={<MediaCenter />} />
+              {/* Media Center */}
+              <Route path="/media" element={<MediaCenter />} />
 
-            {/* Investors */}
-            <Route path="/investors/financials" element={<FinancialStatements />} />
-            <Route path="/investors" element={<Navigate to="/investors/financials" replace />} />
+              {/* Investors */}
+              <Route path="/investors/stock" element={<StockInformation />} />
+              <Route path="/investors/financials" element={<FinancialStatements />} />
+              <Route path="/investors" element={<Navigate to="/investors/stock" replace />} />
 
-            {/* Contact */}
-            <Route path="/contact/info" element={<ContactInfo />} />
-            <Route path="/contact/inquiry" element={<ContactInquiry />} />
-            <Route path="/contact" element={<Navigate to="/contact/info" replace />} />
+              {/* Contact */}
+              <Route path="/contact/info" element={<ContactInfo />} />
+              <Route path="/contact/inquiry" element={<ContactInquiry />} />
+              <Route path="/contact" element={<Navigate to="/contact/info" replace />} />
 
-            {/* 404 catch-all */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+              {/* 404 page */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </Layout>
       </BrowserRouter>
     </LanguageProvider>

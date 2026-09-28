@@ -1,17 +1,43 @@
 // src/components/ui/PageHeader.jsx
-export default function PageHeader({ breadcrumb, title, description }) {
+import Breadcrumbs from './Breadcrumbs';
+
+export default function PageHeader({ kicker, title, description, breadcrumbs = [] }) {
   return (
-    <div className="bg-[#1E2A3A] py-16 md:py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {breadcrumb && (
-          <p className="text-white/50 text-sm mb-3 tracking-wide">{breadcrumb}</p>
-        )}
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">{title}</h1>
-        {description && (
-          <p className="text-white/70 text-base md:text-lg max-w-2xl leading-relaxed">{description}</p>
-        )}
-        <div className="mt-6 w-16 h-1 bg-[#C0392B] rounded-full" />
+    <section className="relative bg-[#1E2A3A] text-white pt-28 pb-14 md:pt-32 md:pb-16 border-b border-slate-700/50">
+      {/* Precision hairline grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage:
+            'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+        }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} />}
+
+        <div className="max-w-3xl">
+          {kicker && (
+            <div className="inline-flex items-center gap-2 mb-3">
+              <span className="w-1.5 h-1.5 rounded-xs bg-[#C0392B]" />
+              <span className="text-xs font-semibold uppercase tracking-widest text-[#E74C3C]">
+                {kicker}
+              </span>
+            </div>
+          )}
+
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white mb-3">
+            {title}
+          </h1>
+
+          {description && (
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl font-normal">
+              {description}
+            </p>
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
