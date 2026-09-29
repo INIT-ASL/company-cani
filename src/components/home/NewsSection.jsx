@@ -2,16 +2,16 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, Tag } from 'lucide-react';
 import SectionTitle from '../ui/SectionTitle';
-import { newsData } from '../../data/news';
+import { newsData, pressReleaseData } from '../../data/news';
 import { useLanguage } from '../../context/LanguageContext';
 
 export default function NewsSection() {
   const { language, t } = useLanguage();
-  const leadNews = newsData[0];
-  const secondaryNews = newsData.slice(1, 3);
+  const leadNews = pressReleaseData[0] || newsData[0];
+  const secondaryNews = pressReleaseData.slice(1, 3);
 
   const getLocalized = (field) => {
-    return typeof field === 'object' && field !== null ? field[language] || field.en : field;
+    return typeof field === 'object' && field !== null ? field[language] || field.en || field.id : field;
   };
 
   return (
@@ -23,7 +23,7 @@ export default function NewsSection() {
           description={t('newsSection.description')}
           action={
             <Link
-              to="/media"
+              to="/media/press-release"
               className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#C0392B] hover:text-[#96281B] transition-colors"
             >
               <span>{t('newsSection.viewAllNews')}</span>
@@ -59,7 +59,7 @@ export default function NewsSection() {
                   </div>
 
                   <h3 className="text-lg sm:text-xl font-bold text-[#1E2A3A] mb-3 font-display leading-tight group-hover:text-[#C0392B] transition-colors">
-                    <Link to="/media">{getLocalized(leadNews.title)}</Link>
+                    <Link to="/media/press-release">{getLocalized(leadNews.title)}</Link>
                   </h3>
 
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 font-sans">
@@ -69,7 +69,7 @@ export default function NewsSection() {
 
                 <div className="pt-4 border-t border-slate-200">
                   <Link
-                    to="/media"
+                    to="/media/press-release"
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#C0392B] hover:text-[#96281B]"
                   >
                     <span>{t('common.readMore')}</span>
@@ -98,7 +98,7 @@ export default function NewsSection() {
                   </div>
 
                   <h3 className="text-sm sm:text-base font-bold text-[#1E2A3A] mb-2 font-display leading-snug group-hover:text-[#C0392B] transition-colors">
-                    <Link to="/media">{getLocalized(item.title)}</Link>
+                    <Link to="/media/press-release">{getLocalized(item.title)}</Link>
                   </h3>
 
                   <p className="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">
@@ -108,7 +108,7 @@ export default function NewsSection() {
 
                 <div className="pt-3 border-t border-slate-200">
                   <Link
-                    to="/media"
+                    to="/media/press-release"
                     className="inline-flex items-center gap-1 text-xs font-semibold text-[#C0392B] hover:text-[#96281B]"
                   >
                     <span>{t('common.readMore')}</span>

@@ -82,7 +82,9 @@ export default function App() {
               <Route path="/fleet" element={<Navigate to="/fleet/aht" replace />} />
 
               {/* Media Center */}
-              <Route path="/media" element={<MediaCenter />} />
+              <Route path="/media/press-release" element={<MediaCenter />} />
+              <Route path="/media/news" element={<MediaCenter />} />
+              <Route path="/media" element={<Navigate to="/media/press-release" replace />} />
 
               {/* Investors */}
               <Route path="/investors/stock" element={<StockInformation />} />

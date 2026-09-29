@@ -39,7 +39,8 @@ export default function Navbar() {
     {
       label: t('nav.mediaCenter'),
       children: [
-        { label: t('nav.newsAnnouncements'), to: '/media' },
+        { label: t('nav.pressRelease'), to: '/media/press-release' },
+        { label: t('nav.news'), to: '/media/news' },
       ],
     },
     {

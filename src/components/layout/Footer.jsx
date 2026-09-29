@@ -138,8 +138,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/media" className="hover:text-white transition-colors">
-                  {t('nav.mediaCenter')}
+                <Link to="/media/press-release" className="hover:text-white transition-colors">
+                  {t('nav.pressRelease')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/media/news" className="hover:text-white transition-colors">
+                  {t('nav.news')}
                 </Link>
               </li>
             </ul>
