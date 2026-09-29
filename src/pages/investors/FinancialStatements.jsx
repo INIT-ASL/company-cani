@@ -6,6 +6,7 @@ import {
   financialStatements,
   annualReports,
   corporateDisclosures,
+  IDX_CANI_FINANCIALS_URL,
 } from '../../data/financials';
 import { FileText, Download, ExternalLink, TrendingUp, Calendar, Filter } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
@@ -26,8 +27,10 @@ export default function FinancialStatements() {
     const fs = financialStatements.map((item) => ({
       ...item,
       docType: 'FS',
-      categoryLabel: language === 'en' ? 'Financial Statements' : 'Laporan Keuangan',
-      displayTitle: `${getLocalized(item.type)} — ${getLocalized(item.period)}`,
+      categoryLabel: language === 'en' ? 'Financial Statement' : 'Laporan Keuangan',
+      displayTitle: item.title
+        ? getLocalized(item.title)
+        : `${getLocalized(item.type)} — ${getLocalized(item.period)}`,
     }));
 
     const ar = annualReports.map((item) => ({
@@ -97,7 +100,9 @@ export default function FinancialStatements() {
                   </span>
                 </div>
                 <h2 className="font-display font-bold text-sm sm:text-base text-white">
-                  {t('investors.idxCardTitle')}
+                  {language === 'en'
+                    ? 'Please check the latest updated information of CANI at :'
+                    : 'Silakan periksa informasi terbaru dan terlengkap CANI pada :'}
                 </h2>
                 <p className="text-slate-400 text-xs mt-0.5 max-w-xl font-sans">
                   {t('investors.idxCardSubtitle')}
@@ -106,12 +111,12 @@ export default function FinancialStatements() {
             </div>
 
             <a
-              href="https://www.idx.co.id/id/perusahaan-tercatat/laporan-keuangan-dan-tahunan/"
+              href={IDX_CANI_FINANCIALS_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#C0392B] hover:bg-[#96281B] text-white text-xs font-semibold tracking-wide uppercase rounded-[2px] transition-colors shrink-0"
             >
-              <span>{t('investors.idxCardBtn')}</span>
+              <span>PT Bursa Efek Indonesia (idx.co.id)</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -175,7 +180,7 @@ export default function FinancialStatements() {
                     <th className="px-5 py-3.5">
                       {language === 'en' ? 'Filing Title & Document Scope' : 'Nama Dokumen & Periode'}
                     </th>
-                    <th className="px-4 py-3.5">
+                    <th className="px-4 py-3.5 text-center">
                       {language === 'en' ? 'Category' : 'Klasifikasi'}
                     </th>
                     <th className="px-4 py-3.5">
@@ -211,14 +216,14 @@ export default function FinancialStatements() {
                                 {doc.displayTitle}
                               </div>
                               <div className="text-[11px] font-mono text-slate-500 mt-0.5">
-                                PT Capitol Nusantara Indonesia Tbk • {doc.year}
+                                PT Capitol Nusantara Indonesia Tbk • {doc.fileName || `${doc.year}`}
                               </div>
                             </div>
                           </div>
                         </td>
 
-                        <td className="px-4 py-4">
-                          <span className="font-mono text-[10px] uppercase font-bold px-2 py-0.5 bg-slate-100 border border-slate-200 rounded-[2px] text-slate-700">
+                        <td className="px-4 py-4 text-center">
+                          <span className="inline-block font-mono text-[10px] uppercase font-bold px-2 py-0.5 bg-slate-100 border border-slate-200 rounded-[2px] text-slate-700">
                             {doc.categoryLabel}
                           </span>
                         </td>
@@ -239,6 +244,7 @@ export default function FinancialStatements() {
                             href={doc.url}
                             target="_blank"
                             rel="noopener noreferrer"
+                            download={doc.fileName || true}
                             className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 bg-[#C0392B] hover:bg-[#96281B] text-white rounded-[2px] transition-colors"
                           >
                             <Download className="w-3.5 h-3.5" />
