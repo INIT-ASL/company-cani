@@ -74,11 +74,11 @@ export default function FinancialStatements() {
       />
       <PageHeader
         breadcrumbs={[
-          { label: t('nav.investors'), to: '/investors/financials' },
-          { label: t('investors.headerTitle') },
+          { label: t('nav.investors'), to: '/investors/stock' },
+          { label: t('nav.financialStatements') },
         ]}
         kicker={language === 'en' ? 'INVESTOR RELATIONS' : 'HUBUNGAN INVESTOR'}
-        title={t('investors.headerTitle')}
+        title={t('nav.financialStatements')}
         description={t('investors.headerDesc')}
       />
 

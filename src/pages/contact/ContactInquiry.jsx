@@ -20,9 +20,9 @@ export default function ContactInquiry() {
       <PageHeader
         breadcrumbs={[
           { label: t('nav.contact'), to: '/contact/info' },
-          { label: language === 'en' ? 'Commercial Inquiry' : 'Pengajuan Sewa' },
+          { label: t('nav.contactInquiry') },
         ]}
-        title={language === 'en' ? 'Commercial & Vessel Inquiry' : 'Pengajuan Sewa & Kemitraan Armada'}
+        title={t('nav.contactInquiry')}
         description={
           language === 'en'
             ? 'This page is currently under development. Please contact our offices directly for immediate assistance.'

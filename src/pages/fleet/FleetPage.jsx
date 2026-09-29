@@ -33,10 +33,24 @@ export default function FleetPage() {
 
   const isHeavy = activeId === 'heavy';
 
-  const fullCategoryTitle =
-    typeof activeCategory?.fullLabel === 'object'
-      ? activeCategory.fullLabel[language] || activeCategory.fullLabel.en
-      : activeCategory?.fullLabel;
+  const fullCategoryTitle = useMemo(() => {
+    switch (activeId) {
+      case 'aht':
+        return t('nav.aht');
+      case 'tug':
+        return t('nav.tugBoat');
+      case 'crane':
+        return t('nav.floatingCrane');
+      case 'barge':
+        return t('nav.barge');
+      case 'heavy':
+        return t('nav.heavyEquipment');
+      default:
+        return typeof activeCategory?.fullLabel === 'object'
+          ? activeCategory.fullLabel[language] || activeCategory.fullLabel.en
+          : activeCategory?.fullLabel || 'Fleet';
+    }
+  }, [activeId, activeCategory, language, t]);
 
   const categoryDesc =
     typeof activeCategory?.description === 'object'

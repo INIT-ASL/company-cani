@@ -110,10 +110,10 @@ export default function MediaCenter() {
     setCurrentPage(1);
   };
 
-  const pageTitle =
-    activeTab === 'news'
-      ? `${t('media.newsTitle')} | PT Capitol Nusantara Indonesia Tbk`
-      : `${t('media.pressReleaseTitle')} | PT Capitol Nusantara Indonesia Tbk`;
+  const activeMenuLabel =
+    activeTab === 'news' ? t('nav.news') : t('nav.pressRelease');
+
+  const pageTitle = `${activeMenuLabel} | PT Capitol Nusantara Indonesia Tbk`;
 
   const pageDesc =
     activeTab === 'news' ? t('media.newsDesc') : t('media.pressReleaseDesc');
@@ -125,15 +125,10 @@ export default function MediaCenter() {
       <PageHeader
         breadcrumbs={[
           { label: t('nav.mediaCenter'), to: '/media/press-release' },
-          {
-            label:
-              activeTab === 'news'
-                ? t('nav.news')
-                : t('nav.pressRelease'),
-          },
+          { label: activeMenuLabel },
         ]}
         kicker={language === 'en' ? 'MEDIA CENTER & DISCLOSURES' : 'PUSAT MEDIA & KETERBUKAAN'}
-        title={activeTab === 'news' ? t('media.newsTitle') : t('media.pressReleaseTitle')}
+        title={activeMenuLabel}
         description={pageDesc}
       />
 

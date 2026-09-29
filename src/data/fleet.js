@@ -17,7 +17,7 @@ export const fleetCategories = [
     id: 'tug',
     label: 'Tug Boat',
     fullLabel: {
-      en: 'Harbor & Coastal Tug Boat',
+      en: 'Tug Boat',
       id: 'Kapal Tunda (Tug Boat)',
     },
     description: {
@@ -29,7 +29,7 @@ export const fleetCategories = [
     id: 'crane',
     label: 'Floating Crane',
     fullLabel: {
-      en: 'Offshore Floating Crane Barge',
+      en: 'Floating Crane',
       id: 'Derek Terapung (Floating Crane)',
     },
     description: {
@@ -39,14 +39,26 @@ export const fleetCategories = [
   },
   {
     id: 'barge',
-    label: 'Barge & Hopper',
+    label: 'Barge & Oil Barge',
     fullLabel: {
-      en: 'Flat Top Deck & Hopper Barge',
-      id: 'Tongkang Dek Datar & Hopper',
+      en: 'Barge & Oil Barge',
+      id: 'Tongkang Dek & Minyak',
     },
     description: {
       en: 'Flat top deck cargo barges up to 330 ft and split hopper barges from associates for bulk materials and dredge transport.',
       id: 'Tongkang geladak datar kapasitas hingga 330 kaki dan tongkang hopper dari mitra asosiasi untuk pengangkutan material curah.',
+    },
+  },
+  {
+    id: 'heavy',
+    label: 'Heavy Equipment',
+    fullLabel: {
+      en: 'Heavy Equipment',
+      id: 'Alat Berat',
+    },
+    description: {
+      en: 'Specialized heavy equipment and marine engineering machinery for offshore operations.',
+      id: 'Peralatan alat berat dan permesinan khusus untuk menunjang operasional maritim.',
     },
   },
 ];

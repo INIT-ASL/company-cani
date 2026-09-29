@@ -23,7 +23,7 @@ export default function StockInformation() {
       />
       <PageHeader
         breadcrumbs={[
-          { label: t('nav.investors'), to: '/investors/reports' },
+          { label: t('nav.investors'), to: '/investors/stock' },
           { label: t('nav.stockInformation') },
         ]}
         title={t('nav.stockInformation')}

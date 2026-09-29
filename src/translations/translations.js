@@ -151,7 +151,7 @@ export const translations = {
       },
       history: {
         breadcrumb: 'About Us',
-        headerTitle: 'Corporate History',
+        headerTitle: 'Company History',
         headerDesc: 'The development of CNI from initial fleet mobilization in East Kalimantan to public listing on the Indonesia Stock Exchange.',
         intro: 'Over two decades, PT Capitol Nusantara Indonesia Tbk has expanded from coastal tug-and-barge operations in Samarinda into deepwater offshore anchor handling and heavy-lift transshipment serving national energy producers.',
       },
@@ -204,7 +204,7 @@ export const translations = {
     },
     investors: {
       breadcrumb: 'Investors',
-      headerTitle: 'Financial Statements & Disclosures',
+      headerTitle: 'Financial Statements',
       headerDesc: 'Official periodic financial statements, annual reports, and statutory disclosures published pursuant to capital market transparency regulations.',
       idxCardTitle: 'Indonesia Stock Exchange Listed Issuer',
       idxCardSubtitle: 'Ticker: CANI — Full disclosure archives and corporate action circulars are also maintained on the official IDX portal.',
@@ -215,7 +215,7 @@ export const translations = {
       disclaimerText: 'Documents published herein are provided for public information purposes in fulfillment of listed company disclosure obligations. For official stock filings, real-time trading data, and company announcements, visit',
       stock: {
         breadcrumb: 'Investors',
-        headerTitle: 'Stock Information & Capital Profile',
+        headerTitle: 'Stock Information',
         headerDesc: 'Share listing specifications, equity structure, and capital market disclosures for PT Capitol Nusantara Indonesia Tbk (IDX: CANI).',
         kicker: 'CAPITAL MARKETS & EQUITIES',
         tickerCardTitle: 'Indonesia Stock Exchange Listing',
@@ -231,7 +231,7 @@ export const translations = {
     contact: {
       info: {
         breadcrumb: 'Contact',
-        headerTitle: 'Office Locations & Directory',
+        headerTitle: 'Contact Information',
         headerDesc: 'Head Office in Kebun Jeruk, West Jakarta and Branch Office in Samarinda, East Kalimantan.',
         headOffice: 'Head Office Jakarta',
         branchOffice: 'Branch Office Samarinda',
@@ -489,7 +489,7 @@ export const translations = {
     },
     investors: {
       breadcrumb: 'Hubungan Investor',
-      headerTitle: 'Laporan Keuangan & Keterbukaan',
+      headerTitle: 'Laporan Keuangan',
       headerDesc: 'Laporan keuangan berkala, laporan tahunan, dan keterbukaan informasi yang dipublikasikan berdasarkan regulasi transparansi pasar modal.',
       idxCardTitle: 'Emiten Bursa Efek Indonesia',
       idxCardSubtitle: 'Kode Saham: CANI — Arsip laporan keterbukaan dan prospektus resmi juga tersedia di situs resmi Bursa Efek Indonesia.',
@@ -500,7 +500,7 @@ export const translations = {
       disclaimerText: 'Dokumen yang dipublikasikan pada halaman ini disediakan untuk memenuhi kewajiban keterbukaan informasi emiten publik. Untuk ringkasan perdagangan saham harian dan pengumuman bursa, silakan kunjungi',
       stock: {
         breadcrumb: 'Hubungan Investor',
-        headerTitle: 'Informasi Saham & Profil Efek',
+        headerTitle: 'Informasi Saham',
         headerDesc: 'Spesifikasi pencatatan efek, struktur permodalan, dan keterbukaan pasar modal untuk PT Capitol Nusantara Indonesia Tbk (BEI: CANI).',
         kicker: 'PASAR MODAL & EKUITAS',
         tickerCardTitle: 'Pencatatan Bursa Efek Indonesia',
@@ -516,7 +516,7 @@ export const translations = {
     contact: {
       info: {
         breadcrumb: 'Kontak',
-        headerTitle: 'Lokasi Kantor & Direktori',
+        headerTitle: 'Informasi Kantor',
         headerDesc: 'Kantor Pusat di Kebun Jeruk, Jakarta Barat dan Kantor Cabang di Samarinda, Kalimantan Timur.',
         headOffice: 'Kantor Pusat Jakarta',
         branchOffice: 'Kantor Cabang Samarinda',

@@ -66,10 +66,10 @@ export default function ContactInfo() {
       <PageHeader
         breadcrumbs={[
           { label: t('nav.contact'), to: '/contact/info' },
-          { label: t('contact.info.headerTitle') },
+          { label: t('nav.contactInfo') },
         ]}
         kicker={language === 'en' ? 'OFFICE DIRECTORY' : 'DIREKTORI KANTOR'}
-        title={t('contact.info.headerTitle')}
+        title={t('nav.contactInfo')}
         description={t('contact.info.headerDesc')}
       />
 
