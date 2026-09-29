@@ -1,96 +1,41 @@
 // src/pages/about/BoardPage.jsx
-import { useState } from 'react';
 import PageHeader from '../../components/ui/PageHeader';
 import SEO from '../../components/common/SEO';
 import { commissioners, directors } from '../../data/board';
 import { useLanguage } from '../../context/LanguageContext';
-import { ChevronDown, User, ShieldCheck } from 'lucide-react';
+import { User, ShieldCheck } from 'lucide-react';
 
 function BoardCard({ member, servingSinceLabel, language }) {
-  const [expanded, setExpanded] = useState(false);
-
   const titleText =
     typeof member.title === 'object' && member.title !== null
       ? member.title[language] || member.title.en
       : member.title;
 
-  const bioText =
-    typeof member.bio === 'object' && member.bio !== null
-      ? member.bio[language] || member.bio.en
-      : member.bio;
-
   return (
-    <div className="bg-white border border-slate-200 rounded-[3px] overflow-hidden flex flex-col justify-between shadow-xs hover:border-[#C0392B]/40 transition-all duration-200 group">
-      <div>
-        {/* Executive Portrait Frame (Consistent 4:5 Aspect Ratio) */}
-        <div className="relative aspect-[4/5] bg-gradient-to-b from-[#2C3E50] to-[#121A24] overflow-hidden flex items-end justify-center">
-          {member.photo ? (
-            <img
-              src={member.photo}
-              alt={member.name}
-              className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
-              loading="lazy"
-            />
-          ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center">
-              <div className="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-3 border border-white/20">
-                <User className="w-10 h-10 text-slate-300 stroke-1" />
-              </div>
-              <span className="font-mono text-xs font-bold text-white/70 tracking-widest uppercase">
-                {member.initial}
-              </span>
-            </div>
-          )}
-
-          {/* Subdued Identity Initial Emblem Overlay */}
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#121A24]/90 via-[#121A24]/50 to-transparent p-4 flex items-center justify-between z-10">
-            <span className="font-mono text-xs font-bold text-white/90 tracking-widest uppercase">
-              {member.initial}
-            </span>
-            <span className="font-mono text-[10px] text-white/70 uppercase">
-              {servingSinceLabel} {member.since}
-            </span>
-          </div>
-        </div>
-
-        {/* Info Body */}
-        <div className="p-5">
-          <div className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#C0392B] mb-1">
-            {titleText}
-          </div>
-          <h3 className="font-display font-bold text-base text-[#1E2A3A] tracking-tight mb-3 group-hover:text-[#C0392B] transition-colors">
-            {member.name}
-          </h3>
-
-          <div className="text-xs text-slate-600 leading-relaxed font-sans">
-            <p className={expanded ? '' : 'line-clamp-3'}>{bioText}</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Expand Bio Action */}
-      <div className="px-5 pb-5 pt-0">
-        <button
-          type="button"
-          onClick={() => setExpanded(!expanded)}
-          className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#1E2A3A] hover:text-[#C0392B] transition-colors focus-visible:outline-none"
-        >
-          <span>
-            {expanded
-              ? language === 'en'
-                ? 'Collapse Profile'
-                : 'Sembunyikan Riwayat'
-              : language === 'en'
-              ? 'Read Full Profile'
-              : 'Baca Riwayat Lengkap'}
-          </span>
-          <ChevronDown
-            className={`w-3.5 h-3.5 transition-transform duration-150 ${
-              expanded ? 'rotate-180 text-[#C0392B]' : ''
-            }`}
+    <div className="bg-white border border-slate-200 rounded-[3px] p-6 flex flex-col items-center text-center shadow-xs hover:border-[#C0392B]/40 hover:shadow-sm transition-all duration-200 group">
+      {/* Executive Portrait Frame (Compact & Crisp) */}
+      <div className="w-40 h-40 sm:w-36 sm:h-44 mb-4 rounded-[3px] overflow-hidden bg-slate-100 border border-slate-200 shadow-2xs relative shrink-0">
+        {member.photo ? (
+          <img
+            src={member.photo}
+            alt={member.name}
+            className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
           />
-        </button>
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-slate-100">
+            <User className="w-10 h-10 text-slate-400 stroke-1" />
+          </div>
+        )}
       </div>
+
+      {/* Info Body */}
+      <div className="text-[11px] font-mono font-bold tracking-wider uppercase text-[#C0392B] mb-1">
+        {titleText}
+      </div>
+      <h3 className="font-display font-bold text-base text-[#1E2A3A] tracking-tight group-hover:text-[#C0392B] transition-colors">
+        {member.name}
+      </h3>
     </div>
   );
 }
@@ -137,7 +82,6 @@ export function BoardCommissioners() {
               <BoardCard
                 key={m.id}
                 member={m}
-                servingSinceLabel={t('about.commissioners.servingSince')}
                 language={language}
               />
             ))}
@@ -190,7 +134,6 @@ export function BoardDirectors() {
               <BoardCard
                 key={m.id}
                 member={m}
-                servingSinceLabel={t('about.directors.servingSince')}
                 language={language}
               />
             ))}

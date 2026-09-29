@@ -157,13 +157,11 @@ export const translations = {
         breadcrumb: 'About Us',
         headerTitle: 'Board of Commissioners',
         headerDesc: 'The Board of Commissioners exercises supervisory functions, risk oversight, and governance compliance under OJK and IDX regulations.',
-        servingSince: 'Serving since',
       },
       directors: {
         breadcrumb: 'About Us',
         headerTitle: 'Board of Directors',
         headerDesc: 'The Board of Directors is responsible for executive management, operational vessel readiness, commercial contracts, and financial transparency.',
-        servingSince: 'Serving since',
       },
     },
     fleet: {
@@ -430,13 +428,11 @@ export const translations = {
         breadcrumb: 'Tentang Kami',
         headerTitle: 'Dewan Komisaris',
         headerDesc: 'Dewan Komisaris menjalankan fungsi pengawasan tata kelola, manajemen risiko, dan kepatuhan statutori sesuai regulasi OJK dan BEI.',
-        servingSince: 'Menjabat sejak',
       },
       directors: {
         breadcrumb: 'Tentang Kami',
         headerTitle: 'Direksi Perseroan',
         headerDesc: 'Direksi bertanggung jawab atas manajemen eksekutif, kesiapan teknis armada, kontrak komersial, dan transparansi keuangan perseroan.',
-        servingSince: 'Menjabat sejak',
       },
     },
     fleet: {
