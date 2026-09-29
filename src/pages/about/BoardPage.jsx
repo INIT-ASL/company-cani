@@ -106,7 +106,7 @@ export function BoardCommissioners() {
       />
       <PageHeader
         breadcrumbs={[
-          { label: t('nav.aboutUs'), to: '/about/profile' },
+          { label: t('nav.aboutUs'), to: '/about/history' },
           { label: t('about.commissioners.headerTitle') },
         ]}
         kicker={language === 'en' ? 'CORPORATE GOVERNANCE' : 'TATA KELOLA PERUSAHAAN'}
@@ -159,7 +159,7 @@ export function BoardDirectors() {
       />
       <PageHeader
         breadcrumbs={[
-          { label: t('nav.aboutUs'), to: '/about/profile' },
+          { label: t('nav.aboutUs'), to: '/about/history' },
           { label: t('about.directors.headerTitle') },
         ]}
         kicker={language === 'en' ? 'EXECUTIVE MANAGEMENT' : 'DIREKSI PERSEROAN'}

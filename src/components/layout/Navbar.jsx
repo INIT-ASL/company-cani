@@ -21,7 +21,6 @@ export default function Navbar() {
     {
       label: t('nav.aboutUs'),
       children: [
-        { label: t('nav.companyProfile'), to: '/about/profile' },
         { label: t('nav.companyHistory'), to: '/about/history' },
         { label: t('nav.boardOfCommissioners'), to: '/about/commissioners' },
         { label: t('nav.boardOfDirectors'), to: '/about/directors' },

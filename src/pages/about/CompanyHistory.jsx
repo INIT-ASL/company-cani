@@ -16,7 +16,7 @@ export default function CompanyHistory() {
       />
       <PageHeader
         breadcrumbs={[
-          { label: t('nav.aboutUs'), to: '/about/profile' },
+          { label: t('nav.aboutUs'), to: '/about/history' },
           { label: t('about.history.headerTitle') },
         ]}
         kicker={language === 'en' ? 'MILESTONES & HERITAGE' : 'SEJARAH & TONGGAK PERJALANAN'}

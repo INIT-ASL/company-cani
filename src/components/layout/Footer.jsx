@@ -113,13 +113,13 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
-                <Link to="/about/profile" className="hover:text-white transition-colors">
-                  {t('nav.companyProfile')}
+                <Link to="/about/history" className="hover:text-white transition-colors">
+                  {t('nav.companyHistory')}
                 </Link>
               </li>
               <li>
-                <Link to="/about/history" className="hover:text-white transition-colors">
-                  {t('nav.companyHistory')}
+                <Link to="/about/commissioners" className="hover:text-white transition-colors">
+                  {t('nav.boardOfCommissioners')}
                 </Link>
               </li>
               <li>
@@ -197,7 +197,7 @@ export default function Footer() {
               <ExternalLink className="w-3 h-3" />
             </a>
             <span>•</span>
-            <Link to="/about/profile" className="hover:text-slate-300 transition-colors">
+            <Link to="/about/history" className="hover:text-slate-300 transition-colors">
               Cabotage Law & Governance
             </Link>
           </div>

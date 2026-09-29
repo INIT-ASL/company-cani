@@ -7,7 +7,6 @@ import Footer from './components/layout/Footer';
 
 // Route-level code splitting
 const Home = lazy(() => import('./pages/Home'));
-const CompanyProfile = lazy(() => import('./pages/about/CompanyProfile'));
 const CompanyHistory = lazy(() => import('./pages/about/CompanyHistory'));
 const BoardCommissioners = lazy(() =>
   import('./pages/about/BoardPage').then((module) => ({ default: module.BoardCommissioners }))
@@ -72,11 +71,11 @@ export default function App() {
               <Route path="/" element={<Home />} />
 
               {/* About */}
-              <Route path="/about/profile" element={<CompanyProfile />} />
               <Route path="/about/history" element={<CompanyHistory />} />
               <Route path="/about/commissioners" element={<BoardCommissioners />} />
               <Route path="/about/directors" element={<BoardDirectors />} />
-              <Route path="/about" element={<Navigate to="/about/profile" replace />} />
+              <Route path="/about/profile" element={<Navigate to="/about/history" replace />} />
+              <Route path="/about" element={<Navigate to="/about/history" replace />} />
 
               {/* Fleet */}
               <Route path="/fleet/:category" element={<FleetPage />} />
