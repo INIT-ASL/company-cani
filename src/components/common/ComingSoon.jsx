@@ -1,6 +1,6 @@
 // src/components/common/ComingSoon.jsx
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Phone, Mail, Building2, ExternalLink, Clock } from 'lucide-react';
+import { ArrowLeft, Phone, Mail, Building2, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
 export default function ComingSoon({
