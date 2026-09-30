@@ -19,7 +19,7 @@ export default function ContactInfo() {
       email: 'Enquiry@ptcni.co.id',
       hours: language === 'en' ? 'Mon – Fri: 08:30 – 17:30 WIB' : 'Senin – Jumat: 08.30 – 17.30 WIB',
       mapSrc:
-        'https://maps.google.com/maps?q=Apartment+Permata+Eksekutif,+Jl.+Raya+Pos+Pengumben+No.51,+Jakarta+Barat&t=&z=16&ie=UTF8&iwloc=B&output=embed',
+        'https://maps.google.com/maps?q=-6.216430438976482,106.7648256406092&t=&z=16&ie=UTF8&iwloc=B&output=embed',
     },
     {
       label: t('contact.info.branchOffice'),
@@ -32,7 +32,7 @@ export default function ContactInfo() {
       email: 'Enquiry@ptcni.co.id',
       hours: language === 'en' ? 'Mon – Fri: 08:30 – 17:30 WITA' : 'Senin – Jumat: 08.30 – 17.30 WITA',
       mapSrc: 
-        'https://maps.google.com/maps?cid=16979330801030424824&hl=en&z=16&output=embed',
+        'https://maps.google.com/maps?q=-0.5070299831621746,117.1568785705522&t=&z=16&ie=UTF8&iwloc=B&output=embed',
     },
   ];
 

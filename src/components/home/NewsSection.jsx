@@ -1,158 +1,122 @@
 // src/components/home/NewsSection.jsx
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, Tag, ExternalLink, FileText, Newspaper } from 'lucide-react';
-import SectionTitle from '../ui/SectionTitle';
+import { motion } from 'framer-motion';
+import { ArrowRight, Calendar, ExternalLink } from 'lucide-react';
+import SectionHeading from '../ui/SectionHeading';
+import Reveal from '../ui/Reveal';
 import { newsData, pressReleaseData, IDX_CANI_URL } from '../../data/news';
 import { useLanguage } from '../../context/LanguageContext';
-// Menggunakan gambar lokal dari src/assets/images/ sesuai permintaan pengguna
-import defaultNewsImage from '../../assets/images/hero.jpg';
+import testImage from '../../assets/images/test.jpg';
+
+const leadImage = testImage;
 
 export default function NewsSection() {
   const { language, t } = useLanguage();
+  const en = language === 'en';
   const [activeTab, setActiveTab] = useState('announcement'); // 'announcement' | 'corporate'
 
-  const getLocalized = (field) => {
-    return typeof field === 'object' && field !== null ? field[language] || field.en || field.id : field;
-  };
+  const getLocalized = (field) =>
+    typeof field === 'object' && field !== null ? field[language] || field.en || field.id : field;
 
   const isAnnouncement = activeTab === 'announcement';
   const currentDataset = isAnnouncement ? pressReleaseData : newsData;
-
   const leadItem = currentDataset[0];
   const secondaryItems = currentDataset.slice(1, 4);
 
   const viewAllLink = isAnnouncement ? '/media/press-release' : '/media/news';
   const viewAllText = isAnnouncement
-    ? (language === 'en' ? 'All Disclosures & Announcements' : 'Semua Keterbukaan & Pengumuman')
-    : (language === 'en' ? 'All Corporate News' : 'Semua Berita Korporat');
+    ? (en ? 'All disclosures & announcements' : 'Semua keterbukaan & pengumuman')
+    : (en ? 'All corporate news' : 'Semua berita korporat');
+
+  const tabs = [
+    { id: 'announcement', label: en ? 'Announcements & Disclosures' : 'Pengumuman & Keterbukaan', count: pressReleaseData.length },
+    { id: 'corporate', label: en ? 'Corporate News' : 'Berita Korporat', count: newsData.length },
+  ];
 
   return (
-    <section className="py-20 bg-white border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionTitle
-          kicker={language === 'en' ? 'PUBLIC MEDIA & DISCLOSURES' : 'MEDIA & KETERBUKAAN INFORMASI'}
-          title={
-            language === 'en'
-              ? 'Corporate Disclosures & Press Announcements'
-              : 'Pengumuman & Berita Korporat'
-          }
+    <section className="bg-white py-24 lg:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          kicker={en ? 'Public media & disclosures' : 'Media & keterbukaan informasi'}
+          title={en ? 'Corporate disclosures and press announcements' : 'Pengumuman & berita korporat'}
           description={
-            language === 'en'
+            en
               ? 'Official corporate releases, shareholder meeting convocations, and operational updates from PT Capitol Nusantara Indonesia Tbk.'
               : 'Publikasi resmi, keterbukaan informasi emiten, risalah RUPS, dan berita korporat terkini PT Capitol Nusantara Indonesia Tbk.'
           }
           action={
-            <Link
-              to={viewAllLink}
-              className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#C0392B] hover:text-[#96281B] transition-colors"
-            >
+            <Link to={viewAllLink} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#C0392B] transition-colors hover:text-[#96281B]">
               <span>{viewAllText}</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="h-4 w-4" />
             </Link>
           }
         />
 
-        {/* Tab Selection Switcher */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-slate-200">
-          <div className="inline-flex p-1 bg-[#F4F6F8] border border-slate-200 rounded-[3px]">
-            <button
-              type="button"
-              onClick={() => setActiveTab('announcement')}
-              className={`flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-[2px] transition-all cursor-pointer ${
-                isAnnouncement
-                  ? 'bg-[#1E2A3A] text-white shadow-xs'
-                  : 'text-slate-600 hover:text-[#1E2A3A] hover:bg-slate-200/60'
-              }`}
-            >
-              <FileText className="w-3.5 h-3.5 text-[#C0392B]" />
-              <span>{language === 'en' ? 'Announcements & Disclosures' : 'Pengumuman & Keterbukaan'}</span>
-              <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${isAnnouncement ? 'bg-[#C0392B] text-white' : 'bg-slate-300 text-slate-700'}`}>
-                {pressReleaseData.length}
-              </span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setActiveTab('corporate')}
-              className={`flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-[2px] transition-all cursor-pointer ${
-                !isAnnouncement
-                  ? 'bg-[#1E2A3A] text-white shadow-xs'
-                  : 'text-slate-600 hover:text-[#1E2A3A] hover:bg-slate-200/60'
-              }`}
-            >
-              <Newspaper className="w-3.5 h-3.5 text-[#C0392B]" />
-              <span>{language === 'en' ? 'Corporate News' : 'Berita Korporat'}</span>
-              <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${!isAnnouncement ? 'bg-[#C0392B] text-white' : 'bg-slate-300 text-slate-700'}`}>
-                {newsData.length}
-              </span>
-            </button>
-          </div>
-
-          {/* IDX Quick Link */}
-          <a
-            href={IDX_CANI_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-slate-600 hover:text-[#C0392B] transition-colors"
-          >
-            <span>IDX: CANI Profil Emiten</span>
-            <ExternalLink className="w-3.5 h-3.5" />
-          </a>
+        {/* Tabs (underline) */}
+        <div role="tablist" className="mb-10 flex flex-wrap gap-x-8 gap-y-2 border-b border-slate-200">
+          {tabs.map((tab) => {
+            const active = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => setActiveTab(tab.id)}
+                className={`relative cursor-pointer pb-4 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0392B] ${active ? 'text-[#1E2A3A]' : 'text-slate-500 hover:text-[#1E2A3A]'}`}
+              >
+                {tab.label}
+                <span className="ml-2 font-mono text-xs text-slate-400">{tab.count}</span>
+                {active && (
+                  <motion.span layoutId="news-tab-underline" className="absolute inset-x-0 -bottom-px h-[2px] bg-[#C0392B]" />
+                )}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Content Display: 1 Lead Article (7 cols) + Secondary Articles (5 cols) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Lead Article (7 cols) */}
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-14">
+          {/* Lead */}
           {leadItem && (
-            <article className="lg:col-span-7 bg-[#F4F6F8] border border-slate-200 rounded-[3px] overflow-hidden flex flex-col justify-between group hover:border-slate-300 transition-colors">
-              <div className="relative aspect-[16/9] overflow-hidden bg-slate-900">
+            <article className="group lg:col-span-7">
+              <div className="relative aspect-[16/9] overflow-hidden rounded-[6px] bg-slate-900">
                 <img
-                  src={defaultNewsImage}
+                  src={leadImage}
                   alt={getLocalized(leadItem.title)}
-                  className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
                   width={700}
                   height={394}
                 />
-                <div className="absolute top-3 left-3 bg-[#C0392B] text-white font-mono text-[10px] font-bold px-2.5 py-1 tracking-wider uppercase">
+                <span className="absolute left-4 top-4 rounded-[4px] bg-[#C0392B] px-3 py-1 text-xs font-semibold text-white">
                   {getLocalized(leadItem.category)}
-                </div>
-                <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-xs text-white text-[11px] font-mono px-2 py-0.5 rounded-[2px]">
-                  {isAnnouncement ? 'Keterbukaan Resmi' : 'Berita Emiten'}
-                </div>
+                </span>
               </div>
 
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-2 text-xs font-mono text-slate-500 mb-2.5">
-                    <Calendar className="w-3.5 h-3.5 text-[#C0392B]" />
-                    <span>{getLocalized(leadItem.date)}</span>
-                    <span>•</span>
-                    <span className="font-semibold text-slate-700">Tahun {leadItem.year}</span>
-                  </div>
-
-                  <h3 className="text-lg sm:text-xl font-bold text-[#1E2A3A] mb-3 font-display leading-snug group-hover:text-[#C0392B] transition-colors">
-                    <Link to={viewAllLink}>{getLocalized(leadItem.title)}</Link>
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 font-sans">
-                    {getLocalized(leadItem.excerpt)}
-                  </p>
+              <div className="mt-6">
+                <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500">
+                  <Calendar className="h-4 w-4 text-[#C0392B]" />
+                  <span>{getLocalized(leadItem.date)}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{en ? 'Year' : 'Tahun'} {leadItem.year}</span>
+                  <span aria-hidden="true">·</span>
+                  <span>{isAnnouncement ? (en ? 'Official disclosure' : 'Keterbukaan resmi') : (en ? 'Company news' : 'Berita emiten')}</span>
                 </div>
 
-                <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
-                  <Link
-                    to={viewAllLink}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#C0392B] hover:text-[#96281B]"
-                  >
-                    <span>{language === 'en' ? 'Read Full Document' : 'Lihat Dokumen & Detail'}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+                <h3 className="mt-3 font-display text-2xl font-semibold leading-snug text-[#1E2A3A] transition-colors group-hover:text-[#C0392B] sm:text-3xl">
+                  <Link to={viewAllLink}>{getLocalized(leadItem.title)}</Link>
+                </h3>
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600">{getLocalized(leadItem.excerpt)}</p>
 
+                <div className="mt-6 flex items-center gap-6">
+                  <Link to={viewAllLink} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#C0392B] hover:text-[#96281B]">
+                    <span>{en ? 'Read full document' : 'Lihat dokumen & detail'}</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
                   {leadItem.links && leadItem.links.length > 0 && (
-                    <span className="text-[11px] font-mono text-slate-500 bg-white border border-slate-200 px-2 py-0.5 rounded-[2px]">
-                      {leadItem.links.length} Lampiran PDF
+                    <span className="text-sm text-slate-500">
+                      {leadItem.links.length} {en ? 'PDF attachments' : 'lampiran PDF'}
                     </span>
                   )}
                 </div>
@@ -160,68 +124,61 @@ export default function NewsSection() {
             </article>
           )}
 
-          {/* Secondary Stacked Articles (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-4 justify-between">
-            {secondaryItems.map((item) => (
-              <article
-                key={item.id}
-                className="bg-[#F4F6F8] border border-slate-200 rounded-[3px] p-5 flex flex-col justify-between flex-1 group hover:border-[#C0392B]/40 hover:bg-white transition-all shadow-2xs"
-              >
-                <div>
-                  <div className="flex items-center gap-2 text-[11px] font-mono text-slate-500 mb-2">
-                    <span className="text-[#C0392B] font-semibold uppercase flex items-center gap-1">
-                      <Tag className="w-3 h-3" />
-                      {getLocalized(item.category)}
-                    </span>
-                    <span>•</span>
+          {/* Secondary list */}
+          <div className="lg:col-span-5">
+            <ul className="divide-y divide-slate-200 border-y border-slate-200">
+              {secondaryItems.map((item) => (
+                <li key={item.id} className="group py-6">
+                  <div className="flex items-center gap-2 text-sm text-slate-500">
+                    <span className="font-semibold text-[#C0392B]">{getLocalized(item.category)}</span>
+                    <span aria-hidden="true">·</span>
                     <span>{getLocalized(item.date)}</span>
                   </div>
-
-                  <h3 className="text-sm sm:text-base font-bold text-[#1E2A3A] mb-2 font-display leading-snug group-hover:text-[#C0392B] transition-colors line-clamp-2">
+                  <h3 className="mt-2 line-clamp-2 font-display text-lg font-semibold leading-snug text-[#1E2A3A] transition-colors group-hover:text-[#C0392B]">
                     <Link to={viewAllLink}>{getLocalized(item.title)}</Link>
                   </h3>
+                  <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-slate-600">{getLocalized(item.excerpt)}</p>
+                  <div className="mt-3 flex items-center justify-between">
+                    <Link to={viewAllLink} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#C0392B] hover:text-[#96281B]">
+                      <span>{t('common.readMore')}</span>
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                    {item.links && item.links.length > 0 && <span className="text-xs text-slate-500">PDF</span>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-                  <p className="text-xs text-slate-600 leading-relaxed mb-3 line-clamp-2">
-                    {getLocalized(item.excerpt)}
-                  </p>
-                </div>
-
-                <div className="pt-3 border-t border-slate-200/80 flex items-center justify-between">
-                  <Link
-                    to={viewAllLink}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#C0392B] hover:text-[#96281B]"
-                  >
-                    <span>{t('common.readMore')}</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </Link>
-                  {item.links && item.links.length > 0 && (
-                    <span className="text-[10px] font-mono text-slate-500">PDF File</span>
-                  )}
-                </div>
-              </article>
-            ))}
-
-            {/* Investor Relations Notice Link */}
-            <div className="p-4 bg-[#1E2A3A] text-white rounded-[3px] text-xs flex items-center justify-between gap-4">
-              <div>
-                <span className="font-mono text-[#E74C3C] font-bold block text-[10px] uppercase">
-                  IDX Public Filings (CANI)
-                </span>
-                <span className="text-slate-300 text-[11px]">
-                  {language === 'en'
-                    ? 'Quarterly financials & corporate action disclosures.'
-                    : 'Laporan keuangan berkala & keterbukaan informasi emiten.'}
-                </span>
-              </div>
+        {/* IDX filings strip */}
+        <Reveal className="mt-14">
+          <div className="flex flex-col gap-5 rounded-[6px] bg-[#1E2A3A] p-6 text-white sm:flex-row sm:items-center sm:justify-between sm:p-8">
+            <div>
+              <p className="font-display text-lg font-semibold">IDX Public Filings (CANI)</p>
+              <p className="mt-1 text-sm text-slate-300">
+                {en ? 'Quarterly financials and corporate action disclosures.' : 'Laporan keuangan berkala & keterbukaan informasi emiten.'}
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href={IDX_CANI_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-slate-200 transition-colors hover:text-white"
+              >
+                <span>{en ? 'IDX: CANI Issuer Profile' : 'IDX: CANI Profil Emiten'}</span>
+                <ExternalLink className="h-4 w-4" />
+              </a>
               <Link
                 to="/investors/financials"
-                className="shrink-0 px-3.5 py-1.5 bg-[#C0392B] hover:bg-[#96281B] text-white text-[11px] font-bold rounded-[2px] tracking-wide uppercase transition-colors"
+                className="rounded-[4px] bg-[#C0392B] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#96281B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                {language === 'en' ? 'View Filings' : 'Lihat Laporan'}
+                {en ? 'View filings' : 'Lihat laporan'}
               </Link>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

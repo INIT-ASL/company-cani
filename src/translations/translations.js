@@ -346,7 +346,6 @@ export const translations = {
       },
       btnAbout: 'Profil Perseroan',
       btnContact: 'Pengajuan Sewa Kapal',
-      scroll: 'Gulir',
     },
     services: {
       subtitle: 'KAPABILITAS & SKEMA SEWA',

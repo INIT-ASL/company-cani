@@ -1,8 +1,11 @@
 // src/pages/Home.jsx
 import HeroSection from '../components/home/HeroSection';
+import AboutSection from '../components/home/AboutSection';
 import FleetOverviewSection from '../components/home/FleetOverviewSection';
-import NewsSection from '../components/home/NewsSection';
+import StatsBandSection from '../components/home/StatsBandSection';
+import OperationsSection from '../components/home/OperationsSection';
 import ClientsSection from '../components/home/ClientsSection';
+import NewsSection from '../components/home/NewsSection';
 import SEO from '../components/common/SEO';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -24,9 +27,12 @@ export default function Home() {
         }
       />
       <HeroSection />
+      <AboutSection />
       <FleetOverviewSection />
-      <NewsSection />
+      <StatsBandSection />
+      <OperationsSection />
       <ClientsSection />
+      <NewsSection />
     </main>
   );
 }
