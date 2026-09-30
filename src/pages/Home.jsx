@@ -1,7 +1,6 @@
 // src/pages/Home.jsx
 import HeroSection from '../components/home/HeroSection';
-import RecentProjects from '../components/home/RecentProjects';
-import ServicesSection from '../components/home/ServicesSection';
+import FleetOverviewSection from '../components/home/FleetOverviewSection';
 import NewsSection from '../components/home/NewsSection';
 import ClientsSection from '../components/home/ClientsSection';
 import SEO from '../components/common/SEO';
@@ -25,8 +24,7 @@ export default function Home() {
         }
       />
       <HeroSection />
-      <ServicesSection />
-      <RecentProjects />
+      <FleetOverviewSection />
       <NewsSection />
       <ClientsSection />
     </main>
