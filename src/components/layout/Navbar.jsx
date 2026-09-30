@@ -97,6 +97,14 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Kunci scroll halaman saat drawer mobile terbuka
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
   const handleMouseEnter = (label) => {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
@@ -123,181 +131,220 @@ export default function Navbar() {
     return false;
   };
 
+  // Tinggi header: <640px = 64px | >=640px = 72px | >=768px = 72px + utility bar 32px
+  const drawerTop = 'top-16 sm:top-18 md:top-[calc(4.5rem+2rem)]';
+
   return (
-    <header
-      ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-        isTransparent
-          ? 'bg-transparent text-white'
-          : 'bg-white/95 backdrop-blur-md text-[#1E2A3A] shadow-xs border-b border-slate-200/80'
-      }`}
-    >
-      {/* Top Utility Bar for Corporate Legitimacy */}
-      <div
-        className={`hidden md:block text-[11px] border-b transition-colors ${
+    <>
+      <header
+        ref={navRef}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
           isTransparent
-            ? 'border-white/10 text-white/70 bg-black/10'
-            : 'border-slate-100 text-slate-500 bg-[#F4F6F8]'
+            ? 'bg-transparent text-white'
+            : 'bg-white/95 backdrop-blur-md text-[#1E2A3A] shadow-xs border-b border-slate-200/80'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-8 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="font-semibold tracking-wider text-[#C0392B] uppercase">
-              {t('common.ticker')}
-            </span>
-            <span className="opacity-40">|</span>
-            <span className="truncate">
-              {language === 'en'
-                ? 'Indonesian Public Maritime & Offshore Support Logistics'
-                : 'Emiten Jasa Pelayaran & Pendukung Maritim Lepas Pantai Indonesia'}
-            </span>
-          </div>
+        {/* Top Utility Bar for Corporate Legitimacy */}
+        <div
+          className={`hidden md:block text-[11px] border-b transition-colors ${
+            isTransparent
+              ? 'border-white/10 text-white/70 bg-black/10'
+              : 'border-slate-100 text-slate-500 bg-[#F4F6F8]'
+          }`}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-8 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="font-semibold tracking-wider text-[#C0392B] uppercase">
+                {t('common.ticker')}
+              </span>
+              <span className="opacity-40">|</span>
+              <span className="truncate">
+                {language === 'en'
+                  ? 'Indonesian Public Maritime & Offshore Support Logistics'
+                  : 'Emiten Jasa Pelayaran & Pendukung Maritim Lepas Pantai Indonesia'}
+              </span>
+            </div>
 
-          <div className="flex items-center gap-4">
-            <Link
-              to="/investors/financials"
-              className="hover:text-[#C0392B] transition-colors"
-            >
-              {t('nav.financialStatements')}
-            </Link>
-            <span className="opacity-40">•</span>
-            <Link to="/contact/info" className="hover:text-[#C0392B] transition-colors">
-              {t('nav.contactInfo')}
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link
+                to="/investors/financials"
+                className="hover:text-[#C0392B] transition-colors"
+              >
+                {t('nav.financialStatements')}
+              </Link>
+              <span className="opacity-40">•</span>
+              <Link to="/contact/info" className="hover:text-[#C0392B] transition-colors">
+                {t('nav.contactInfo')}
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Main Navbar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-18">
-          {/* Logo */}
-          <Link
-            to="/"
-            className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0392B] rounded-[3px]"
-            aria-label="PT Capitol Nusantara Indonesia Tbk"
-          >
-            <div
-              className={`transition-all duration-200 flex items-center ${
-                isTransparent
-                  ? 'px-2.5 py-1 sm:px-3 sm:py-1 rounded-[3px]'
-                  : 'py-0.5'
-              }`}
+        {/* Main Navbar */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-18">
+            {/* Logo */}
+            <Link
+              to="/"
+              className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0392B] rounded-[3px]"
+              aria-label="PT Capitol Nusantara Indonesia Tbk"
             >
-              <img
-                src={logoCani}
-                alt="PT Capitol Nusantara Indonesia Tbk"
-                className="h-8 sm:h-9 w-auto object-contain"
-              />
-            </div>
-          </Link>
+              <div
+                className={`transition-all duration-200 flex items-center ${
+                  isTransparent
+                    ? 'px-2.5 py-1 sm:px-3 sm:py-1 rounded-[3px]'
+                    : 'py-0.5'
+                }`}
+              >
+                <img
+                  src={logoCani}
+                  alt="PT Capitol Nusantara Indonesia Tbk"
+                  className="h-8 sm:h-9 w-auto object-contain"
+                />
+              </div>
+            </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main Navigation">
-            {navLinks.map((link) => {
-              const active = isLinkActive(link);
+            {/* Desktop Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main Navigation">
+              {navLinks.map((link) => {
+                const active = isLinkActive(link);
 
-              if (link.children) {
-                const isOpen = openDropdown === link.label;
+                if (link.children) {
+                  const isOpen = openDropdown === link.label;
+
+                  return (
+                    <div
+                      key={link.label}
+                      className="relative"
+                      onMouseEnter={() => handleMouseEnter(link.label)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        aria-haspopup="true"
+                        onClick={() => setOpenDropdown(isOpen ? null : link.label)}
+                        className={`flex items-center gap-1 px-3 py-2 text-xs font-semibold tracking-wide uppercase transition-colors rounded-[2px] ${
+                          isTransparent
+                            ? 'text-white/90 hover:text-white hover:bg-white/10'
+                            : 'text-[#1E2A3A] hover:text-[#C0392B] hover:bg-slate-50'
+                        } ${active ? (isTransparent ? 'text-white font-bold' : 'text-[#C0392B] font-bold') : ''}`}
+                      >
+                        <span>{link.label}</span>
+                        <ChevronDown
+                          className={`w-3.5 h-3.5 transition-transform duration-150 ${
+                            isOpen ? 'rotate-180 text-[#C0392B]' : 'opacity-60'
+                          }`}
+                        />
+                      </button>
+
+                      {/* Submenu Dropdown */}
+                      <AnimatePresence>
+                        {isOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 4 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 4 }}
+                            transition={{ duration: 0.15 }}
+                            className="absolute top-full left-0 mt-1 w-64 bg-white rounded-[3px] shadow-lg border border-slate-200 py-1 z-50 text-[#1E2A3A]"
+                          >
+                            {link.children.map((child) => (
+                              <Link
+                                key={child.to}
+                                to={child.to}
+                                className={`block px-4 py-2.5 text-xs font-medium transition-colors border-l-2 ${
+                                  location.pathname === child.to
+                                    ? 'border-[#C0392B] text-[#C0392B] bg-slate-50 font-semibold'
+                                    : 'border-transparent text-slate-700 hover:text-[#C0392B] hover:bg-slate-50 hover:border-[#C0392B]'
+                                }`}
+                              >
+                                {child.label}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                }
 
                 return (
-                  <div
-                    key={link.label}
-                    className="relative"
-                    onMouseEnter={() => handleMouseEnter(link.label)}
-                    onMouseLeave={handleMouseLeave}
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className={`px-3 py-2 text-xs font-semibold tracking-wide uppercase transition-colors rounded-[2px] ${
+                      isTransparent
+                        ? 'text-white/90 hover:text-white hover:bg-white/10'
+                        : 'text-[#1E2A3A] hover:text-[#C0392B] hover:bg-slate-50'
+                    } ${
+                      active
+                        ? isTransparent
+                          ? 'text-white font-bold border-b-2 border-[#C0392B]'
+                          : 'text-[#C0392B] font-bold border-b-2 border-[#C0392B]'
+                        : ''
+                    }`}
                   >
-                    <button
-                      type="button"
-                      aria-expanded={isOpen}
-                      aria-haspopup="true"
-                      onClick={() => setOpenDropdown(isOpen ? null : link.label)}
-                      className={`flex items-center gap-1 px-3 py-2 text-xs font-semibold tracking-wide uppercase transition-colors rounded-[2px] ${
-                        isTransparent
-                          ? 'text-white/90 hover:text-white hover:bg-white/10'
-                          : 'text-[#1E2A3A] hover:text-[#C0392B] hover:bg-slate-50'
-                      } ${active ? (isTransparent ? 'text-white font-bold' : 'text-[#C0392B] font-bold') : ''}`}
-                    >
-                      <span>{link.label}</span>
-                      <ChevronDown
-                        className={`w-3.5 h-3.5 transition-transform duration-150 ${
-                          isOpen ? 'rotate-180 text-[#C0392B]' : 'opacity-60'
-                        }`}
-                      />
-                    </button>
-
-                    {/* Submenu Dropdown */}
-                    <AnimatePresence>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 4 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 4 }}
-                          transition={{ duration: 0.15 }}
-                          className="absolute top-full left-0 mt-1 w-64 bg-white rounded-[3px] shadow-lg border border-slate-200 py-1 z-50 text-[#1E2A3A]"
-                        >
-                          {link.children.map((child) => (
-                            <Link
-                              key={child.to}
-                              to={child.to}
-                              className={`block px-4 py-2.5 text-xs font-medium transition-colors border-l-2 ${
-                                location.pathname === child.to
-                                  ? 'border-[#C0392B] text-[#C0392B] bg-slate-50 font-semibold'
-                                  : 'border-transparent text-slate-700 hover:text-[#C0392B] hover:bg-slate-50 hover:border-[#C0392B]'
-                              }`}
-                            >
-                              {child.label}
-                            </Link>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
+                    {link.label}
+                  </Link>
                 );
-              }
+              })}
 
-              return (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className={`px-3 py-2 text-xs font-semibold tracking-wide uppercase transition-colors rounded-[2px] ${
+              {/* Desktop Language Switcher */}
+              <div className="ml-3 pl-3 border-l border-slate-200/50 flex items-center">
+                <div
+                  className={`inline-flex items-center p-0.5 rounded-[3px] border text-[11px] font-semibold ${
                     isTransparent
-                      ? 'text-white/90 hover:text-white hover:bg-white/10'
-                      : 'text-[#1E2A3A] hover:text-[#C0392B] hover:bg-slate-50'
-                  } ${
-                    active
-                      ? isTransparent
-                        ? 'text-white font-bold border-b-2 border-[#C0392B]'
-                        : 'text-[#C0392B] font-bold border-b-2 border-[#C0392B]'
-                      : ''
+                      ? 'border-white/30 bg-black/20 text-white'
+                      : 'border-slate-200 bg-slate-100 text-[#1E2A3A]'
                   }`}
+                  role="group"
+                  aria-label="Language selection"
                 >
-                  {link.label}
-                </Link>
-              );
-            })}
+                  <button
+                    type="button"
+                    onClick={() => setLanguage('en')}
+                    className={`px-2 py-0.5 rounded-[2px] transition-all ${
+                      language === 'en'
+                        ? 'bg-[#C0392B] text-white'
+                        : 'opacity-70 hover:opacity-100'
+                    }`}
+                    aria-pressed={language === 'en'}
+                    aria-label="Switch language to English"
+                  >
+                    EN
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setLanguage('id')}
+                    className={`px-2 py-0.5 rounded-[2px] transition-all ${
+                      language === 'id'
+                        ? 'bg-[#C0392B] text-white'
+                        : 'opacity-70 hover:opacity-100'
+                    }`}
+                    aria-pressed={language === 'id'}
+                    aria-label="Ganti bahasa ke Bahasa Indonesia"
+                  >
+                    ID
+                  </button>
+                </div>
+              </div>
+            </nav>
 
-            {/* Desktop Language Switcher */}
-            <div className="ml-3 pl-3 border-l border-slate-200/50 flex items-center">
+            {/* Mobile Right Bar: Language Switcher & Hamburger */}
+            <div className="flex items-center gap-2 lg:hidden">
               <div
                 className={`inline-flex items-center p-0.5 rounded-[3px] border text-[11px] font-semibold ${
                   isTransparent
-                    ? 'border-white/30 bg-black/20 text-white'
+                    ? 'border-white/30 bg-black/30 text-white'
                     : 'border-slate-200 bg-slate-100 text-[#1E2A3A]'
                 }`}
-                role="group"
-                aria-label="Language selection"
               >
                 <button
                   type="button"
                   onClick={() => setLanguage('en')}
                   className={`px-2 py-0.5 rounded-[2px] transition-all ${
-                    language === 'en'
-                      ? 'bg-[#C0392B] text-white'
-                      : 'opacity-70 hover:opacity-100'
+                    language === 'en' ? 'bg-[#C0392B] text-white' : 'opacity-70'
                   }`}
-                  aria-pressed={language === 'en'}
-                  aria-label="Switch language to English"
                 >
                   EN
                 </button>
@@ -305,66 +352,34 @@ export default function Navbar() {
                   type="button"
                   onClick={() => setLanguage('id')}
                   className={`px-2 py-0.5 rounded-[2px] transition-all ${
-                    language === 'id'
-                      ? 'bg-[#C0392B] text-white'
-                      : 'opacity-70 hover:opacity-100'
+                    language === 'id' ? 'bg-[#C0392B] text-white' : 'opacity-70'
                   }`}
-                  aria-pressed={language === 'id'}
-                  aria-label="Ganti bahasa ke Bahasa Indonesia"
                 >
                   ID
                 </button>
               </div>
-            </div>
-          </nav>
 
-          {/* Mobile Right Bar: Language Switcher & Hamburger */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <div
-              className={`inline-flex items-center p-0.5 rounded-[3px] border text-[11px] font-semibold ${
-                isTransparent
-                  ? 'border-white/30 bg-black/30 text-white'
-                  : 'border-slate-200 bg-slate-100 text-[#1E2A3A]'
-              }`}
-            >
               <button
                 type="button"
-                onClick={() => setLanguage('en')}
-                className={`px-2 py-0.5 rounded-[2px] transition-all ${
-                  language === 'en' ? 'bg-[#C0392B] text-white' : 'opacity-70'
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className={`p-2 rounded-[3px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0392B] ${
+                  isTransparent
+                    ? 'text-white hover:bg-white/10'
+                    : 'text-[#1E2A3A] hover:bg-slate-100'
                 }`}
+                aria-label={mobileOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+                aria-expanded={mobileOpen}
               >
-                EN
-              </button>
-              <button
-                type="button"
-                onClick={() => setLanguage('id')}
-                className={`px-2 py-0.5 rounded-[2px] transition-all ${
-                  language === 'id' ? 'bg-[#C0392B] text-white' : 'opacity-70'
-                }`}
-              >
-                ID
+                {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
-
-            <button
-              type="button"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className={`p-2 rounded-[3px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0392B] ${
-                isTransparent
-                  ? 'text-white hover:bg-white/10'
-                  : 'text-[#1E2A3A] hover:bg-slate-100'
-              }`}
-              aria-label={mobileOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
-              aria-expanded={mobileOpen}
-            >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Mobile Drawer Navigation */}
+      {/* Mobile Drawer Navigation
+          Sengaja DI LUAR <header>: backdrop-blur pada header membuat elemen `fixed`
+          di dalamnya mengacu ke header (bukan layar), sehingga drawer jadi kosong/terpotong. */}
       <AnimatePresence>
         {mobileOpen && (
           <>
@@ -374,7 +389,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileOpen(false)}
-              className="fixed inset-0 top-16 bg-black/50 z-40 lg:hidden"
+              className={`fixed inset-x-0 bottom-0 ${drawerTop} bg-black/50 z-40 lg:hidden`}
               aria-hidden="true"
             />
 
@@ -384,7 +399,7 @@ export default function Navbar() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
-              className="fixed top-16 right-0 bottom-0 w-80 max-w-[85vw] bg-white text-[#1E2A3A] z-50 border-l border-slate-200 overflow-y-auto p-5 shadow-2xl lg:hidden flex flex-col justify-between"
+              className={`fixed right-0 bottom-0 ${drawerTop} w-80 max-w-[85vw] bg-white text-[#1E2A3A] z-50 border-l border-slate-200 overflow-y-auto p-5 shadow-2xl lg:hidden flex flex-col justify-between`}
             >
               <div className="space-y-1">
                 <div className="pb-3 mb-3 border-b border-slate-100 flex items-center justify-between">
@@ -393,7 +408,7 @@ export default function Navbar() {
                     alt="PT Capitol Nusantara Indonesia Tbk"
                     className="h-7 w-auto object-contain"
                   />
-                  <span className="text-[10px] uppercase font-mono font-bold tracking-widest text-[#C0392B] bg-slate-100 px-2 py-0.5 rounded-[2px]">
+                  <span className="text-xs uppercase font-mono font-bold tracking-widest text-[#C0392B] bg-slate-100 px-2 py-0.5 rounded-[2px]">
                     {t('common.ticker')}
                   </span>
                 </div>
@@ -406,7 +421,7 @@ export default function Navbar() {
                         onClick={() =>
                           setMobileExpanded(mobileExpanded === link.label ? null : link.label)
                         }
-                        className="w-full flex items-center justify-between py-2.5 px-2 text-xs font-semibold tracking-wide uppercase text-[#1E2A3A] hover:text-[#C0392B]"
+                        className="w-full flex items-center justify-between py-2.5 px-2 text-sm font-semibold tracking-wide uppercase text-[#1E2A3A] hover:text-[#C0392B]"
                         aria-expanded={mobileExpanded === link.label}
                       >
                         <span>{link.label}</span>
@@ -430,7 +445,7 @@ export default function Navbar() {
                               <Link
                                 key={child.to}
                                 to={child.to}
-                                className={`block py-1.5 px-2 text-xs font-medium rounded-[2px] transition-colors ${
+                                className={`block py-2 px-2 text-sm font-medium rounded-[2px] transition-colors ${
                                   location.pathname === child.to
                                     ? 'text-[#C0392B] font-semibold bg-red-50/60'
                                     : 'text-slate-600 hover:text-[#C0392B]'
@@ -447,7 +462,7 @@ export default function Navbar() {
                     <Link
                       key={link.to}
                       to={link.to}
-                      className={`block py-2.5 px-2 text-xs font-semibold tracking-wide uppercase border-b border-slate-50 transition-colors ${
+                      className={`block py-2.5 px-2 text-sm font-semibold tracking-wide uppercase border-b border-slate-50 transition-colors ${
                         location.pathname === link.to
                           ? 'text-[#C0392B] font-bold'
                           : 'text-[#1E2A3A] hover:text-[#C0392B]'
@@ -467,6 +482,6 @@ export default function Navbar() {
           </>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }

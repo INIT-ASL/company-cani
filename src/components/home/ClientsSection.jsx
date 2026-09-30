@@ -68,10 +68,12 @@ export default function ClientsSection() {
         />
       </div>
 
-      <div className="cni-marquee" role="list" aria-label={en ? 'Client list' : 'Daftar klien'}>
-        <div className="cni-track">
-          {clientPartners.map((c) => <Card key={c.name} client={c} />)}
-          {clientPartners.map((c) => <Card key={`${c.name}-dup`} client={c} dup />)}
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="cni-marquee" role="list" aria-label={en ? 'Client list' : 'Daftar klien'}>
+          <div className="cni-track">
+            {clientPartners.map((c) => <Card key={c.name} client={c} />)}
+            {clientPartners.map((c) => <Card key={`${c.name}-dup`} client={c} dup />)}
+          </div>
         </div>
       </div>
     </section>
