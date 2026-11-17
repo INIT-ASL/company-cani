@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/staticwebapp.config.json",
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/assets/*",
+      "/financials/*",
+      "/fleet/*",
+      "/videos/*",
+      "/*.{png,jpg,jpeg,gif,svg,ico,webp,avif,pdf,mp4,webm,webmanifest,json,txt,xml}"
+    ]
+  }
+}

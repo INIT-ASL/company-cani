@@ -1,0 +1,58 @@
+# Deploy the CANI company profile to Azure Static Web Apps (swa-company-profile-cani-bt-apps, Free SKU, frontend only).
+#
+# The site is built here, on the GitHub runner, with the same commands as on a laptop (npm ci, npm run build = vite build).
+# The action then uploads the finished dist/ folder with the deployment token (repository secret
+# AZURE_STATIC_WEB_APPS_API_TOKEN). It does not build anything itself (skip_app_build), so the Node version below is the
+# one that counts: Vite 8 needs Node 20.19+ or 22.12+.
+#
+# The SPA fallback for react-router (BrowserRouter) lives in public/staticwebapp.config.json, which Vite copies to dist/.
+
+name: Deploy to Azure Static Web Apps
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-company-cani
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # workflow_dispatch can be started from any branch. A feature branch would be published to the live site, and
+      # skipping the job would end green and look deployed, so the run fails instead.
+      - name: Refuse anything but the main branch
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "::error::Only the main branch is published (got $GITHUB_REF)."
+          exit 1
+
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: upload
+          # app_location is what gets uploaded. With skip_app_build it must be the build output; "/" would upload the
+          # whole checkout including node_modules.
+          app_location: dist
+          output_location: ""
+          skip_app_build: true
