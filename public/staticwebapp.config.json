@@ -9,5 +9,8 @@
       "/videos/*",
       "/*.{png,jpg,jpeg,gif,svg,ico,webp,avif,pdf,mp4,webm,webmanifest,json,txt,xml}"
     ]
+  },
+  "mimeTypes": {
+    ".mp4": "video/mp4"
   }
 }
