@@ -5,19 +5,19 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, ExternalLink } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
 import Reveal from '../ui/Reveal';
-import { newsData, pressReleaseData, IDX_CANI_URL } from '../../data/news';
+import { newsData, pressReleaseData } from '../../data/news';
+import { COMPANY } from '../../data/company';
+import { getLocalized } from '../../utils/i18n';
 import { useLanguage } from '../../context/LanguageContext';
-import testImage from '../../assets/images/test.jpg';
+import aslVictoryImage from '../../assets/images/asl-victory.webp';
 
-const leadImage = testImage;
+const leadImage = aslVictoryImage;
 
 export default function NewsSection() {
   const { language, t } = useLanguage();
   const en = language === 'en';
+  const loc = (field) => getLocalized(field, language);
   const [activeTab, setActiveTab] = useState('announcement'); // 'announcement' | 'corporate'
-
-  const getLocalized = (field) =>
-    typeof field === 'object' && field !== null ? field[language] || field.en || field.id : field;
 
   const isAnnouncement = activeTab === 'announcement';
   const currentDataset = isAnnouncement ? pressReleaseData : newsData;
@@ -83,21 +83,21 @@ export default function NewsSection() {
               <div className="relative aspect-[16/9] overflow-hidden rounded-[6px] bg-slate-900">
                 <img
                   src={leadImage}
-                  alt={getLocalized(leadItem.title)}
+                  alt={loc(leadItem.title)}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
                   width={700}
                   height={394}
                 />
                 <span className="absolute left-4 top-4 rounded-[4px] bg-[#C0392B] px-3 py-1 text-xs font-semibold text-white">
-                  {getLocalized(leadItem.category)}
+                  {loc(leadItem.category)}
                 </span>
               </div>
 
               <div className="mt-6">
                 <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500">
                   <Calendar className="h-4 w-4 text-[#C0392B]" />
-                  <span>{getLocalized(leadItem.date)}</span>
+                  <span>{loc(leadItem.date)}</span>
                   <span aria-hidden="true">·</span>
                   <span>{en ? 'Year' : 'Tahun'} {leadItem.year}</span>
                   <span aria-hidden="true">·</span>
@@ -105,9 +105,9 @@ export default function NewsSection() {
                 </div>
 
                 <h3 className="mt-3 font-display text-2xl font-semibold leading-snug text-[#1E2A3A] transition-colors group-hover:text-[#C0392B] sm:text-3xl">
-                  <Link to={viewAllLink}>{getLocalized(leadItem.title)}</Link>
+                  <Link to={viewAllLink}>{loc(leadItem.title)}</Link>
                 </h3>
-                <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600">{getLocalized(leadItem.excerpt)}</p>
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600">{loc(leadItem.excerpt)}</p>
 
                 <div className="mt-6 flex items-center gap-6">
                   <Link to={viewAllLink} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#C0392B] hover:text-[#96281B]">
@@ -130,14 +130,14 @@ export default function NewsSection() {
               {secondaryItems.map((item) => (
                 <li key={item.id} className="group py-6">
                   <div className="flex items-center gap-2 text-sm text-slate-500">
-                    <span className="font-semibold text-[#C0392B]">{getLocalized(item.category)}</span>
+                    <span className="font-semibold text-[#C0392B]">{loc(item.category)}</span>
                     <span aria-hidden="true">·</span>
-                    <span>{getLocalized(item.date)}</span>
+                    <span>{loc(item.date)}</span>
                   </div>
                   <h3 className="mt-2 line-clamp-2 font-display text-lg font-semibold leading-snug text-[#1E2A3A] transition-colors group-hover:text-[#C0392B]">
-                    <Link to={viewAllLink}>{getLocalized(item.title)}</Link>
+                    <Link to={viewAllLink}>{loc(item.title)}</Link>
                   </h3>
-                  <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-slate-600">{getLocalized(item.excerpt)}</p>
+                  <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-slate-600">{loc(item.excerpt)}</p>
                   <div className="mt-3 flex items-center justify-between">
                     <Link to={viewAllLink} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#C0392B] hover:text-[#96281B]">
                       <span>{t('common.readMore')}</span>
@@ -162,7 +162,7 @@ export default function NewsSection() {
             </div>
             <div className="flex flex-wrap items-center gap-4">
               <a
-                href={IDX_CANI_URL}
+                href={COMPANY.idxUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-medium text-slate-200 transition-colors hover:text-white"

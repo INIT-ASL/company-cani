@@ -8,12 +8,21 @@ import ClientsSection from '../components/home/ClientsSection';
 import NewsSection from '../components/home/NewsSection';
 import SEO from '../components/common/SEO';
 import { useLanguage } from '../context/LanguageContext';
+import { COMPANY } from '../data/company';
 
 export default function Home() {
   const { language } = useLanguage();
 
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: COMPANY.name,
+    alternateName: 'CANI',
+    url: COMPANY.siteUrl,
+  };
+
   return (
-    <main>
+    <>
       <SEO
         title={
           language === 'en'
@@ -25,6 +34,7 @@ export default function Home() {
             ? 'PT Capitol Nusantara Indonesia Tbk (IDX: CANI) provides Anchor Handling Tugs, barges, and floating cranes for offshore oil, gas, and energy logistics.'
             : 'PT Capitol Nusantara Indonesia Tbk (BEI: CANI) mengoperasikan armada kapal AHT, kapal tunda, tongkang, dan derek terapung untuk mendukung industri energi nasional.'
         }
+        schema={websiteSchema}
       />
       <HeroSection />
       <AboutSection />
@@ -33,6 +43,6 @@ export default function Home() {
       <OperationsSection />
       <ClientsSection />
       <NewsSection />
-    </main>
+    </>
   );
 }

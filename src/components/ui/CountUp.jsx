@@ -6,13 +6,10 @@ export default function CountUp({ to, suffix = '', duration = 1600, className = 
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-40px' });
   const reduce = useReducedMotion();
-  const [val, setVal] = useState(0);
+  const [val, setVal] = useState(() => (reduce ? to : 0));
 
   useEffect(() => {
-    if (reduce) {
-      setVal(to);
-      return undefined;
-    }
+    if (reduce) return undefined;
     if (!inView) return undefined;
     let raf;
     const start = performance.now();
@@ -27,7 +24,7 @@ export default function CountUp({ to, suffix = '', duration = 1600, className = 
 
   return (
     <span ref={ref} className={className}>
-      {val}
+      {reduce ? to : val}
       {suffix}
     </span>
   );

@@ -3,6 +3,7 @@ import PageHeader from '../../components/ui/PageHeader';
 import SEO from '../../components/common/SEO';
 import ComingSoon from '../../components/common/ComingSoon';
 import { useLanguage } from '../../context/LanguageContext';
+import { COMPANY } from '../../data/company';
 
 export default function StockInformation() {
   const { language, t } = useLanguage();
@@ -12,13 +13,13 @@ export default function StockInformation() {
       <SEO
         title={
           language === 'en'
-            ? 'Stock Information — IDX: CANI (Coming Soon)'
-            : 'Informasi Saham — BEI: CANI (Coming Soon)'
+            ? 'Stock Information — IDX: CANI'
+            : 'Informasi Saham — BEI: CANI'
         }
         description={
           language === 'en'
-            ? 'Stock information page for PT Capitol Nusantara Indonesia Tbk (IDX: CANI) is currently under development.'
-            : 'Halaman informasi saham PT Capitol Nusantara Indonesia Tbk (BEI: CANI) sedang dalam tahap pengembangan.'
+            ? 'Stock information, market capitalization, and shareholder details for PT Capitol Nusantara Indonesia Tbk (IDX: CANI).'
+            : 'Informasi perdagangan saham, kapitalisasi pasar, dan struktur kepemilikan efek PT Capitol Nusantara Indonesia Tbk (BEI: CANI).'
         }
       />
       <PageHeader
@@ -29,8 +30,8 @@ export default function StockInformation() {
         title={t('nav.stockInformation')}
         description={
           language === 'en'
-            ? 'This page is currently under development. Official real-time stock data and corporate filings can be viewed directly on the Indonesia Stock Exchange (IDX) portal.'
-            : 'Halaman ini sedang dalam tahap pengembangan. Keterbukaan informasi dan data perdagangan efek dapat dipantau langsung melalui portal resmi Bursa Efek Indonesia (BEI).'
+            ? 'Real-time equity quotes, trading statistics, and statutory market disclosures for PT Capitol Nusantara Indonesia Tbk on the Indonesia Stock Exchange.'
+            : 'Keterbukaan informasi dan data perdagangan efek dapat dipantau langsung melalui portal resmi Bursa Efek Indonesia (BEI).'
         }
       />
 
@@ -51,7 +52,7 @@ export default function StockInformation() {
             showContact={true}
             externalLink={{
               label: language === 'en' ? 'View CANI on IDX Portal' : 'Lihat CANI di Portal BEI',
-              url: 'https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/CANI',
+              url: COMPANY.idxUrl,
             }}
             backTo="/"
             backLabel={language === 'en' ? 'Return to Home' : 'Kembali ke Beranda'}

@@ -1,12 +1,45 @@
 // src/App.jsx
 import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 import { LanguageProvider } from './context/LanguageContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import Home from './pages/Home';
 
-// Route-level code splitting
-const Home = lazy(() => import('./pages/Home'));
+// Smooth Momentum Scroller using Lenis
+function SmoothScroller() {
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 1.5,
+    });
+
+    let animationFrameId;
+
+    function raf(time) {
+      lenis.raf(time);
+      animationFrameId = requestAnimationFrame(raf);
+    }
+
+    animationFrameId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      lenis.destroy();
+    };
+  }, []);
+
+  return null;
+}
+
+// Route-level code splitting for secondary pages
 const CompanyHistory = lazy(() => import('./pages/about/CompanyHistory'));
 const BoardCommissioners = lazy(() =>
   import('./pages/about/BoardPage').then((module) => ({ default: module.BoardCommissioners }))
@@ -22,14 +55,13 @@ const ContactInfo = lazy(() => import('./pages/contact/ContactInfo'));
 const ContactInquiry = lazy(() => import('./pages/contact/ContactInquiry'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
-// Scroll to top on route change
+// Instant scroll to top on route change (eliminates scroll stutter)
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.scrollTo({
       top: 0,
-      behavior: prefersReducedMotion ? 'instant' : 'smooth',
+      behavior: 'instant',
     });
   }, [pathname]);
   return null;
@@ -52,8 +84,13 @@ function PageLoader() {
 function Layout({ children }) {
   return (
     <div className="min-h-screen flex flex-col justify-between bg-white text-[#1E2A3A]">
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
       <Navbar />
-      <div className="flex-1">{children}</div>
+      <main id="main-content" className="flex-1">
+        {children}
+      </main>
       <Footer />
     </div>
   );
@@ -64,10 +101,11 @@ export default function App() {
     <LanguageProvider>
       <BrowserRouter>
         <ScrollToTop />
+        <SmoothScroller />
         <Layout>
           <Suspense fallback={<PageLoader />}>
             <Routes>
-              {/* Home */}
+              {/* Home - eager loaded for immediate FCP/LCP */}
               <Route path="/" element={<Home />} />
 
               {/* About */}
@@ -82,8 +120,8 @@ export default function App() {
               <Route path="/fleet" element={<Navigate to="/fleet/aht" replace />} />
 
               {/* Media Center */}
-              <Route path="/media/press-release" element={<MediaCenter />} />
-              <Route path="/media/news" element={<MediaCenter />} />
+              <Route path="/media/press-release" element={<MediaCenter key="press-release" />} />
+              <Route path="/media/news" element={<MediaCenter key="news" />} />
               <Route path="/media" element={<Navigate to="/media/press-release" replace />} />
 
               {/* Investors */}

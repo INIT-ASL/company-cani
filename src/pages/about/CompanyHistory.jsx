@@ -3,6 +3,7 @@ import PageHeader from '../../components/ui/PageHeader';
 import SEO from '../../components/common/SEO';
 import { historyData } from '../../data/history';
 import { useLanguage } from '../../context/LanguageContext';
+import { getLocalized } from '../../utils/i18n';
 import { Anchor, Award } from 'lucide-react';
 
 export default function CompanyHistory() {
@@ -41,22 +42,10 @@ export default function CompanyHistory() {
           {/* Chronological Timeline with Large Typography */}
           <div className="relative border-l-2 border-slate-200 ml-3 sm:ml-6 pl-6 sm:pl-10 space-y-12">
             {historyData.map((item) => {
-              const periodText =
-                typeof item.period === 'object' && item.period !== null
-                  ? item.period[language] || item.period.en
-                  : item.period || item.year;
-
-              const titleText =
-                typeof item.title === 'object' && item.title !== null
-                  ? item.title[language] || item.title.en
-                  : item.title;
-
-              const descText =
-                typeof item.description === 'object' && item.description !== null
-                  ? item.description[language] || item.description.en
-                  : item.description;
-
-              const isIpo = item.year === '2013';
+              const periodText = getLocalized(item.period, language) || item.year;
+              const titleText = getLocalized(item.title, language);
+              const descText = getLocalized(item.description, language);
+              const isIpo = item.year === '2013' || item.year === '2014';
 
               return (
                 <div key={item.period?.en || item.year} className="relative group">
@@ -76,7 +65,7 @@ export default function CompanyHistory() {
                     </span>
                     {isIpo && (
                       <span className="font-mono text-[10px] font-bold uppercase tracking-wider bg-[#C0392B] text-white px-2 py-0.5 rounded-[2px]">
-                        {language === 'en' ? 'IPO MILESTONE' : 'KEPUTUSAN IPO'}
+                        {language === 'en' ? 'IPO MILESTONE' : 'TONGGAK IPO'}
                       </span>
                     )}
                   </div>
@@ -85,9 +74,9 @@ export default function CompanyHistory() {
                   <div className="bg-[#F4F6F8] border border-slate-200 rounded-[3px] p-5 sm:p-6 max-w-3xl hover:border-slate-300 transition-colors shadow-xs">
                     <h3 className="font-display font-bold text-base text-[#1E2A3A] mb-2 flex items-center gap-2">
                       {isIpo ? (
-                        <Award className="w-4 h-4 text-[#C0392B] shrink-0" />
+                        <Award className="w-4 h-4 text-[#C0392B] shrink-0" aria-hidden="true" />
                       ) : (
-                        <Anchor className="w-4 h-4 text-slate-500 shrink-0" />
+                        <Anchor className="w-4 h-4 text-slate-500 shrink-0" aria-hidden="true" />
                       )}
                       <span>{titleText}</span>
                     </h3>

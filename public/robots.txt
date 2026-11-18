@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cani.cemaraintan.id/sitemap.xml

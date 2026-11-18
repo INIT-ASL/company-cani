@@ -2,7 +2,7 @@
 import Reveal from '../ui/Reveal';
 import CountUp from '../ui/CountUp';
 import { useLanguage } from '../../context/LanguageContext';
-import heroBg from '../../assets/images/hero.jpg';
+import heroBg from '../../assets/images/hero-1280.webp';
 
 export default function StatsBandSection() {
   const { language } = useLanguage();
@@ -17,7 +17,7 @@ export default function StatsBandSection() {
 
   return (
     <section
-      className="relative overflow-hidden py-20 lg:py-24 bg-fixed bg-center bg-cover bg-no-repeat"
+      className="relative overflow-hidden py-20 lg:py-24 bg-cover bg-center lg:bg-fixed bg-no-repeat"
       style={{
         backgroundImage: `url(${heroBg})`,
       }}
@@ -43,15 +43,16 @@ export default function StatsBandSection() {
         <dl className="grid grid-cols-2 gap-y-12 lg:grid-cols-4">
           {stats.map((s, i) => (
             <Reveal
+              as="div"
               key={s.label}
               delay={0.08 * i}
-              className={`px-4 text-center ${i !== 0 ? 'lg:border-l lg:border-white/10' : ''} ${i === 2 ? 'border-l border-white/10 lg:border-l' : ''} ${i === 1 ? 'border-l border-white/10 lg:border-l' : ''}`}
+              className={`flex flex-col items-center px-4 text-center ${i !== 0 ? 'lg:border-l lg:border-white/10' : ''} ${i === 2 ? 'border-l border-white/10 lg:border-l' : ''} ${i === 1 ? 'border-l border-white/10 lg:border-l' : ''}`}
             >
-              <dd className="font-display text-5xl font-semibold tracking-tight text-white lg:text-6xl">
+              <dd className="font-display text-5xl font-semibold tracking-tight text-white lg:text-6xl order-1">
                 {s.text ? s.text : <CountUp to={s.to} suffix={s.suffix} />}
               </dd>
-              <span className="mx-auto mt-4 block h-px w-8 bg-[#B8975A]" />
-              <dt className="mt-4 text-sm text-slate-300">{s.label}</dt>
+              <span className="mx-auto mt-4 block h-px w-8 bg-[#B8975A] order-2" aria-hidden="true" />
+              <dt className="mt-4 text-sm text-slate-300 order-3">{s.label}</dt>
             </Reveal>
           ))}
         </dl>

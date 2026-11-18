@@ -13,12 +13,15 @@ export default function NotFound() {
       <SEO
         title={language === 'en' ? '404 Page Not Found' : '404 Halaman Tidak Ditemukan'}
         description="The requested page could not be located on the CANI server."
+        robots="noindex, nofollow"
       />
       <div className="max-w-lg w-full bg-white border border-slate-200 rounded-[4px] p-8 sm:p-12 text-center shadow-xs">
         <div className="mb-6 flex justify-center">
           <img
             src={logoCani}
             alt="PT Capitol Nusantara Indonesia Tbk"
+            width={180}
+            height={48}
             className="h-10 sm:h-12 w-auto object-contain"
           />
         </div>

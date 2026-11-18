@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, ShieldCheck, Landmark, Factory } from 'lucide-react';
 import Reveal from '../ui/Reveal';
 import { useLanguage } from '../../context/LanguageContext';
-import testImage from '../../assets/images/test.jpg';
+import flagshipImage from '../../assets/images/about-flagship.webp';
 
-// TODO: ganti dengan foto lain jika perlu
-const aboutImage = testImage;
+const aboutImage = flagshipImage;
 
 export default function AboutSection() {
   const { language } = useLanguage();
@@ -38,7 +37,9 @@ export default function AboutSection() {
             <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-[6px] border border-[#C0392B]/60" aria-hidden="true" />
             <img
               src={aboutImage}
-              alt={en ? 'Vessels of PT Capitol Nusantara Indonesia Tbk at work' : 'Kapal PT Capitol Nusantara Indonesia Tbk sedang beroperasi'}
+              alt={en ? 'Flagship Vessel of PT Capitol Nusantara Indonesia Tbk' : 'Kapal Utama Armada PT Capitol Nusantara Indonesia Tbk'}
+              width={480}
+              height={600}
               className="relative aspect-[4/5] w-full rounded-[6px] object-cover shadow-xl"
               loading="lazy"
             />
@@ -79,7 +80,7 @@ export default function AboutSection() {
 
           <Reveal delay={0.3} className="mt-10">
             <Link
-              to="/about"
+              to="/about/history"
               className="inline-flex items-center gap-2 rounded-[4px] border border-[#1E2A3A] px-6 py-3 text-sm font-semibold text-[#1E2A3A] transition-colors hover:bg-[#1E2A3A] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C0392B]"
             >
               <span>{en ? 'Company profile' : 'Profil perusahaan'}</span>

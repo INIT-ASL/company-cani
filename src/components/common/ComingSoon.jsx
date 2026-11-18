@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Phone, Mail, Building2, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import { COMPANY } from '../../data/company';
 
 export default function ComingSoon({
   sectionName,
@@ -43,7 +44,7 @@ export default function ComingSoon({
             to={backTo}
             className="inline-flex items-center gap-2 bg-[#C0392B] text-white px-5 py-2.5 rounded-[3px] text-xs font-semibold hover:bg-[#96281B] transition-colors shadow-xs"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-4 h-4" aria-hidden="true" />
             <span>{backLabel || (language === 'en' ? 'Back to Home' : 'Kembali ke Beranda')}</span>
           </Link>
 
@@ -55,7 +56,7 @@ export default function ComingSoon({
               className="inline-flex items-center gap-2 bg-[#121A24] text-white px-5 py-2.5 rounded-[3px] text-xs font-semibold hover:bg-slate-800 transition-colors"
             >
               <span>{externalLink.label}</span>
-              <ExternalLink className="w-3.5 h-3.5" />
+              <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
             </a>
           )}
 
@@ -63,7 +64,7 @@ export default function ComingSoon({
             to="/contact/info"
             className="inline-flex items-center gap-2 border border-slate-300 text-[#1E2A3A] px-5 py-2.5 rounded-[3px] text-xs font-semibold hover:bg-slate-50 transition-colors"
           >
-            <Building2 className="w-4 h-4 text-slate-500" />
+            <Building2 className="w-4 h-4 text-slate-500" aria-hidden="true" />
             <span>{language === 'en' ? 'Contact Directory' : 'Direktori Kontak'}</span>
           </Link>
         </div>
@@ -78,17 +79,30 @@ export default function ComingSoon({
             </div>
             <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-700">
               <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#C0392B]" />
-                <span className="font-mono font-medium">+62 (21) 5307340 (Jakarta)</span>
+                <Phone className="w-3.5 h-3.5 text-[#C0392B]" aria-hidden="true" />
+                <a
+                  href={`tel:${COMPANY.headOffice.phoneTel}`}
+                  className="font-mono font-medium hover:text-[#C0392B] transition-colors"
+                >
+                  {COMPANY.headOffice.phone} (Jakarta)
+                </a>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#C0392B]" />
-                <span className="font-mono font-medium">+62-541-732893 (Samarinda)</span>
+                <Phone className="w-3.5 h-3.5 text-[#C0392B]" aria-hidden="true" />
+                <a
+                  href={`tel:${COMPANY.branchOffice.phoneTel}`}
+                  className="font-mono font-medium hover:text-[#C0392B] transition-colors"
+                >
+                  {COMPANY.branchOffice.phone} (Samarinda)
+                </a>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#C0392B]" />
-                <a href="mailto:Enquiry@ptcni.co.id" className="font-mono text-[#C0392B] hover:underline font-semibold">
-                  Enquiry@ptcni.co.id
+                <Mail className="w-3.5 h-3.5 text-[#C0392B]" aria-hidden="true" />
+                <a
+                  href={`mailto:${COMPANY.emails.primary}`}
+                  className="font-mono text-[#C0392B] hover:underline font-semibold"
+                >
+                  {COMPANY.emails.primary}
                 </a>
               </div>
             </div>

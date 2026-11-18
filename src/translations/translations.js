@@ -44,111 +44,10 @@ export const translations = {
       allFieldsRequired: 'Fields marked with * are required.',
     },
     hero: {
-      badge: 'Public Listed Company — Indonesia Stock Exchange: CANI',
-      titleLine1: 'PT Capitol Nusantara',
-      titleLine2: 'Indonesia Tbk',
       description:
         'Established in 2004 as a joint venture between PT Anugerah Semesta Langgeng (Samarinda) and ASL Marine Holdings Ltd (Singapore). Managing an active fleet of Anchor Handling Tugs, tugboats, barges, and heavy floating cranes supporting energy exploration and coastal shipping under full cabotage compliance.',
-      stats: {
-        stat1Value: '35+',
-        stat1Label: 'Vessels in Fleet',
-        stat2Value: '20+',
-        stat2Label: 'Years Operational History',
-        stat3Value: '2013',
-        stat3Label: 'IDX Listed Issuer (CANI)',
-        stat4Value: '100%',
-        stat4Label: 'Indonesian Flagged',
-      },
-      btnAbout: 'Corporate Profile',
-      btnContact: 'Commercial Inquiry',
-      scroll: 'Scroll',
-    },
-    services: {
-      subtitle: 'CAPABILITIES & CHARTERING',
-      title: 'Offshore Marine Operations & Technical Services',
-      description:
-        'Technical marine logistics supporting offshore exploration drilling, deepwater mooring, resource transshipment, and coastal petroleum transport across the Indonesian archipelago.',
-      items: [
-        {
-          title: 'Anchor Handling & Rig Towing',
-          desc: 'Specialized 8-point mooring deployment, exploration platform repositioning, and 24/7 offshore standby with high-BHP AHT vessels.',
-        },
-        {
-          title: 'Harbor Towage & Vessel Assist',
-          desc: 'Terminal berthing assistance, coastal barge escort, and emergency salvage powered by responsive twin-screw tugboats.',
-        },
-        {
-          title: 'Offshore Heavy Lifting & Transshipment',
-          desc: 'Bulk commodity midstream transfer and marine infrastructure installation utilizing floating cranes up to 500-ton capacity.',
-        },
-        {
-          title: 'Archipelagic Petroleum & Bulk Haulage',
-          desc: 'Flat-top deck barges up to 10,000 DWT and double-hull clean oil barges operating along strategic domestic trading routes.',
-        },
-        {
-          title: 'Shipping Agency & Port Clearances',
-          desc: 'Regulatory port authority clearances, bunkering logistics, and agency coordination for domestic and international vessels.',
-        },
-      ],
-    },
-    recentProjects: {
-      subtitle: 'OPERATIONAL RECORD',
-      title: 'Recent Offshore Deployments',
-      description:
-        'Selected vessel mobilizations supporting oil & gas exploration, bulk transshipment, and industrial infrastructure.',
-      viewAllFleet: 'View Fleet Specifications',
-    },
-    newsSection: {
-      subtitle: 'DISCLOSURES & ANNOUNCEMENTS',
-      title: 'Corporate News & Filings',
-      description:
-        'Public disclosures, fleet acquisitions, and operational milestones published by PT Capitol Nusantara Indonesia Tbk.',
-      viewAllNews: 'View Media Archive',
-    },
-    clientsSection: {
-      subtitle: 'STRATEGIC CLIENTS & PARTNERS',
-      title: 'Industry Counterparties & Key Energy Partners',
-      description:
-        'Trusted marine logistics and offshore vessel support for Indonesia’s leading energy operators and mining enterprises.',
     },
     about: {
-      profile: {
-        breadcrumb: 'About Us',
-        headerTitle: 'Corporate Profile',
-        headerDesc: 'PT Capitol Nusantara Indonesia Tbk — Corporate structure, fleet operations, and public governance.',
-        sectionSubtitle: 'COMPANY OVERVIEW',
-        mainHeading: 'Specialized Marine Logistics for Indonesia’s Energy & Mining Corridors',
-        p1: 'PT Capitol Nusantara Indonesia Tbk (IDX: CANI) is an Indonesian publicly listed shipping and offshore marine logistics provider. The company was founded in 2004 as a strategic joint venture between PT Anugerah Semesta Langgeng (Samarinda, East Kalimantan) and ASL Marine Holdings Ltd (Singapore) — bringing together regional marine engineering expertise and localized operational execution.',
-        p2: 'Headquartered in Samarinda with an executive representative office in Wisma Sudirman, Jakarta, CNI operates a versatile fleet of over 35 vessels comprising Anchor Handling Tug (AHT) units, twin-screw tugboats, heavy-lift floating cranes, deck cargo barges, clean oil barges, and specialized heavy machinery.',
-        p3: 'In January 2013, the company executed its Initial Public Offering on the Indonesia Stock Exchange under ticker CANI. All fleet operations strictly adhere to Indonesian cabotage regulations (Law No. 17/2008) with 100% Indonesian-flagged vessels and national certified mariners.',
-        strengthsTitle: 'Operational & Governance Strengths',
-        strengths: [
-          'Founded in 2004 as an established international joint venture entity',
-          'Publicly listed on the Indonesia Stock Exchange since January 2013 (IDX: CANI)',
-          'Diverse operating fleet of 35+ vessels stationed across key Indonesian maritime corridors',
-          '100% Indonesian-flagged fleet strictly adhering to Cabotage Law No. 17/2008',
-          'Operations managed by certified Indonesian Master Mariners and marine engineering officers',
-          '24/7 dedicated technical dispatch and shore-based marine superintendents in Samarinda & Jakarta',
-        ],
-        businessAreasTitle: 'BUSINESS ACTIVITIES',
-        businessAreasSubtitle: 'Operational Scope & Maritime Capabilities',
-        businessAreasDesc: 'Turnkey vessel deployment across every phase of offshore energy exploration and coastal freight transit.',
-        areas: [
-          { title: 'Domestic Shipping', desc: 'Coastal cargo and resource transit conducted in strict compliance with Indonesian cabotage law.' },
-          { title: 'Offshore Support Services', desc: 'Anchor handling, drilling rig relocation, supply transport, and offshore platform support.' },
-          { title: 'Petroleum Product Haulage', desc: 'Secure transportation of industrial fuel and clean refined petroleum across island ports.' },
-          { title: 'Vessel Chartering', desc: 'Flexible charter structures: Time Charter (TC), Bareboat Charter (BC), Voyage Charter (VC), and Freight Charter (FC).' },
-        ],
-        visionTitle: 'VISION',
-        visionText: 'To be a disciplined, safety-oriented Indonesian maritime logistics company recognized by corporate counterparties for operational reliability, technical competence, and transparent public governance.',
-        missionTitle: 'MISSION',
-        missionItems: [
-          'Operate and maintain seaworthy, properly classed vessels adhering to international safety management standards.',
-          'Deliver punctual, contractual marine logistics solutions to energy, mining, and infrastructure clients.',
-          'Uphold continuous professional competence and safety culture for all national maritime crew and onshore officers.',
-          'Generate sustainable economic returns for shareholders, institutional investors, and regional maritime communities.',
-        ],
-      },
       history: {
         breadcrumb: 'About Us',
         headerTitle: 'Company History',
@@ -213,20 +112,6 @@ export const translations = {
       periodicReportsTitle: 'Periodic Financial Statements',
       disclaimerTitle: 'Regulatory Disclosure Note',
       disclaimerText: 'Documents published herein are provided for public information purposes in fulfillment of listed company disclosure obligations. For official stock filings, real-time trading data, and company announcements, visit',
-      stock: {
-        breadcrumb: 'Investors',
-        headerTitle: 'Stock Information',
-        headerDesc: 'Share listing specifications, equity structure, and capital market disclosures for PT Capitol Nusantara Indonesia Tbk (IDX: CANI).',
-        kicker: 'CAPITAL MARKETS & EQUITIES',
-        tickerCardTitle: 'Indonesia Stock Exchange Listing',
-        tickerCardSubtitle: 'Publicly listed on the Indonesia Stock Exchange (IDX) under ticker CANI since 16 January 2014.',
-        viewOnIdx: 'View Quotes on IDX Portal',
-        viewOnKsei: 'Check Securities on KSEI',
-        profileTitle: 'Securities Specification',
-        shareholdersTitle: 'Shareholding Structure',
-        capitalStructureTitle: 'Authorized & Issued Capital',
-        registrarTitle: 'Share Registrar (BAE)',
-      },
     },
     contact: {
       info: {
@@ -329,110 +214,10 @@ export const translations = {
       allFieldsRequired: 'Kolom bertanda * wajib diisi.',
     },
     hero: {
-      badge: 'Emiten Terbuka — Bursa Efek Indonesia: CANI',
-      titleLine1: 'PT Capitol Nusantara',
-      titleLine2: 'Indonesia Tbk',
       description:
         'Didirikan tahun 2004 sebagai joint venture antara PT Anugerah Semesta Langgeng (Samarinda) dan ASL Marine Holdings Ltd (Singapura). Mengoperasikan armada kapal penanganan jangkar (AHT), kapal tunda, tongkang, dan derek terapung untuk mendukung sektor migas dan logistik maritim nasional dengan kepatuhan penuh pada asas kabotase.',
-      stats: {
-        stat1Value: '35+',
-        stat1Label: 'Unit Armada Aktif',
-        stat2Value: '20+',
-        stat2Label: 'Tahun Pengalaman Operasional',
-        stat3Value: '2013',
-        stat3Label: 'Emiten Terdaftar di BEI (CANI)',
-        stat4Value: '100%',
-        stat4Label: 'Bendera Indonesia (Kabotase)',
-      },
-      btnAbout: 'Profil Perseroan',
-      btnContact: 'Pengajuan Sewa Kapal',
-    },
-    services: {
-      subtitle: 'KAPABILITAS & SKEMA SEWA',
-      title: 'Layanan Maritim & Logistik Lepas Pantai',
-      description:
-        'Dukungan logistik kelautan teknis untuk operasional pengeboran migas, sistem tambat laut dalam, alih muat komoditas, dan angkutan bahan bakar antar pulau di seluruh wilayah Indonesia.',
-      items: [
-        {
-          title: 'Anchor Handling & Pemanduan Rig',
-          desc: 'Pemasangan sistem tambat 8 titik, reposisi rig eksplorasi lepas pantai, dan kesiagaan armada AHT berdaya mesin tinggi.',
-        },
-        {
-          title: 'Kapal Tunda & Asistensi Pelabuhan',
-          desc: 'Pemanduan kapal sandar di dermaga energi, penundaan tongkang pesisir, dan asistensi darurat dengan kapal tunda berpenggerak ganda.',
-        },
-        {
-          title: 'Alih Muat (Transshipment) & Heavy Lift',
-          desc: 'Pemindahan muatan komoditas curah di perairan lepas pantai serta instalasi konstruksi maritim dengan derek terapung hingga kapasitas 500 ton.',
-        },
-        {
-          title: 'Pengangkutan BBM & Kargo Curah Antar Pulau',
-          desc: 'Armada tongkang geladak datar kapasitas hingga 10.000 DWT dan tongkang minyak berbadan ganda untuk rute distribusi energi domestik.',
-        },
-        {
-          title: 'Keagenan Kapal & Operasional Pelabuhan',
-          desc: 'Pengurusan administrasi kepelabuhanan, logistik operasional kapal, dan koordinasi keagenan di pelabuhan strategis Indonesia.',
-        },
-      ],
-    },
-    recentProjects: {
-      subtitle: 'REKAM JEJAK PENUGASAN',
-      title: 'Dokumentasi Operasi Maritim',
-      description:
-        'Mobilisasi armada terpilih dalam mendukung eksplorasi minyak & gas bumi, transshipment komoditas, dan infrastruktur pelabuhan.',
-      viewAllFleet: 'Lihat Spesifikasi Armada',
-    },
-    newsSection: {
-      subtitle: 'KETERBUKAAN INFORMASI & MEDIA',
-      title: 'Pengumuman & Berita Korporat',
-      description:
-        'Publikasi resmi, aksi korporasi, dan pembaruan operasional dari PT Capitol Nusantara Indonesia Tbk.',
-      viewAllNews: 'Lihat Arsip Media',
-    },
-    clientsSection: {
-      subtitle: 'KEMITRAAN & REPUTASI',
-      title: 'Mitra Sektor Energi, Migas & Pertambangan',
-      description:
-        'Pengalaman mendukung operasi maritim pelaku industri minyak & gas bumi, komoditas curah, dan energi terkemuka di perairan Indonesia.',
     },
     about: {
-      profile: {
-        breadcrumb: 'Tentang Kami',
-        headerTitle: 'Profil Perseroan',
-        headerDesc: 'PT Capitol Nusantara Indonesia Tbk — Profil entitas, operasional armada, dan tata kelola perusahaan publik.',
-        sectionSubtitle: 'IKHTISAR PERSEROAN',
-        mainHeading: 'Logistik Maritim Khusus untuk Koridor Energi dan Pertambangan Indonesia',
-        p1: 'PT Capitol Nusantara Indonesia Tbk (BEI: CANI) adalah perusahaan publik Indonesia yang bergerak di bidang pelayaran dan penyediaan jasa pendukung lepas pantai. Perseroan didirikan pada tahun 2004 sebagai joint venture strategis antara PT Anugerah Semesta Langgeng (Samarinda, Kalimantan Timur) dan ASL Marine Holdings Ltd (Singapura) — memadukan keahlian teknik kelautan internasional dengan pengalaman operasional domestik.',
-        p2: 'Berkantor pusat di Samarinda dengan kantor perwakilan eksekutif di Wisma Sudirman, Jakarta, CNI mengoperasikan lebih dari 35 unit armada yang mencakup kapal Anchor Handling Tug (AHT), kapal tunda (tug boat), derek terapung (floating crane), tongkang dek datar, tongkang minyak, dan alat berat pendukung konstruksi dermaga.',
-        p3: 'Pada bulan Januari 2013, Perseroan secara resmi mencatatkan saham perdananya di Bursa Efek Indonesia dengan kode saham CANI. Seluruh armada kapal CNI 100% berbendera Indonesia dan diawaki oleh pelaut bersertifikat nasional sesuai ketentuan Undang-Undang Pelayaran No. 17 Tahun 2008 (Asas Kabotase).',
-        strengthsTitle: 'Keunggulan Operasional & Tata Kelola',
-        strengths: [
-          'Berdiri sejak tahun 2004 sebagai wujud kemitraan joint venture internasional yang kokoh',
-          'Tercatat sebagai emiten publik di Bursa Efek Indonesia sejak Januari 2013 (Kode BEI: CANI)',
-          'Mengoperasikan lebih dari 35 unit armada kapal di perairan strategis Indonesia',
-          'Kepatuhan penuh Asas Kabotase UU No. 17/2008 dengan 100% armada kapal berbendera Indonesia',
-          'Operasional dipimpin oleh perwira laut dan awak kapal berkewarganegaraan Indonesia yang berpengalaman',
-          'Pusat pemantauan operasional armada dan tim teknis siaga 24/7 di Samarinda dan Jakarta',
-        ],
-        businessAreasTitle: 'BIDANG USAHA',
-        businessAreasSubtitle: 'Cakupan Operasi & Layanan Kelautan',
-        businessAreasDesc: 'Penyediaan armada terintegrasi untuk seluruh tahapan eksplorasi energi lepas pantai dan transportasi laut komoditas.',
-        areas: [
-          { title: 'Pelayaran Domestik', desc: 'Pengangkutan kargo dan komoditas laut antar pulau dengan kepatuhan penuh terhadap asas kabotase.' },
-          { title: 'Jasa Penunjang Lepas Pantai', desc: 'Penanganan jangkar rig, pemindahan posisi anjungan lepas pantai, dan kapal siaga darurat.' },
-          { title: 'Transportasi Minyak & BBM', desc: 'Pengangkutan bahan bakar industri dan minyak olahan ke pelabuhan distribusi energi kepulauan.' },
-          { title: 'Sewa Armada (Chartering)', desc: 'Skema kontrak fleksibel: Time Charter (TC), Bareboat Charter (BC), Voyage Charter (VC), dan Freight Charter (FC).' },
-        ],
-        visionTitle: 'VISI PERSEROAN',
-        visionText: 'Menjadi perusahaan logistik maritim nasional yang berdisiplin tinggi, berorientasi pada keselamatan pelayaran, serta diakui oleh mitra industri atas keandalan teknis dan tata kelola perusahaan yang transparan.',
-        missionTitle: 'MISI PERSEROAN',
-        missionItems: [
-          'Mengoperasikan dan merawat armada kapal laik laut yang memenuhi standar manajemen keselamatan internasional.',
-          'Memberikan solusi logistik pelayaran yang tepat waktu dan efisien bagi sektor energi, pertambangan, dan infrastruktur.',
-          'Meningkatkan kompetensi profesional dan budaya keselamatan kerja bagi seluruh awak kapal dan tenaga darat.',
-          'Menciptakan nilai ekonomis yang berkelanjutan bagi pemegang saham, investor, dan masyarakat pesisir.',
-        ],
-      },
       history: {
         breadcrumb: 'Tentang Kami',
         headerTitle: 'Sejarah Perseroan',
@@ -497,20 +282,6 @@ export const translations = {
       periodicReportsTitle: 'Laporan Keuangan Berkala',
       disclaimerTitle: 'Catatan Keterbukaan Regulasi',
       disclaimerText: 'Dokumen yang dipublikasikan pada halaman ini disediakan untuk memenuhi kewajiban keterbukaan informasi emiten publik. Untuk ringkasan perdagangan saham harian dan pengumuman bursa, silakan kunjungi',
-      stock: {
-        breadcrumb: 'Hubungan Investor',
-        headerTitle: 'Informasi Saham',
-        headerDesc: 'Spesifikasi pencatatan efek, struktur permodalan, dan keterbukaan pasar modal untuk PT Capitol Nusantara Indonesia Tbk (BEI: CANI).',
-        kicker: 'PASAR MODAL & EKUITAS',
-        tickerCardTitle: 'Pencatatan Bursa Efek Indonesia',
-        tickerCardSubtitle: 'Tercatat di Bursa Efek Indonesia (BEI) dengan kode saham CANI sejak 16 Januari 2014.',
-        viewOnIdx: 'Pantau Kuotasi di Portal BEI',
-        viewOnKsei: 'Cek Efek di KSEI',
-        profileTitle: 'Spesifikasi Efek Saham',
-        shareholdersTitle: 'Struktur Kepemilikan Saham',
-        capitalStructureTitle: 'Modal Dasar & Ditempatkan',
-        registrarTitle: 'Biro Administrasi Efek (BAE)',
-      },
     },
     contact: {
       info: {

@@ -1,7 +1,7 @@
 // src/data/financials.js
+import { COMPANY } from './company';
 
-export const IDX_CANI_FINANCIALS_URL =
-  'https://www.idx.co.id/id-id/perusahaan-tercatat/profil-perusahaan-tercatat/detail-profile-perusahaan-tercatat/?kodeEmiten=CANI%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20';
+export const IDX_CANI_FINANCIALS_URL = COMPANY.idxUrl;
 
 export const financialStatements = [
   {
@@ -32,7 +32,7 @@ export const financialStatements = [
     id: 2,
     year: '2023',
     title: {
-      en: 'Financial Statement Period Ending 30 Juni 2023',
+      en: 'Financial Statement Period Ending 30 June 2023',
       id: 'Laporan Keuangan Periode Berakhir 30 Juni 2023 (Audited)',
     },
     period: {

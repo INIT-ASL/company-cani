@@ -3,41 +3,8 @@ import { MapPin } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
 import Reveal from '../ui/Reveal';
 import { useLanguage } from '../../context/LanguageContext';
+import { COMPANY } from '../../data/company';
 import { MAP_VIEWBOX, INDONESIA_PATH, NEIGHBORS_PATH, MAP_POINTS } from '../../data/indonesiaMap';
-
-// Lokasi kantor nyata PT Capitol Nusantara Indonesia Tbk (CANI) dengan dukungan dwibahasa penuh
-const offices = [
-  {
-    type: 'head',
-    name: {
-      id: 'Jakarta Barat',
-      en: 'West Jakarta',
-    },
-    badge: {
-      id: 'Kantor Pusat',
-      en: 'Head Office',
-    },
-    address: {
-      id: 'Perkantoran Permata Eksekutif Blok R.1/3-2/3, Jl. Raya Pos Pengumben, Kebun Jeruk 11550, DKI Jakarta',
-      en: 'Perkantoran Permata Eksekutif Blok R.1/3-2/3, Jl. Raya Pos Pengumben, Kebun Jeruk 11550, West Jakarta',
-    },
-  },
-  {
-    type: 'branch',
-    name: {
-      id: 'Samarinda',
-      en: 'Samarinda',
-    },
-    badge: {
-      id: 'Kantor Cabang',
-      en: 'Branch Office',
-    },
-    address: {
-      id: 'Jl. Pangeran Suriansyah No. 30–34, Samarinda 75113, Kalimantan Timur',
-      en: 'Jl. Pangeran Suriansyah No. 30–34, Samarinda 75113, East Kalimantan',
-    },
-  },
-];
 
 // Titik lokasi berdenyut. Posisi diambil dari MAP_POINTS (src/data/indonesiaMap.js).
 function MapDot({ cx, cy, delay = 0 }) {
@@ -62,14 +29,41 @@ export default function OperationsSection() {
   const { language } = useLanguage();
   const en = language === 'en';
 
+  const offices = [
+    {
+      type: 'head',
+      name: {
+        id: COMPANY.headOffice.city,
+        en: COMPANY.headOffice.city,
+      },
+      badge: {
+        id: COMPANY.headOffice.type.id,
+        en: COMPANY.headOffice.type.en,
+      },
+      address: {
+        id: COMPANY.headOffice.address,
+        en: COMPANY.headOffice.address,
+      },
+    },
+    {
+      type: 'branch',
+      name: {
+        id: COMPANY.branchOffice.city,
+        en: COMPANY.branchOffice.city,
+      },
+      badge: {
+        id: COMPANY.branchOffice.type.id,
+        en: COMPANY.branchOffice.type.en,
+      },
+      address: {
+        id: COMPANY.branchOffice.address,
+        en: COMPANY.branchOffice.address,
+      },
+    },
+  ];
+
   return (
     <section className="bg-white py-24 lg:py-32">
-      <style>{`
-        @keyframes cni-pulse { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(3.5); opacity: 0; } }
-        .cni-pulse { transform-box: fill-box; transform-origin: center; animation: cni-pulse 2.2s ease-out infinite; }
-        @media (prefers-reduced-motion: reduce) { .cni-pulse { animation: none; opacity: 0; } }
-      `}</style>
-
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
         <div>
           <SectionHeading
@@ -84,7 +78,7 @@ export default function OperationsSection() {
           <ul className="divide-y divide-slate-200 border-y border-slate-200">
             {offices.map((office, i) => (
               <Reveal as="li" key={office.type} delay={0.06 * i} className="flex items-start gap-3 py-4">
-                <MapPin className="h-4 w-4 shrink-0 text-[#C0392B] mt-1" />
+                <MapPin className="h-4 w-4 shrink-0 text-[#C0392B] mt-1" aria-hidden="true" />
                 <div className="flex flex-col gap-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="font-display text-base font-semibold text-[#1E2A3A] leading-tight">

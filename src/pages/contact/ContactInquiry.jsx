@@ -10,11 +10,11 @@ export default function ContactInquiry() {
   return (
     <>
       <SEO
-        title={language === 'en' ? 'Commercial Inquiry (Coming Soon)' : 'Pengajuan Sewa (Coming Soon)'}
+        title={language === 'en' ? 'Commercial Inquiry' : 'Pengajuan Sewa Armada'}
         description={
           language === 'en'
-            ? 'Commercial inquiry portal is currently under development.'
-            : 'Halaman pengajuan sewa perseroan sedang dalam tahap pengembangan.'
+            ? 'Commercial inquiry portal and vessel chartering request desk for PT Capitol Nusantara Indonesia Tbk.'
+            : 'Layanan pengajuan sewa kapal, konsultasi sewa armada, dan permohonan penawaran komersial PT Capitol Nusantara Indonesia Tbk.'
         }
       />
       <PageHeader

@@ -1,7 +1,7 @@
 // src/data/news.js
+import { IDX_CANI_URL } from './company';
 
-export const IDX_CANI_URL =
-  'https://www.idx.co.id/id-id/perusahaan-tercatat/profil-perusahaan-tercatat/detail-profile-perusahaan-tercatat/?kodeEmiten=CANI%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20';
+export { IDX_CANI_URL };
 
 export const pressReleaseData = [
   {
@@ -23,7 +23,6 @@ export const pressReleaseData = [
       id: 'Keterbukaan Informasi Penjualan Kapal PT Capitol Nusantara Indonesia Tbk.',
       en: 'Transparency in Ship Sales Information of PT Capitol Nusantara Indonesia Tbk.',
     },
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80',
     links: [
       {
         label: 'Surat Keterbukaan Informasi (07 Sept 2026)',
@@ -54,7 +53,6 @@ export const pressReleaseData = [
       id: 'Ringkasan Risalah Rapat Umum Pemegang Saham Luar Biasa dan Keterbukaan Informasi Perseroan.',
       en: 'Announcement of Summary of Minutes Of The Extraordinary General Meeting Of Shareholders and Information Disclosure.',
     },
-    image: 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=600&q=80',
     links: [
       {
         label: 'Ringkasan Hasil RUPSLB (26 Jun 2026)',
@@ -85,7 +83,6 @@ export const pressReleaseData = [
       id: 'Pemanggilan Rapat Umum Pemegang Saham Luar Biasa (RUPSLB) Perseroan.',
       en: 'Convocation For The Extraordinary General Meeting Of Shareholders (EGMS).',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Pemanggilan RUPSLB (04 Jun 2026)',
@@ -112,7 +109,6 @@ export const pressReleaseData = [
       id: 'Iklan pengumuman pelaksanaan Rapat Umum Pemegang Saham Luar Biasa Perseroan.',
       en: 'Official announcement regarding the Extraordinary General Meeting of Shareholders.',
     },
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
     links: [
       {
         label: 'Iklan Pengumuman RUPSLB (20 Mei 2026)',
@@ -139,7 +135,6 @@ export const pressReleaseData = [
       id: 'Rencana Transaksi Perseroan untuk penjualan aset berupa 3 unit Kapal dan 1 unit Crane.',
       en: 'Proposed Transaction for the disposal/sale of assets comprising 3 Vessels and 1 Crane.',
     },
-    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80',
     links: [
       {
         label: 'Keterbukaan Informasi (11 Mei 2026)',
@@ -170,7 +165,6 @@ export const pressReleaseData = [
       id: 'Publikasi Laporan Keuangan Triwulan III (TW III) per 31 Maret 2026.',
       en: 'Publication of Financial Statements for Q3 ending March 31, 2026.',
     },
-    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80',
     links: [
       {
         label: 'LK TW III (31 Mar 2026)',
@@ -197,7 +191,6 @@ export const pressReleaseData = [
       id: 'Iklan ringkasan risalah keputusan Rapat Umum Pemegang Saham Luar Biasa Perseroan.',
       en: 'Summary of the decisions taken during the Extraordinary General Meeting of Shareholders.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Iklan Hasil RUPSLB (23 Apr 2026)',
@@ -224,7 +217,6 @@ export const pressReleaseData = [
       id: 'Profil dan curriculum vitae calon anggota Dewan Komisaris Bapak Ang Kok Tian.',
       en: 'Candidate profile and CV of prospective member of the Board of Commissioners Mr. Ang Kok Tian.',
     },
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
     links: [
       {
         label: 'CV Ang Kok Tian (26 Mar 2026)',
@@ -251,7 +243,6 @@ export const pressReleaseData = [
       id: 'Profil dan curriculum vitae calon anggota Dewan Komisaris Bapak Jansen O. R. Warokka.',
       en: 'Candidate profile and CV of prospective member of the Board of Commissioners Mr. Jansen O. R. Warokka.',
     },
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
     links: [
       {
         label: 'CV Jansen O. R. Warokka (26 Mar 2026)',
@@ -278,7 +269,6 @@ export const pressReleaseData = [
       id: 'Surat pemanggilan resmi penyelenggaraan RUPSLB PT Capitol Nusantara Indonesia Tbk.',
       en: 'Official convocation notice for the Extraordinary General Meeting of Shareholders.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Pemanggilan RUPS Capitol (01 Apr 2026)',
@@ -305,7 +295,6 @@ export const pressReleaseData = [
       id: 'Pengumuman rencana pelaksanaan Rapat Umum Pemegang Saham Luar Biasa Perseroan.',
       en: 'Announcement regarding the schedule and agenda of the Extraordinary General Meeting.',
     },
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80',
     links: [
       {
         label: 'Pengumuman RUPSLB (17 Mar 2026)',
@@ -332,7 +321,6 @@ export const pressReleaseData = [
       id: 'Laporan Keuangan Triwulan II (TW II) in-house periode yang berakhir 31 Desember 2025.',
       en: 'In-house Financial Statements for the second quarter ended December 31, 2025.',
     },
-    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80',
     links: [
       {
         label: 'LK TW II (31 Dec 2025)',
@@ -359,7 +347,6 @@ export const pressReleaseData = [
       id: 'Iklan Hasil RUPST perseroan yang diselenggarakan pada tanggal 11 Desember 2025.',
       en: 'Summary of the resolutions passed at the Annual General Meeting held on 11 Dec 2025.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Iklan Hasil RUPST (11 Des 2025)',
@@ -386,7 +373,6 @@ export const pressReleaseData = [
       id: 'Pemanggilan resmi Rapat Umum Pemegang Saham Tahunan (RUPST) Perseroan Tahun 2025.',
       en: 'Official Summons For The Annual General Meeting Of Shareholders (AGM) 2025.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Pemanggilan RUPST (19 Nov 2025)',
@@ -413,7 +399,6 @@ export const pressReleaseData = [
       id: 'Publikasi dokumen Laporan Tahunan (Annual Report) dan Laporan Keberlanjutan CANI.',
       en: 'Publication of CANI Annual Report and Sustainability Report documentation.',
     },
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
     links: [
       {
         label: 'Laporan Tahunan Tahun 2024 Lowres',
@@ -444,7 +429,6 @@ export const pressReleaseData = [
       id: 'Laporan Keuangan Tahunan (LKT) audited PT Capitol Nusantara Indonesia Tbk per 30 Juni 2025.',
       en: 'Audited Annual Financial Statements for fiscal year ended June 30, 2025.',
     },
-    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80',
     links: [
       {
         label: 'LKT 30 Jun 2025 (Audited)',
@@ -471,7 +455,6 @@ export const pressReleaseData = [
       id: 'Laporan Keuangan interim triwulan ketiga per 31 Maret 2025.',
       en: 'Interim third-quarter financial report for period ended March 31, 2025.',
     },
-    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80',
     links: [
       {
         label: 'LK TW III (31 Mar 2025)',
@@ -498,7 +481,6 @@ export const pressReleaseData = [
       id: 'Laporan Keuangan Triwulan II (in-house) per 31 Desember 2024.',
       en: 'Interim Q2 in-house financial report for period ended December 31, 2024.',
     },
-    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80',
     links: [
       {
         label: 'LK TW II (31 Dec 2024)',
@@ -525,7 +507,6 @@ export const pressReleaseData = [
       id: 'Pemanggilan resmi Rapat Umum Pemegang Saham Tahunan Perseroan Tahun Buku 2024.',
       en: 'Summons For The Annual General Meeting Of Shareholders 2024.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Pemanggilan RUPST (26 Nov 2024)',
@@ -552,7 +533,6 @@ export const pressReleaseData = [
       id: 'Pengumuman Rapat Umum Pemegang Saham Tahunan Perseroan Tahun 2024 kepada seluruh pemegang saham.',
       en: 'Announcement of the Annual General Meeting of Shareholders 2024.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Pengumuman RUPST (11 Nov 2024)',
@@ -579,7 +559,6 @@ export const pressReleaseData = [
       id: 'Laporan Tahunan Perseroan Tahun Buku 2023 versi pembaruan resmi.',
       en: 'Official updated version of the Annual Report for financial year 2023.',
     },
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
     links: [
       {
         label: 'Laporan Tahunan 2023 (Terbaru)',
@@ -606,7 +585,6 @@ export const pressReleaseData = [
       id: 'Laporan Keuangan Triwulan I per 30 September 2024.',
       en: 'Quarterly financial statements for the period ended September 30, 2024.',
     },
-    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80',
     links: [
       {
         label: 'LK TW I (30 Sept 2024)',
@@ -633,7 +611,6 @@ export const pressReleaseData = [
       id: 'Laporan Tahunan PT Capitol Nusantara Indonesia Tbk Tahun Buku 2023.',
       en: 'Annual Report of PT Capitol Nusantara Indonesia Tbk for financial year 2023.',
     },
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
     links: [
       {
         label: 'Laporan Tahunan 2023',
@@ -660,7 +637,6 @@ export const pressReleaseData = [
       id: 'Laporan Keuangan Tahunan (LKT) audited periode berakhir 30 Juni 2024.',
       en: 'Audited Financial Statements for financial year ended June 30, 2024.',
     },
-    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80',
     links: [
       {
         label: 'LKT 30 Jun 2024 (Audited)',
@@ -687,7 +663,6 @@ export const pressReleaseData = [
       id: 'Laporan Keuangan Triwulan III (in-house) per 31 Maret 2024.',
       en: 'Financial Statements as of March 31, 2024 (Q3 in-house report).',
     },
-    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80',
     links: [
       {
         label: 'LK TW III (31 Mar 2024)',
@@ -714,7 +689,6 @@ export const pressReleaseData = [
       id: 'Laporan Keuangan in-house Triwulan II per 31 Desember 2023.',
       en: 'Financial Statements as of December 31, 2023 (Q2 interim report).',
     },
-    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80',
     links: [
       {
         label: 'LK TW II (31 Dec 2023)',
@@ -741,7 +715,6 @@ export const pressReleaseData = [
       id: 'Iklan pemanggilan resmi RUPST perseroan diselenggarakan tanggal 14 Desember 2023.',
       en: 'Summons for the Annual General Meeting of Shareholders on 14 December 2023.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Iklan Pemanggilan RUPST (14 Des 2023)',
@@ -768,7 +741,6 @@ export const pressReleaseData = [
       id: 'Pengumuman penyelenggaraan Rapat Umum Pemegang Saham Tahunan Perseroan 2023.',
       en: 'Announcement Of The Company’s Annual General Meeting Of Shareholders 2023.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Iklan Pengumuman RUPST (07 Nov 2023)',
@@ -795,7 +767,6 @@ export const pressReleaseData = [
       id: 'Publikasi resmi dokumen Laporan Tahunan Perseroan Tahun Buku 2022.',
       en: 'Official publication of the Company’s Annual Report for financial year 2022.',
     },
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
     links: [
       {
         label: 'Laporan Tahunan 2022',
@@ -822,7 +793,6 @@ export const pressReleaseData = [
       id: 'Laporan Keuangan Triwulan III per 31 Maret 2023.',
       en: 'Financial Statements as of March 31, 2023 (in-house Q3 statement).',
     },
-    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80',
     links: [
       {
         label: 'LK TW III (31 Mar 2023)',
@@ -849,7 +819,6 @@ export const pressReleaseData = [
       id: 'Laporan Audit Final Perseroan per 31 Desember 2022.',
       en: 'CANI Final Audit Report as of 31 Dec 2022.',
     },
-    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80',
     links: [
       {
         label: 'Final Audit Report CANI (31 Dec 2022)',
@@ -876,7 +845,6 @@ export const pressReleaseData = [
       id: 'Publikasi Laporan Keuangan Tengah Tahunan (LKTT) in-house per 31 Desember 2022.',
       en: 'Publication of PT CNI’s Interim Financial Report (LKTT) as of 31 Dec 2022.',
     },
-    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80',
     links: [
       {
         label: 'LKTT per 31 Des 2022',
@@ -903,7 +871,6 @@ export const pressReleaseData = [
       id: 'Ringkasan Risalah Rapat Umum Pemegang Saham Tahunan Perseroan Tahun Buku 2021.',
       en: 'Summary of Minutes of the Annual General Meeting of Shareholders for FY2021.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Pemanggilan RUPST (29 Des 2022)',
@@ -930,7 +897,6 @@ export const pressReleaseData = [
       id: 'Materi presentasi resmi untuk pelaksanaan Paparan Publik (Public Expose) Tahun Buku 2021.',
       en: 'Official presentation material for the CANI Public Exposure for the 2021 Financial Year.',
     },
-    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80',
     links: [
       {
         label: 'Presentasi Paparan Publik (Th Buku 2021)',
@@ -957,7 +923,6 @@ export const pressReleaseData = [
       id: 'Pemberitahuan resmi penyelenggaraan RUPS Tahun Buku 2021 kepada pemegang saham.',
       en: 'Notice of the Annual General Meeting of Shareholders for Financial Year 2021.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Pemberitahuan RUPS TH Buku 2021',
@@ -984,7 +949,6 @@ export const pressReleaseData = [
       id: 'Penyampaian iklan hasil keputusan RUPST perseroan tanggal 18 Januari 2022.',
       en: 'Publication of summary of minutes of the Annual General Meeting held on 18 Jan 2022.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Iklan Hasil RUPST (18 Jan 2022)',
@@ -1011,7 +975,6 @@ export const pressReleaseData = [
       id: 'Pemanggilan RUPST Perseroan tertanggal 23 Desember 2021.',
       en: 'Summons notice for the Annual General Meeting of Shareholders dated 23 December 2021.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Pemanggilan RUPST (23 Des 2021)',
@@ -1038,7 +1001,6 @@ export const pressReleaseData = [
       id: 'Materi Pengumuman RUPST Tahun 2021 bagi segenap pemegang saham.',
       en: 'Announcement materials for the Annual General Meeting of Shareholders 2021.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Materi Pengumuman RUPST (Th 2021)',
@@ -1065,7 +1027,6 @@ export const pressReleaseData = [
       id: 'Pelaporan agenda dan pemanggilan RUPST serta RUPSLB Tahun 2021.',
       en: 'Reporting agenda and summons for Annual & Extraordinary General Meetings 2021.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Pelaporan Agenda RUPST (Th 2021)',
@@ -1092,7 +1053,6 @@ export const pressReleaseData = [
       id: 'Pengumuman ringkasan risalah RUPST dan RUPSLB PT Capitol Nusantara Indonesia Tbk.',
       en: 'Announcement of the summary of minutes of AGM & EGM of CNI.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Ringkasan Risalah RUPST-RUPSLB CNI',
@@ -1119,7 +1079,6 @@ export const pressReleaseData = [
       id: 'Dokumen Laporan Tahunan Perseroan untuk tahun yang berakhir pada 30 Juni 2020.',
       en: 'CANI Annual Report for the fiscal year ended 30 June 2020.',
     },
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
     links: [
       {
         label: 'Laporan Tahunan 2019 Final',
@@ -1146,7 +1105,6 @@ export const pressReleaseData = [
       id: 'Materi iklan laporan posisi keuangan tahunan perseroan per 30 Juni 2020.',
       en: 'Published financial statement announcement for the year ended 30 June 2020.',
     },
-    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80',
     links: [
       {
         label: 'Laporan Posisi Keuangan (30 Jun 2020)',
@@ -1173,7 +1131,6 @@ export const pressReleaseData = [
       id: 'Materi iklan pemanggilan RUPS Capitol (RUPST & RUPSLB) tertanggal 30 Desember 2020.',
       en: 'Summons announcement for AGM and EGM of Capitol Nusantara Indonesia.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Materi Iklan Pemanggilan RUPS (30 Des 2020)',
@@ -1200,7 +1157,6 @@ export const pressReleaseData = [
       id: 'Iklan Pengumuman RUPST dan RUPSLB tanggal 15 Desember 2020 (review notaris).',
       en: 'Notice of Annual & Extraordinary General Meeting of Shareholders.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Iklan Pengumuman RUPST-LB (15 Des 2020)',
@@ -1227,7 +1183,6 @@ export const pressReleaseData = [
       id: 'Pelaporan agenda dan jadwal pelaksanaan RUPST & RUPSLB kepada Otoritas Jasa Keuangan (OJK).',
       en: 'CANI reported the agenda and timetable for the AGMS and EGMS to OJK.',
     },
-    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80',
     links: [
       {
         label: 'Pelaporan Agenda RUPST-LB Th 2020',
@@ -1254,7 +1209,6 @@ export const pressReleaseData = [
       id: 'Pelaporan rencana Paparan Publik (Public Expose) daring Tahun Buku 2019 kepada OJK.',
       en: 'Reporting of the FY2019 online Public Expose plan to the Financial Services Authority (OJK).',
     },
-    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80',
     links: [
       {
         label: 'Rencana Pelaksanaan Pubex Th Buku 2019',
@@ -1284,7 +1238,6 @@ export const newsData = [
       id: 'Iklan hasil pemungutan suara dan keputusan Rapat Umum Pemegang Saham Tahunan yang diselenggarakan pada 14 Desember 2023.',
       en: 'Advertisement of Annual & General Meeting of Shareholders Results held on 14 December 2023.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Iklan Hasil RUPST (14 Des 2023)',
@@ -1311,7 +1264,6 @@ export const newsData = [
       id: 'Pengumuman ringkasan risalah Rapat Umum Pemegang Saham Tahunan dan Rapat Umum Pemegang Saham Luar Biasa CNI.',
       en: 'Announcement of Minutes of Annual & Extraordinary General Meeting of Shareholders.',
     },
-    image: 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=600&q=80',
     links: [
       {
         label: 'Ringkasan Risalah RUPST-RUPSLB CNI',
@@ -1338,7 +1290,6 @@ export const newsData = [
       id: 'Publikasi buku Laporan Tahunan Perseroan Tahun 2019 untuk periode tahun buku yang berakhir pada 30 Juni 2020.',
       en: 'Annual Report Year 2019 (fiscal year ending at 30 June 2020).',
     },
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
     links: [
       {
         label: 'Laporan Tahunan 2019 Final',
@@ -1365,7 +1316,6 @@ export const newsData = [
       id: 'Pengumuman resmi materi iklan Laporan Keuangan Tahunan posisi per 30 Juni 2020.',
       en: 'Announcement : Audited Balance Sheet and Financial Statement per 30 June 2020.',
     },
-    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80',
     links: [
       {
         label: 'Materi Iklan Laporan Keuangan',
@@ -1392,7 +1342,6 @@ export const newsData = [
       id: 'Materi iklan pemanggilan rapat umum bagi pemegang saham perseroan PT Capitol Nusantara Indonesia Tbk.',
       en: 'Summons notice published for the AGM and EGM of Capitol Nusantara Indonesia.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Materi Iklan Pemanggilan RUPS',
@@ -1419,7 +1368,6 @@ export const newsData = [
       id: 'Iklan pengumuman rapat RUPST-LB tanggal 15 Desember 2020 yang telah disetujui notaris.',
       en: 'Notice of Annual & Extraordinary General Meeting of Shareholders dated December 15, 2020.',
     },
-    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=600&q=80',
     links: [
       {
         label: 'Iklan Pengumuman RUPST-LB',
@@ -1446,7 +1394,6 @@ export const newsData = [
       id: 'Pelaporan keterbukaan kepada OJK atas agenda dan jadwal penyelenggaraan RUPST dan RUPSLB.',
       en: 'Formal filing to OJK on the agenda and timetable of the upcoming AGMS & EGMS.',
     },
-    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80',
     links: [
       {
         label: 'Pelaporan Agenda RUPST-LB Th 2020',
@@ -1473,7 +1420,6 @@ export const newsData = [
       id: 'Pelaksanaan Paparan Publik (Public Expose) daring Tahun Buku 2019 bekerjasama dengan PT Bursa Efek Indonesia.',
       en: 'Execution of online Public Expose for Financial Year 2019 facilitated by IDX.',
     },
-    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80',
     links: [
       {
         label: 'Rencana Pelaksanaan Pubex Th Buku 2019',
