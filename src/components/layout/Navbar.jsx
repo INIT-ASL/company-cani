@@ -36,7 +36,6 @@ export default function Navbar() {
         { label: t('nav.tugBoat'), to: '/fleet/tug' },
         { label: t('nav.floatingCrane'), to: '/fleet/crane' },
         { label: t('nav.barge'), to: '/fleet/barge' },
-        { label: t('nav.heavyEquipment'), to: '/fleet/heavy' },
       ],
     },
     {

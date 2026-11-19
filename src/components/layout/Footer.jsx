@@ -115,11 +115,6 @@ export default function Footer() {
                   {t('nav.barge')}
                 </Link>
               </li>
-              <li>
-                <Link to="/fleet/heavy" className="hover:text-white transition-colors">
-                  {t('nav.heavyEquipment')}
-                </Link>
-              </li>
             </ul>
           </div>
 

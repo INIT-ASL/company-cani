@@ -3,7 +3,6 @@ import { useState, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import PageHeader from '../../components/ui/PageHeader';
 import SEO from '../../components/common/SEO';
-import ComingSoon from '../../components/common/ComingSoon';
 import NotFound from '../NotFound';
 import { fleetCategories, fleetData } from '../../data/fleet';
 import FleetPdfButton from '../../components/fleet/FleetPdfButton';
@@ -38,7 +37,6 @@ function FleetPageContent({ activeCategory }) {
 
   const activeId = activeCategory.id;
   const rawData = useMemo(() => fleetData[activeId] || [], [activeId]);
-  const isHeavy = activeId === 'heavy';
 
   const fullCategoryTitle = useMemo(() => {
     switch (activeId) {
@@ -50,8 +48,6 @@ function FleetPageContent({ activeCategory }) {
         return t('nav.floatingCrane');
       case 'barge':
         return t('nav.barge');
-      case 'heavy':
-        return t('nav.heavyEquipment');
       default:
         return getLocalized(activeCategory.fullLabel, language) || 'Fleet';
     }
@@ -89,13 +85,7 @@ function FleetPageContent({ activeCategory }) {
     <>
       <SEO
         title={`${fullCategoryTitle} — ${t('nav.fleet')}`}
-        description={
-          isHeavy
-            ? language === 'en'
-              ? 'Heavy equipment specifications and offshore marine machinery for PT Capitol Nusantara Indonesia Tbk.'
-              : 'Informasi spesifikasi alat berat dan permesinan maritim PT Capitol Nusantara Indonesia Tbk.'
-            : categoryDesc
-        }
+        description={categoryDesc}
       />
 
       <PageHeader
@@ -154,46 +144,44 @@ function FleetPageContent({ activeCategory }) {
             </div>
 
             {/* View Mode Toggle & Counter */}
-            {!isHeavy && (
-              <div className="flex items-center gap-3 self-end md:self-auto">
-                <span className="text-xs font-mono text-slate-500">
-                  {filteredData.length} {language === 'en' ? 'units shown' : 'unit terdaftar'}
-                </span>
+            <div className="flex items-center gap-3 self-end md:self-auto">
+              <span className="text-xs font-mono text-slate-500">
+                {filteredData.length} {language === 'en' ? 'units shown' : 'unit terdaftar'}
+              </span>
 
-                <div
-                  role="group"
-                  aria-label="Tampilan / View Mode"
-                  className="flex items-center bg-slate-100 p-0.5 rounded-[3px] border border-slate-200"
+              <div
+                role="group"
+                aria-label="Tampilan / View Mode"
+                className="flex items-center bg-slate-100 p-0.5 rounded-[3px] border border-slate-200"
+              >
+                <button
+                  type="button"
+                  onClick={() => setViewMode('table')}
+                  aria-pressed={viewMode === 'table'}
+                  aria-label="Table view"
+                  className={`p-1.5 rounded-[2px] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#C0392B] ${
+                    viewMode === 'table'
+                      ? 'bg-white text-[#C0392B] shadow-2xs'
+                      : 'text-slate-500 hover:text-[#1E2A3A]'
+                  }`}
                 >
-                  <button
-                    type="button"
-                    onClick={() => setViewMode('table')}
-                    aria-pressed={viewMode === 'table'}
-                    aria-label="Table view"
-                    className={`p-1.5 rounded-[2px] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#C0392B] ${
-                      viewMode === 'table'
-                        ? 'bg-white text-[#C0392B] shadow-2xs'
-                        : 'text-slate-500 hover:text-[#1E2A3A]'
-                    }`}
-                  >
-                    <Table className="w-4 h-4" aria-hidden="true" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setViewMode('grid')}
-                    aria-pressed={viewMode === 'grid'}
-                    aria-label="Grid view"
-                    className={`p-1.5 rounded-[2px] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#C0392B] ${
-                      viewMode === 'grid'
-                        ? 'bg-white text-[#C0392B] shadow-2xs'
-                        : 'text-slate-500 hover:text-[#1E2A3A]'
-                    }`}
-                  >
-                    <LayoutGrid className="w-4 h-4" aria-hidden="true" />
-                  </button>
-                </div>
+                  <Table className="w-4 h-4" aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setViewMode('grid')}
+                  aria-pressed={viewMode === 'grid'}
+                  aria-label="Grid view"
+                  className={`p-1.5 rounded-[2px] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#C0392B] ${
+                    viewMode === 'grid'
+                      ? 'bg-white text-[#C0392B] shadow-2xs'
+                      : 'text-slate-500 hover:text-[#1E2A3A]'
+                  }`}
+                >
+                  <LayoutGrid className="w-4 h-4" aria-hidden="true" />
+                </button>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </section>
@@ -201,27 +189,8 @@ function FleetPageContent({ activeCategory }) {
       {/* Main Content Area */}
       <section className="py-10 bg-[#F4F6F8] min-h-[50vh]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {isHeavy ? (
-            <ComingSoon
-              sectionName={
-                language === 'en'
-                  ? 'Heavy Equipment & Marine Construction Units'
-                  : 'Alat Berat Proyek & Kelautan'
-              }
-              title="COMING SOON"
-              description={
-                language === 'en'
-                  ? 'Heavy equipment specifications are currently under development. For machinery availability, project equipment rentals, or technical consultations, please contact our operational desks in Jakarta or Samarinda.'
-                  : 'Halaman spesifikasi alat berat sedang dalam tahap pengembangan. Untuk informasi ketersediaan alat berat dan konsultasi kebutuhan proyek, silakan hubungi kantor kami di Jakarta atau Samarinda.'
-              }
-              showContact={true}
-              backTo="/fleet/aht"
-              backLabel={language === 'en' ? 'View Marine Fleet' : 'Lihat Armada Kapal'}
-            />
-          ) : (
-            <>
-              {/* Group Sub-Tabs (if category has multiple associates) & Quick Search */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mb-6">
+          {/* Group Sub-Tabs (if category has multiple associates) & Quick Search */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mb-6">
                 {availableGroups.length > 1 ? (
                   <div className="flex flex-wrap gap-1.5 items-center">
                     <span className="text-xs font-mono text-slate-400 mr-1 flex items-center gap-1">
@@ -445,8 +414,6 @@ function FleetPageContent({ activeCategory }) {
                   )}
                 </div>
               )}
-            </>
-          )}
         </div>
       </section>
     </>

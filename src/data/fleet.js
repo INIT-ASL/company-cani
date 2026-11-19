@@ -49,18 +49,6 @@ export const fleetCategories = [
       id: 'Tongkang geladak datar kapasitas hingga 330 kaki dan tongkang hopper dari mitra asosiasi untuk pengangkutan material curah.',
     },
   },
-  {
-    id: 'heavy',
-    label: 'Heavy Equipment',
-    fullLabel: {
-      en: 'Heavy Equipment',
-      id: 'Alat Berat',
-    },
-    description: {
-      en: 'Specialized heavy equipment and marine engineering machinery for offshore operations.',
-      id: 'Peralatan alat berat dan permesinan khusus untuk menunjang operasional maritim.',
-    },
-  },
 ];
 
 export const fleetData = {
@@ -475,7 +463,4 @@ export const fleetData = {
       pdfUrl: '/docs/fleet/barge/500-m3-Hopper-Barge-SM-122-CNI.pdf',
     },
   ],
-
-  // Heavy Equipment: Under development
-  heavy: [],
 };

@@ -42,11 +42,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cani.cemaraintan.id/fleet/heavy</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://cani.cemaraintan.id/media/press-release</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

@@ -8,8 +8,8 @@ import { useLanguage } from '../../context/LanguageContext';
 import { fleetData } from '../../data/fleet';
 import aslSentosaImage from '../../assets/images/asl-sentosa.webp';
 import capitolImage from '../../assets/images/capitol-t2002.webp';
-import aslVictoryImage from '../../assets/images/asl-victory.webp';
-import nusantaraImage from '../../assets/images/nusantara-abadi-1.webp';
+import floatingCraneImage from '../../assets/images/floating-crane.webp';
+import bargeCargoImage from '../../assets/images/barge-cargo.webp';
 
 function FleetCard({ cat, en }) {
   const Icon = cat.icon;
@@ -112,7 +112,7 @@ export default function FleetOverviewSection() {
   const categories = [
     {
       id: 'aht',
-      title: 'Anchor Handling Tug (AHT)',
+      title: 'AHT',
       units: `${ahtCount} Units`,
       unitsId: `${ahtCount} Unit Armada`,
       spec: en ? 'Up to 3,800 HP • Heavy Mooring' : 'Hingga 3.800 HP • Heavy Mooring Spread',
@@ -127,7 +127,7 @@ export default function FleetOverviewSection() {
     },
     {
       id: 'tug',
-      title: en ? 'Tug Boat Fleet' : 'Armada Kapal Tunda (Tug Boat)',
+      title: 'Tug Boat',
       units: `${tugCount} Units`,
       unitsId: `${tugCount} Unit Armada`,
       spec: en ? 'Twin Screw • 1,200 – 3,200 HP' : 'Twin Screw • Daya 1.200 – 3.200 HP',
@@ -142,7 +142,7 @@ export default function FleetOverviewSection() {
     },
     {
       id: 'crane',
-      title: en ? 'Floating Crane & Transshipment' : 'Derek Terapung (Floating Crane)',
+      title: 'Floating Crane',
       units: `${craneCount} Units`,
       unitsId: `${craneCount} Unit Armada`,
       spec: en ? 'Up to 250T & 30T Grab (10,000 MT/day)' : 'Hingga 250 Ton & Grab 30T (10.000 MT/hari)',
@@ -152,12 +152,12 @@ export default function FleetOverviewSection() {
       link: '/fleet/crane',
       badge: en ? 'Heavy lift' : 'Angkat berat',
       icon: Shield,
-      image: aslVictoryImage,
+      image: floatingCraneImage,
       video: '/videos/fleet-crane.mp4',
     },
     {
       id: 'barge',
-      title: en ? 'Deck Cargo & Split Barges' : 'Tongkang Dek & Kargo Curah',
+      title: 'Barge & Oil Barge',
       units: `${bargeCount} Units`,
       unitsId: `${bargeCount} Unit Armada`,
       spec: en ? 'Up to 330 ft • Bulk & Project Cargo' : 'Ukuran hingga 330 ft • Kargo Curah & Proyek',
@@ -167,7 +167,7 @@ export default function FleetOverviewSection() {
       link: '/fleet/barge',
       badge: en ? 'Cargo haulage' : 'Angkutan kargo',
       icon: Layers,
-      image: nusantaraImage,
+      image: bargeCargoImage,
       video: '/videos/fleet-barge.mp4',
     },
   ];
